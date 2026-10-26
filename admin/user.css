@@ -1,0 +1,828 @@
+/* ==========================================================
+   MỤC LỤC (file này sắp theo thứ tự trang từ trên xuống dưới)
+   0. Reset, biến màu, viền chọn bằng bàn phím
+   1. Khung gọi sidebar
+   2. Cột bên phải sidebar (admin-col, admin-main)
+   3. Thanh đầu trang (topbar) và hồ sơ quản trị viên
+   4. Tiêu đề trang, nút, thanh tìm kiếm và lọc
+   5. Bảng dữ liệu, nhãn vai trò, nhóm nút thao tác, phân trang
+   6. Hộp thoại (modal) và thông báo (toast)
+   7. Màn hình nhỏ (luôn để cuối file)
+   ========================================================== */
+
+
+/* ==========================================================
+   0. RESET VÀ BIẾN MÀU
+   Muốn đổi màu cả trang thì chỉ sửa ở khối :root này
+   ========================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* nền và chữ */
+  --bg-page: #f5f1e8;
+  --bg-card: #ffffff;
+  --bg-head: #faf8f3;
+  --text-main: #0f172a;
+  --text-muted: #5b6b82;
+  --border-color: #e5dfd2;
+  --border-soft: #f0ebe0;
+
+  /* xanh navy (màu chính, cùng tông với sidebar) */
+  --primary: #173c56;
+  --primary-hover: #21506f;
+  --primary-soft: #e3edf5;
+
+  /* đất nung (màu nhấn, cùng tông với logo) */
+  --accent: #a65d3f;
+  --accent-dark: #8a4a31;
+  --accent-soft: #f7e8e1;
+
+  /* trạng thái */
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+  --success-dark: #065f46;
+  --danger: #ef4444;
+  --danger-strong: #dc2626;
+  --danger-bg: #fef2f2;
+  --danger-soft: #fee2e2;
+  --danger-dark: #991b1b;
+  --danger-darker: #7f1d1d;
+
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  font-family: var(--font-stack);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Viền hiện khi duyệt bằng phím Tab (chuột bấm thì không hiện) */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================
+   1. KHUNG GỌI SIDEBAR (gọi thật sidebar/sidebar.html bằng iframe)
+   ========================================================== */
+.sidebar-slot {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 260px;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--primary);
+}
+
+/* iframe cố ý rộng 800px nhưng khung chỉ lộ 260px: sidebar.css có luật
+   @media (max-width: 768px), nếu iframe chỉ rộng 260px thì sidebar tưởng
+   là điện thoại và hiển thị sai (mất chiều cao, mất chân trang). */
+.sidebar-slot iframe {
+  display: block;
+  width: 800px;
+  height: 100%;
+  border: 0;
+}
+
+
+/* ==========================================================
+   2. CỘT BÊN PHẢI SIDEBAR
+   admin-col chứa: thanh đầu trang (topbar) ở trên, nội dung (admin-main) ở dưới
+   ========================================================== */
+.admin-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  padding: 36px 40px 48px;
+  overflow-y: auto;
+}
+
+
+/* ==========================================================
+   3. THANH ĐẦU TRANG (TOPBAR)
+   Bên trái là đường dẫn, bên phải là tài khoản đang đăng nhập
+   ========================================================== */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 80px;
+  padding: 0 40px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+/* Đường dẫn: Hệ thống quản trị / Quản lý người dùng */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.breadcrumb-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.breadcrumb-nav a:hover {
+  color: var(--text-main);
+}
+
+.breadcrumb-sep {
+  color: #cbd5e1;
+}
+
+.breadcrumb-current {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Hồ sơ quản trị viên: avatar chữ AD + tên + email */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.profile-info {
+  line-height: 1.3;
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.profile-mail {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================
+   4. TIÊU ĐỀ TRANG, NÚT, THANH TÌM KIẾM VÀ LỌC
+   ========================================================== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.page-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Thanh đất nung trước tiêu đề: lặp lại vạch đánh dấu mục đang chọn ở sidebar */
+.page-title h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+}
+
+.page-title h1::before {
+  content: "";
+  flex-shrink: 0;
+  width: 5px;
+  height: 28px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+.page-title p {
+  margin: 4px 0 0 17px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-head);
+  border-color: #d3ccbb;
+}
+
+.btn-danger {
+  background-color: var(--danger-strong);
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-dark);
+}
+
+/* Thanh tìm kiếm và lọc nhanh */
+.filter-bar {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  flex-wrap: wrap;
+}
+
+.filter-bar .btn {
+  height: 42px;
+  align-items: center; /* Giúp chữ Lọc căn giữa block nút */
+  padding: 0 18px;     /* Thay đổi padding để nút vuông vắn */
+}
+
+.search-input-box {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-input-box svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+
+.search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 16px 0 42px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(23, 60, 86, 0.12);
+}
+
+.filter-select {
+  height: 42px;
+  padding: 0 32px 0 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--text-main);
+  background: var(--bg-page) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%235b6b82' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") no-repeat right 12px center;
+  appearance: none;
+  cursor: pointer;
+}
+
+.filter-select:hover {
+  border-color: #d3ccbb;
+}
+
+
+/* ==========================================================
+   5. BẢNG DỮ LIỆU 6 CỘT: STT, Mã, Họ và tên, Email, SĐT, Thao tác
+   Chữ trong bảng căn giữa. Muốn căn lại một cột thì thêm text-align cho cột đó.
+   ========================================================== */
+.table-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* min-width: màn hình hẹp thì khung bảng tự cuộn ngang, cột không bị ép gãy chữ */
+.data-table {
+  width: 100%;
+  min-width: 880px;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  text-align: center;
+}
+.data-table th {
+  background-color: var(--bg-head);
+  padding: 14px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+  padding: 16px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+
+.data-table tbody tr:hover td {
+  background-color: var(--bg-head);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Chiều rộng cột (cột Họ và tên, Email tự co giãn) */
+.data-table .col-stt    { width: 8%; }
+.data-table .col-code   { width: 12%; }
+.data-table .col-name   { width: 26%; } /* Định nghĩa thêm cho cột Họ và tên */
+.data-table .col-email  { width: 26%; } /* Định nghĩa thêm cho cột Email */
+.data-table .col-phone  { width: 14%; }
+.data-table .col-action { width: 14%; }
+.code-badge {
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--primary-soft);
+}
+
+/* Ô Họ và tên: tên ở trên, nhãn vai trò ở dưới, cả hai căn giữa */
+.user-info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Nhãn vai trò: .role-badge là kiểu chung, mỗi vai trò thêm một class màu.
+   Thêm vai trò mới = thêm một dòng .role-xxx bên dưới. */
+.role-badge {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 1px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #475569;
+  background-color: #eef1f5;
+}
+
+.role-admin    { color: var(--primary);     background-color: var(--primary-soft); }
+.role-customer { color: #5c5648;            background-color: #ede8dc; }
+.role-locked   { color: var(--danger-dark); background-color: var(--danger-soft); }
+
+/* Dòng của tài khoản đang bị khóa: nền hồng nhạt, mã và tên chuyển đỏ.
+   Chỉ cần thêm class is-locked vào thẻ <tr> là đủ. */
+.data-table tbody tr.is-locked td {
+  background-color: #fffafa;
+}
+
+.data-table tbody tr.is-locked:hover td {
+  background-color: var(--danger-bg);
+}
+
+.is-locked .code-badge {
+  background-color: var(--danger-soft);
+  color: var(--danger-dark);
+}
+
+.is-locked .user-name {
+  color: var(--danger-dark);
+}
+
+/* Nhóm nút thao tác: Sửa, Khóa / Mở khóa, Xóa */
+.actions-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: #ffffff;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: var(--primary-soft);
+}
+
+.action-btn.btn-lock:hover {
+  color: var(--accent-dark);
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+}
+
+.action-btn.btn-unlock {
+  color: var(--success-dark);
+  border-color: #a7f3d0;
+  background-color: var(--success-bg);
+}
+
+.action-btn.btn-unlock:hover {
+  border-color: var(--success);
+  background-color: #d1fae5;
+}
+
+.action-btn.btn-delete:hover {
+  color: var(--danger-strong);
+  border-color: var(--danger);
+  background-color: var(--danger-bg);
+}
+
+/* Thanh phân trang */
+.pagination-bar {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background-color: var(--bg-card);
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.pagination-info strong {
+  color: var(--text-main);
+}
+
+.pagination-links {
+  display: flex;
+  gap: 6px;
+}
+
+.page-num {
+  min-width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+  background: #ffffff;
+}
+
+.page-num.active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.page-num:hover:not(.active) {
+  background-color: var(--bg-head);
+  border-color: #d3ccbb;
+}
+
+.page-dots {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  color: #94a3b8;
+}
+
+
+/* ==========================================================
+   6. HỘP THOẠI (MODAL) VÀ THÔNG BÁO (TOAST)
+   Mở bằng :target (địa chỉ có #id), không cần JavaScript
+   ========================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.modal-backdrop:target {
+  display: flex;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: modalIn 0.2s ease-out;
+}
+
+.modal-box.modal-sm {
+  max-width: 440px;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-head);
+}
+
+.modal-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.modal-header .title-danger {
+  color: var(--danger-strong);
+}
+
+.modal-close-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: var(--text-muted);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.modal-close-icon:hover {
+  color: var(--text-main);
+  background-color: var(--border-soft);
+}
+
+.modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Hộp thoại xác nhận: biểu tượng tròn bên trái, nội dung bên phải */
+.modal-body.has-icon {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.modal-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--danger-strong);
+  background-color: var(--danger-soft);
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-control {
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(23, 60, 86, 0.12);
+}
+
+/* Ô chỉ đọc (mã người dùng) */
+.form-control[readonly] {
+  background: var(--bg-head);
+  font-weight: 700;
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  background-color: var(--bg-head);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Thông báo góc trên bên phải */
+.toast-box {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--primary);
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  font-size: 13.5px;
+}
+
+.toast-box:target {
+  display: flex;
+  animation: toastIn 0.25s ease-out;
+}
+
+.toast-box svg {
+  flex-shrink: 0;
+}
+
+/* Màu theo loại thông báo: mặc định là xanh navy */
+.toast-box.toast-danger {
+  background: var(--danger-darker);
+}
+
+.toast-box.toast-success {
+  background: var(--success-dark);
+}
+
+@keyframes toastIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.toast-close {
+  margin-left: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.toast-close:hover {
+  color: #ffffff;
+}
+
+
+/* ==========================================================
+   7. MÀN HÌNH NHỎ
+   Luôn đặt cuối file để các luật này đè lên luật ở trên
+   ========================================================== */
+@media (max-width: 768px) {
+  body { flex-direction: column; }
+  .sidebar-slot { position: static; width: 100%; height: 460px; }
+  .sidebar-slot iframe { width: 100%; }
+  .topbar { position: static; height: 64px; padding: 0 16px; }
+  .admin-main { padding: 20px 16px 32px; }
+}
+
+/* điện thoại: ẩn tên + email, chỉ giữ avatar để thanh không bị xuống dòng */
+@media (max-width: 480px) {
+  .breadcrumb-nav { font-size: 13px; }
+  .profile-info { display: none; }
+}
+
+/* người dùng đã tắt hiệu ứng chuyển động trong hệ điều hành thì tắt luôn */
+@media (prefers-reduced-motion: reduce) {
+  .modal-box,
+  .toast-box:target { animation: none; }
+  .btn,
+  .action-btn { transition: none; }
+  .btn-primary:hover { transform: none; }
+}

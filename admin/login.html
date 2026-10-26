@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đăng nhập quản trị - TNNT Ceramics</title>
+  <!-- Logo dùng chung một file với sidebar: sidebar/img/logo.png. Đổi logo ở đó là cả hai trang đổi theo. -->
+  <link rel="icon" href="sidebar/img/logo.png">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-page">
+
+    <!-- ==========================================================
+         1. CỘT TRÁI: logo và giới thiệu (màu xanh navy giống sidebar)
+         ========================================================== -->
+    <aside class="brand-panel">
+      <div class="brand">
+        <img src="sidebar/img/logo.png" alt="Logo TNNT Ceramics">
+        <div>
+          <strong>TNNT Ceramics</strong>
+          <small>Quản trị</small>
+        </div>
+      </div>
+
+      <div class="brand-body">
+        <h2 class="brand-title">Quản lý người dùng, lịch sử mua hàng và sản phẩm gốm.</h2>
+      </div>
+
+      <p class="brand-foot">© TNNT Ceramics · Khu vực dành cho quản trị viên</p>
+    </aside>
+
+
+    <!-- ==========================================================
+         2. CỘT PHẢI: khung đăng nhập (nền kem giống user.html)
+         ========================================================== -->
+    <main class="login-side">
+      <div class="login-card">
+        <h1>Đăng nhập</h1>
+        <!-- Đăng nhập đúng thì chuyển sang user.html.
+             Sau này nối máy chủ: đổi action sang trang xử lý, và khi sai mật khẩu
+             thì chuyển về login.html#login-error để hiện thông báo đỏ bên dưới. -->
+        <form class="login-form" action="user.html" method="post">
+
+          <div id="login-error" class="form-alert" role="alert">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>Email hoặc mật khẩu chưa đúng. Vui lòng kiểm tra và thử lại.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="login-email">Email quản trị</label>
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                <polyline points="22 6 12 13 2 6"></polyline>
+              </svg>
+              <input type="email" id="login-email" name="email" class="form-control"
+                     placeholder="hgnam@ceramics.vn" autocomplete="username" required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Mật khẩu</label>
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <input type="password" id="login-password" name="password" class="form-control"
+                     placeholder="Nhập mật khẩu" autocomplete="current-password" required>
+            </div>
+          </div>
+
+          <label class="form-check">
+            <input type="checkbox" name="remember" checked>
+            <span>Ghi nhớ đăng nhập</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary">
+            <span>Đăng nhập</span>
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+
+          <p class="form-hint">Quên mật khẩu? Liên hệ bộ phận kỹ thuật để được cấp lại.</p>
+        </form>
+      </div>
+    </main>
+
+  </div>
+</body>
+</html>

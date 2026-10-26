@@ -1,0 +1,178 @@
+/* Sidebar trang quản trị - TNNT Ceramics
+   Màu lấy từ logo: xanh navy, cam đất nung, kem */
+
+:root {
+  --navy: #173c56;
+  --navy-dark: #0f2c42;
+  --navy-light: #21506f;
+  --line: #2c5672;
+  --cam: #d17a55;
+  --cam-nhat: #e8a285;
+  --kem: #efe6d1;
+  --chu-phu: #9fb3c1;
+}
+
+.sidebar,
+.sidebar * {
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--navy);
+  color: var(--kem);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.sidebar a {
+  text-decoration: none;
+}
+
+.sidebar a:focus-visible {
+  outline: 2px solid var(--cam-nhat);
+  outline-offset: 2px;
+}
+
+/* logo + tên */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sidebar-brand img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sidebar-brand strong {
+  display: block;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-brand small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--cam-nhat);
+}
+
+/* menu */
+.menu-title {
+  margin: 0;
+  padding: 20px 18px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--chu-phu);
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.menu li {
+  margin-bottom: 4px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-left: 4px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--kem);
+}
+
+.menu a:hover {
+  background: var(--navy-light);
+}
+
+.menu li.active a {
+  background: var(--navy-dark);
+  border-left-color: var(--cam);
+  font-weight: 600;
+}
+
+.menu svg,
+.logout svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* đăng xuất nằm dưới cùng */
+.logout {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cam-nhat);
+}
+
+.logout:hover {
+  background: var(--navy-dark);
+}
+
+/* Bố cục demo: sidebar bên trái, nội dung bên phải.
+   Nếu admin.css đã có bố cục riêng thì bỏ phần này. */
+.admin-layout {
+  display: flex;
+  margin: 0;
+  background: #f5f1e8;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  padding: 28px;
+}
+
+/* màn hình nhỏ: sidebar nằm trên cùng, menu xếp ngang */
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .menu li {
+    margin-right: 4px;
+  }
+}

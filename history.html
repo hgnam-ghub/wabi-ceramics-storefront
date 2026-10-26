@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lịch Sử Mua Hàng | Gốm Việt - Tinh Hoa Nghệ Thuật Bát Tràng</title>
+<!-- BEGIN: StyleResetAndVariables (Đồng bộ 100% từ login.html chuẩn) -->
+<style data-purpose="variables-and-reset">
+    :root {
+      --color-men-lam-dark: #102339;
+      --color-men-lam-primary: #1e3a5f;
+      --color-men-lam-light: #2c537d;
+      --color-hoang-tho: #c59b27;
+      --color-hoang-tho-light: #e6b843;
+      --color-su-moc: #fcf9f8;
+      --color-su-kem: #f4eee9;
+      --color-border: #e3d9cf;
+      --color-text-main: #1f2833;
+      --color-text-muted: #64748b;
+      --color-white: #ffffff;
+      --color-shadow: rgba(16, 35, 57, 0.08);
+      --color-shadow-hover: rgba(16, 35, 57, 0.12);
+      --font-stack: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 18px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background-color: var(--color-su-moc);
+      color: var(--color-text-main);
+      font-family: var(--font-stack);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+
+    button, input, select {
+      font-family: inherit;
+      border: none;
+      outline: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+<!-- END: StyleResetAndVariables -->
+<!-- BEGIN: StyleHeader (Khuôn mẫu Header chuẩn từ login.html) -->
+<style data-purpose="header-layout">
+    .site-header {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 10px var(--color-shadow);
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-seal {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--color-men-lam-dark), var(--color-men-lam-primary));
+      border: 2px solid var(--color-hoang-tho);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(16, 35, 57, 0.2);
+    }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-hoang-tho);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-men-lam-dark);
+      padding: 8px 4px;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--color-hoang-tho);
+    }
+
+    .nav-link.active {
+      color: var(--color-men-lam-primary);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--color-hoang-tho);
+      border-radius: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cart-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-su-moc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-men-lam-dark);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .cart-btn:hover {
+      border-color: var(--color-hoang-tho);
+      color: var(--color-hoang-tho);
+      background-color: var(--color-white);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background-color: var(--color-hoang-tho);
+      color: var(--color-men-lam-dark);
+      font-size: 10.5px;
+      font-weight: 800;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--color-white);
+    }
+
+    .user-pill-account {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px 7px 8px;
+      background-color: var(--color-su-kem);
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      color: var(--color-men-lam-dark);
+      font-size: 13.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .user-pill-account:hover {
+      background-color: var(--color-white);
+      border-color: var(--color-hoang-tho);
+      box-shadow: 0 4px 12px var(--color-shadow);
+    }
+
+    .user-avatar-micro {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-men-lam-primary), var(--color-men-lam-dark));
+      color: var(--color-hoang-tho-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+  </style>
+<!-- END: StyleHeader -->
+<!-- BEGIN: StyleMainLayout & Breadcrumbs -->
+<style data-purpose="history-layout">
+    .main-wrapper {
+      max-width: 1280px;
+      margin: 28px auto 60px;
+      padding: 0 24px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .breadcrumb-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb-row a:hover {
+      color: var(--color-men-lam-primary);
+    }
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) {
+      .history-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<!-- END: StyleMainLayout & Breadcrumbs -->
+<!-- BEGIN: StyleSidebar -->
+<style data-purpose="user-sidebar">
+    .sidebar-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .user-profile-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 14px var(--color-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .user-profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-men-lam-primary), var(--color-hoang-tho));
+    }
+
+    .user-profile-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--color-men-lam-dark), var(--color-men-lam-primary));
+      border: 2px solid var(--color-hoang-tho);
+      color: var(--color-hoang-tho-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(16, 35, 57, 0.25);
+      flex-shrink: 0;
+    }
+
+    .user-meta-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+      margin-bottom: 4px;
+    }
+
+    .vip-badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background-color: var(--color-su-kem);
+      border: 1px solid rgba(197, 155, 39, 0.4);
+      color: var(--color-hoang-tho);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .user-id-code {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+      font-family: monospace;
+    }
+
+    /* Menu Sidebar khớp cấu trúc cây thư mục wabi-ceramics/ */
+    .sidebar-nav-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 14px var(--color-shadow);
+    }
+
+    .sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--color-text-main);
+      border-bottom: 1px solid var(--color-border);
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-nav-item:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-nav-item:hover {
+      background-color: var(--color-su-kem);
+      color: var(--color-men-lam-primary);
+    }
+
+    .sidebar-nav-item.active {
+      background-color: var(--color-men-lam-dark);
+      color: var(--color-white);
+      border-left: 4px solid var(--color-hoang-tho);
+    }
+
+    .sidebar-nav-item.active svg {
+      color: var(--color-hoang-tho-light);
+    }
+
+    .sidebar-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sidebar-nav-left svg {
+      width: 18px;
+      height: 18px;
+      color: var(--color-text-muted);
+    }
+
+    .sidebar-nav-badge {
+      background-color: var(--color-hoang-tho);
+      color: var(--color-men-lam-dark);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    .sidebar-nav-item.logout {
+      color: #b91c1c;
+    }
+
+    .sidebar-nav-item.logout:hover {
+      background-color: #fef2f2;
+      color: #991b1b;
+    }
+
+    /* Thẻ bảo chứng nguồn gốc gốm sứ */
+    .seal-guarantee-card {
+      background: linear-gradient(145deg, #fcfaf7 0%, var(--color-su-kem) 100%);
+      border: 1.5px dashed var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--color-text-main);
+    }
+
+    .seal-guarantee-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .seal-guarantee-meta {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dotted var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      color: var(--color-hoang-tho);
+      font-family: monospace;
+      font-size: 11.5px;
+    }
+  </style>
+<!-- END: StyleSidebar -->
+<!-- BEGIN: StyleContentArea (KPIs, Filters, Order Cards) -->
+<style data-purpose="history-content-components">
+    .history-main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .page-title-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+
+    .page-title-banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .page-title-banner p {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .sync-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      background-color: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #047857;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status-dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    /* 3 Thẻ thống kê KPI */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .kpi-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .kpi-card-item {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 12px var(--color-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--color-border);
+    }
+
+    .kpi-card-item.accent-1::after { background: var(--color-men-lam-primary); }
+    .kpi-card-item.accent-2::after { background: var(--color-hoang-tho); }
+    .kpi-card-item.accent-3::after { background: #0d9488; }
+
+    .kpi-icon-seal {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-su-kem);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-men-lam-dark);
+      flex-shrink: 0;
+    }
+
+    .kpi-label-text {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+    }
+
+    .kpi-value-text {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+      margin-top: 2px;
+      line-height: 1.2;
+    }
+
+    /* Thanh lọc tìm kiếm SC_103 */
+    .filter-card-bar {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: 0 4px 12px var(--color-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .filter-inputs-top {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .search-field-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-field-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      color: var(--color-text-muted);
+    }
+
+    .search-history-input {
+      width: 100%;
+      height: 44px;
+      background-color: var(--color-su-moc);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 0 14px 0 42px;
+      font-size: 13.5px;
+      color: var(--color-text-main);
+      transition: all 0.2s ease;
+    }
+
+    .search-history-input:focus {
+      background-color: var(--color-white);
+      border-color: var(--color-men-lam-primary);
+      box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+    }
+
+    .select-filter-custom {
+      height: 44px;
+      padding: 0 34px 0 14px;
+      background: var(--color-su-moc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") no-repeat right 12px center/14px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--color-men-lam-dark);
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .select-filter-custom:focus {
+      background-color: var(--color-white);
+      border-color: var(--color-men-lam-primary);
+    }
+
+    .filter-tabs-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 12px;
+      border-top: 1px solid var(--color-su-kem);
+    }
+
+    .tab-pill {
+      padding: 7px 14px;
+      border-radius: 20px;
+      background-color: var(--color-su-kem);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-pill:hover {
+      background-color: #ece4dc;
+      color: var(--color-men-lam-dark);
+    }
+
+    .tab-pill.active {
+      background-color: var(--color-men-lam-dark);
+      border-color: var(--color-men-lam-dark);
+      color: var(--color-white);
+      box-shadow: 0 2px 6px rgba(16, 35, 57, 0.2);
+    }
+
+    /* Danh sách thẻ Đơn Hàng (Order Cards) */
+    .orders-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .order-item-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 16px var(--color-shadow);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .order-item-card:hover {
+      box-shadow: 0 8px 24px var(--color-shadow-hover);
+      border-color: rgba(197, 155, 39, 0.4);
+    }
+
+    .order-header-strip {
+      background-color: #faf7f4;
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .order-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .order-code-badge {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .order-meta-info {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-text-muted);
+    }
+
+    .order-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .order-status-badge.in-progress {
+      background-color: #fef3c7;
+      border: 1px solid #fde68a;
+      color: #92400e;
+    }
+
+    .order-status-badge.completed {
+      background-color: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #047857;
+    }
+
+    .order-body-content {
+      padding: 24px;
+    }
+
+    .product-detail-flex {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .product-detail-flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .product-thumb-holder {
+      width: 110px;
+      height: 110px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--color-border);
+      overflow: hidden;
+      background-color: var(--color-su-kem);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .product-thumb-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-meta-desc {
+      flex: 1;
+    }
+
+    .tag-product-origin {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: var(--color-su-kem);
+      color: var(--color-men-lam-primary);
+      border: 1px solid var(--color-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+
+    .product-title-text {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .product-excerpt-text {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.45;
+      margin-bottom: 8px;
+      max-width: 640px;
+    }
+
+    .product-pricing-box {
+      text-align: right;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .price-main-tag {
+      font-size: 21px;
+      font-weight: 800;
+      color: #b91c1c;
+      letter-spacing: -0.02em;
+    }
+
+    .price-sub-note {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    /* Thanh tiến trình nung củi nghệ nhân 4 giai đoạn */
+    .kiln-progress-panel {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1.5px dashed var(--color-border);
+    }
+
+    .kiln-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+
+    .kiln-step-label {
+      font-weight: 700;
+      color: var(--color-hoang-tho);
+      background-color: var(--color-su-kem);
+      padding: 3px 10px;
+      border-radius: 14px;
+      font-size: 11.5px;
+      border: 1px solid rgba(197, 155, 39, 0.3);
+    }
+
+    .stepper-track-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .stepper-track-grid::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: 12%;
+      right: 12%;
+      height: 3px;
+      background-color: var(--color-border);
+      z-index: 1;
+    }
+
+    .stepper-track-fill {
+      position: absolute;
+      top: 14px;
+      left: 12%;
+      width: 48%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-men-lam-primary), var(--color-hoang-tho));
+      z-index: 2;
+    }
+
+    .stepper-node {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 0 4px;
+    }
+
+    .stepper-node-bubble {
+      width: 30px;
+      height: 30px;
+      margin: 0 auto 8px;
+      border-radius: 50%;
+      background-color: var(--color-white);
+      border: 2px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .stepper-node.done .stepper-node-bubble {
+      background-color: var(--color-men-lam-primary);
+      border-color: var(--color-men-lam-primary);
+      color: var(--color-white);
+    }
+
+    .stepper-node.active .stepper-node-bubble {
+      background-color: var(--color-white);
+      border-color: var(--color-hoang-tho);
+      color: var(--color-hoang-tho);
+      box-shadow: 0 0 0 4px rgba(197, 155, 39, 0.2);
+    }
+
+    .stepper-node-title {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .stepper-node.active .stepper-node-title {
+      font-weight: 800;
+      color: var(--color-men-lam-dark);
+    }
+
+    /* Khối đánh giá & Tác vụ mua lại */
+    .order-action-strip {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .star-review-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stars-cluster {
+      display: flex;
+      gap: 2px;
+      color: var(--color-hoang-tho);
+    }
+
+    .stars-cluster svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    .review-quote-italic {
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    .buttons-action-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-action-secondary {
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      background-color: var(--color-su-kem);
+      border: 1px solid var(--color-border);
+      color: var(--color-men-lam-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-action-secondary:hover {
+      background-color: #ece4dc;
+      border-color: var(--color-hoang-tho);
+    }
+
+    .btn-action-primary-reorder {
+      padding: 9px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--color-men-lam-primary), var(--color-men-lam-dark));
+      border: 1px solid var(--color-hoang-tho);
+      color: var(--color-white);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 4px 12px rgba(16, 35, 57, 0.2);
+    }
+
+    .btn-action-primary-reorder:hover {
+      background: linear-gradient(135deg, var(--color-men-lam-dark), #091726);
+      color: var(--color-hoang-tho-light);
+      transform: translateY(-1px);
+    }
+  </style>
+<!-- END: StyleContentArea -->
+<!-- BEGIN: StyleFooter (Chân trang đồng bộ chuẩn đồ án) -->
+<style data-purpose="shared-footer">
+    .site-footer {
+      background-color: var(--color-men-lam-dark);
+      color: #cbd5e1;
+      border-top: 4px solid var(--color-hoang-tho);
+      padding: 54px 24px 30px;
+      margin-top: auto;
+      font-size: 13.5px;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 960px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-white);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      color: #94a3b8;
+      line-height: 1.6;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .footer-col-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-hoang-tho-light);
+      margin-bottom: 16px;
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .footer-col-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 28px;
+      height: 2px;
+      background-color: var(--color-hoang-tho);
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links-list a {
+      color: #cbd5e1;
+      transition: all 0.2s ease;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--color-hoang-tho-light);
+      padding-left: 4px;
+    }
+
+    .project-meta-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #94a3b8;
+    }
+
+    .project-meta-box strong {
+      color: #f1f5f9;
+    }
+
+    .footer-bottom-bar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12.5px;
+      color: #64748b;
+    }
+
+    .footer-bottom-bar a {
+      color: var(--color-hoang-tho-light);
+    }
+
+    .footer-bottom-bar a:hover {
+      text-decoration: underline;
+    }
+  </style>
+<!-- END: StyleFooter -->
+</head>
+<body>
+<!-- BEGIN: MainHeader (Đồng bộ nguyên mẫu từ login.html chuẩn) -->
+<header class="site-header" data-purpose="global-navigation">
+<div class="header-container">
+<!-- Logo thương hiệu gốm Bát Tràng chuẩn login.html -->
+<a class="brand-logo" href="index.html" title="Về trang chủ Gốm Việt">
+<div aria-hidden="true" class="brand-seal">
+<svg fill="none" height="24" stroke="#C59B27" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+<path d="M2 17l10 5 10-5"></path>
+<path d="M2 12l10 5 10-5"></path>
+</svg>
+</div>
+<div class="brand-text-wrap">
+<span class="brand-name">Gốm Việt</span>
+<span class="brand-tagline">Tinh Hoa Nghệ Thuật Bát Tràng</span>
+</div>
+</a>
+<!-- Menu chuyển hướng chuẩn cây thư mục wabi-ceramics -->
+<nav aria-label="Menu chính">
+<ul class="nav-menu">
+<li class=""><a class="nav-link" href="index.html">Trang chủ</a></li>
+<li class=""><a class="nav-link" href="products.html">Danh mục sản phẩm</a></li>
+<li class=""><a class="nav-link active" href="history.html">Lịch sử mua hàng</a></li>
+</ul>
+</nav>
+<!-- Hành động phía bên phải: Giỏ hàng & Tài khoản thành viên -->
+<div class="header-actions">
+<a aria-label="Giỏ hàng có 2 sản phẩm" class="cart-btn" href="cart.html" title="Giỏ hàng của tôi">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20">
+<circle cx="9" cy="21" r="1"></circle>
+<circle cx="20" cy="21" r="1"></circle>
+<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+</svg>
+<span class="cart-badge">2</span>
+</a>
+<a class="user-pill-account" href="user-profile.html" title="Xem thông tin cá nhân">
+<div class="user-avatar-micro">NA</div>
+<span class="">Nguyễn Văn An</span>
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="main-wrapper" id="main-content">
+<!-- Breadcrumb điều hướng -->
+<div class="breadcrumb-row">
+<a class="" href="index.html">Trang chủ</a>
+<span class="">/</span>
+<a class="" href="user-profile.html">Tài khoản thành viên</a>
+<span class="">/</span>
+<span class="" style="color: var(--color-men-lam-primary); font-weight: 700;">Lịch sử đơn hàng</span>
+</div>
+<!-- Layout chia 2 cột: Sidebar người dùng & Danh sách lịch sử -->
+<div class="history-grid">
+<!-- CỘT TRÁI: Sidebar cá nhân chuẩn cây thư mục wabi-ceramics/ -->
+<aside class="sidebar-wrapper" data-purpose="user-sidebar">
+<!-- Thẻ thông tin cá nhân -->
+<div class="user-profile-card">
+<div class="user-profile-avatar">NA</div>
+<div>
+<div class="user-meta-name">Nguyễn Văn An</div>
+<span class="vip-badge-tag">
+<svg fill="currentColor" height="12" viewbox="0 0 20 20" width="12">
+<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+</svg>
+              Hội Viên Thân Thiết
+            </span>
+<div class="user-id-code">Mã KH: #GV-VIP-886</div>
+</div>
+</div>
+<!-- Menu Sidebar chuẩn 4 mục thực tế -->
+<nav aria-label="Menu tài khoản" class="sidebar-nav-card">
+<a class="sidebar-nav-item" href="user-profile.html">
+<div class="sidebar-nav-left">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+<circle cx="12" cy="7" r="4"></circle>
+</svg>
+<span class="">Thông tin cá nhân</span>
+</div>
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</a>
+<a class="sidebar-nav-item" href="cart.html">
+<div class="sidebar-nav-left">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="9" cy="21" r="1"></circle>
+<circle cx="20" cy="21" r="1"></circle>
+<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+</svg>
+<span class="">Giỏ hàng của tôi</span>
+</div>
+<span class="sidebar-nav-badge">2</span>
+</a>
+<!-- Active tab: Lịch sử mua hàng (history.html) -->
+<a class="sidebar-nav-item active" href="history.html">
+<div class="sidebar-nav-left">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span class="">Lịch sử mua hàng</span>
+</div>
+<span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-hoang-tho);"></span>
+</a>
+<a class="sidebar-nav-item logout" href="login.html">
+<div class="sidebar-nav-left">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+<polyline points="16 17 21 12 16 7"></polyline>
+<line x1="21" x2="9" y1="12" y2="12"></line>
+</svg>
+<span class="">Đăng xuất tài khoản</span>
+</div>
+</a>
+</nav>
+<!-- Thẻ Bảo Chứng Nguồn Gốc Gốm Thật -->
+<div class="seal-guarantee-card">
+<div class="seal-guarantee-header">
+<svg fill="none" height="16" stroke="var(--color-hoang-tho)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
+<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+</svg>
+<span class="">Bảo Chứng Nghệ Nhân</span>
+</div>
+          Giữ trọn mộc triện nghệ nhân Bát Tràng. 100% cốt đất nung củi truyền thống 1.280°C khử độc tố an toàn. Đi kèm giấy chứng thư bảo trợ tác phẩm độc bản.
+          <div class="seal-guarantee-meta">
+<span class="">Mộc Triện Thư Pháp</span>
+<span class="">#BTP-2026-CH</span>
+</div>
+</div>
+</aside>
+<!-- CỘT PHẢI: Nội dung chính lịch sử đơn hàng -->
+<section class="history-main-content">
+<!-- Banner tiêu đề & Trạng thái đồng bộ -->
+<div class="page-title-banner">
+<div>
+<h1 class="">Lịch Sử Mua Hàng &amp; Tiến Trình Lò Nung</h1>
+<p class="">Theo dõi chi tiết các tác phẩm gốm sứ đã đặt mua, tiến trình nung củi và chứng thư bàn giao.</p>
+</div>
+<span class="sync-status-pill">
+<span class="status-dot-pulse"></span>
+<span class="">Tự động đồng bộ lò gốm</span>
+</span>
+</div>
+<!-- 3 Thẻ thống kê KPI -->
+<div class="kpi-row">
+<div class="kpi-card-item accent-1">
+<div class="kpi-icon-seal">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22">
+<rect height="16" rx="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+</div>
+<div>
+<div class="kpi-label-text">Tổng đơn đã đặt</div>
+<div class="kpi-value-text">02 Đơn Hàng</div>
+</div>
+</div>
+<div class="kpi-card-item accent-2">
+<div class="kpi-icon-seal">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="6" y2="18"></line>
+<path d="M9 9h4.5a2.5 2.5 0 0 1 0 5H9"></path>
+</svg>
+</div>
+<div>
+<div class="kpi-label-text">Tổng tích lũy</div>
+<div class="kpi-value-text">17.400.000 đ</div>
+</div>
+</div>
+<div class="kpi-card-item accent-3">
+<div class="kpi-icon-seal">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22">
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+</div>
+<div>
+<div class="kpi-label-text">Ưu đãi trà thư</div>
+<div class="kpi-value-text">Chiết Khấu 8%</div>
+</div>
+</div>
+</div>
+<!-- Bộ lọc đa tiêu chí SC_103 -->
+<div class="filter-card-bar" data-purpose="order-filter-toolbar">
+<form action="history.html" class="filter-inputs-top" method="GET">
+<div class="search-field-box">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+</svg>
+<input class="search-history-input" name="keyword" placeholder="Tìm theo mã đơn (#GV-2026-...) hoặc tên tác phẩm..." type="text"/>
+</div>
+<select aria-label="Lọc theo năm" class="select-filter-custom" name="year">
+<option selected="" value="2026">Năm: 2026</option>
+<option value="2025">Năm: 2025</option>
+</select>
+<select aria-label="Lọc theo tháng" class="select-filter-custom" name="month">
+<option selected="" value="all">Tất cả các tháng</option>
+<option value="1">Tháng 01</option>
+<option value="2">Tháng 02</option>
+<option value="3">Tháng 03</option>
+</select>
+</form>
+<!-- Dãy tab lọc trạng thái -->
+<div class="filter-tabs-pills" role="tablist">
+<a class="tab-pill active" href="history.html" role="tab">Tất cả (2)</a>
+<a class="tab-pill" href="history.html?status=processing" role="tab">Đang chế tác &amp; nung củi (1)</a>
+<a class="tab-pill" href="history.html?status=shipping" role="tab">Đang vận chuyển (0)</a>
+<a class="tab-pill" href="history.html?status=delivered" role="tab">Đã bàn giao thành công (1)</a>
+<a class="tab-pill" href="history.html?status=cancelled" role="tab">Đã hủy (0)</a>
+</div>
+</div>
+<!-- DANH SÁCH 2 ĐƠN HÀNG TIÊU BIỂU (TINH GỌN, TRỰC QUAN) -->
+<div class="orders-deck">
+<!-- ĐƠN HÀNG 1: #GV-2026-8892 (Đang chế tác nung củi) -->
+<article class="order-item-card">
+<div class="order-header-strip">
+<div class="order-meta-left">
+<span class="order-code-badge">
+<svg fill="none" height="16" stroke="var(--color-hoang-tho)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
+<rect height="13" rx="2" width="18" x="3" y="7"></rect>
+<path d="M16 3h-8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"></path>
+</svg>
+                  #GV-2026-8892
+                </span>
+<span class="order-meta-info">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+                  Ngày đặt: 18/03/2026
+                </span>
+<span class="order-meta-info">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<rect height="14" rx="2" width="20" x="2" y="5"></rect>
+<line x1="2" x2="22" y1="10" y2="10"></line>
+</svg>
+                  Chuyển khoản QR Đã xác thực
+                </span>
+</div>
+<span class="order-status-badge in-progress">
+<span style="width: 7px; height: 7px; border-radius: 50%; background-color: #d97706;"></span>
+                Đang xử lý &amp; Chế tác thủ công
+              </span>
+</div>
+<div class="order-body-content">
+<div class="product-detail-flex">
+<div class="product-thumb-holder"><svg aria-label="Minh họa Ấm Tử Sa Lục Phương dát vàng" height="100%" role="img" style="background: radial-gradient(circle at 50% 40%, #3a221b 0%, #1e1310 100%); display: block; border-radius: 8px;" viewbox="0 0 120 120" width="100%"><defs><lineargradient id="potGrad1" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#8c4a32"></stop><stop offset="50%" stop-color="#5a2b1d"></stop><stop offset="100%" stop-color="#2e140d"></stop></lineargradient><lineargradient id="goldGleam" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#c59b27"></stop><stop offset="50%" stop-color="#ffe082"></stop><stop offset="100%" stop-color="#c59b27"></stop></lineargradient></defs><circle cx="60" cy="60" fill="none" r="52" stroke="rgba(197, 155, 39, 0.2)" stroke-dasharray="3 3" stroke-width="1.5"></circle><ellipse cx="60" cy="98" fill="rgba(0, 0, 0, 0.5)" rx="36" ry="8"></ellipse><path d="M28 62 C16 60 14 74 25 82 C30 85 34 83 34 78 C25 76 25 66 32 66 Z" fill="url(#potGrad1)" stroke="#c59b27" stroke-width="1"></path><path d="M32 55 L84 55 L80 88 L36 88 Z" fill="url(#potGrad1)"></path><path d="M38 58 L78 58 L75 85 L41 85 Z" fill="none" opacity="0.85" stroke="url(#goldGleam)" stroke-width="1.2"></path><path d="M78 64 C90 60 98 52 102 46 C98 55 88 68 76 72 Z" fill="url(#potGrad1)" stroke="#c59b27" stroke-width="0.8"></path><ellipse cx="58" cy="55" fill="#6d3523" rx="24" ry="6" stroke="#c59b27" stroke-width="1"></ellipse><path d="M44 54 C44 47 72 47 72 54 Z" fill="url(#potGrad1)" stroke="#c59b27" stroke-width="1"></path><circle cx="58" cy="46" fill="#c59b27" r="4"></circle><path d="M50 68 Q58 60 66 72 Q72 82 56 80" fill="none" stroke="url(#goldGleam)" stroke-linecap="round" stroke-width="1.8"></path><rect fill="#c59b27" height="14" opacity="0.9" rx="3" width="28" x="76" y="88"></rect><text fill="#102339" font-family="sans-serif" font-size="7.5" font-weight="800" text-anchor="middle" x="90" y="98">TỬ SA</text></svg></div>
+<div class="product-meta-desc">
+<span class="tag-product-origin">Tử Sa Bát Tràng • Dung tích: 260ml</span>
+<h2 class="product-title-text">Ấm tử sa Lục Phương thanh khôi nê vẽ rồng dát vàng 24K</h2>
+<p class="product-excerpt-text">Cốt đất khoáng Lục Khôi ủ 5 năm, nung củi truyền thống 1.280°C cho phẩm trà thuần ngọt. Tác phẩm độc bản do Nghệ nhân Bùi Quốc Toàn chế tác.</p>
+<div class="" style="font-size: 12.5px; color: var(--color-text-muted);">Số lượng: <strong style="color: var(--color-men-lam-dark);">01 chiếc (Kèm hộp gỗ lụa cao cấp)</strong></div>
+</div>
+<div class="product-pricing-box">
+<div class="price-main-tag">8.200.000 đ</div>
+<div class="price-sub-note">Đã bao gồm VAT &amp; Bảo hiểm</div>
+</div>
+</div>
+<!-- Thanh tiến trình 4 giai đoạn nung củi -->
+<div aria-label="Tiến trình chế tác lò nung" class="kiln-progress-panel">
+<div class="kiln-progress-header">
+<div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--color-men-lam-dark);">
+<svg fill="none" height="18" stroke="var(--color-hoang-tho)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18">
+<path d="M12 2c0 4.5-6 6.5-6 11a6 6 0 0 0 12 0c0-4.5-6-6.5-6-11z"></path>
+</svg>
+<span class="">Tiến trình nghệ nhân chế tác &amp; nung củi Bát Tràng</span>
+</div>
+<span class="kiln-step-label">Đang ở: Giai đoạn 2/4 (Vẽ họa tiết &amp; dát vàng)</span>
+</div>
+<div class="stepper-track-grid">
+<div class="stepper-track-fill"></div>
+<!-- Bước 1 -->
+<div class="stepper-node done">
+<div class="stepper-node-bubble">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+</div>
+<div class="stepper-node-title">1. Chuốt phôi đất</div>
+</div>
+<!-- Bước 2 -->
+<div class="stepper-node active">
+<div class="stepper-node-bubble">2</div>
+<div class="stepper-node-title">2. Họa tiết &amp; dát vàng</div>
+</div>
+<!-- Bước 3 -->
+<div class="stepper-node">
+<div class="stepper-node-bubble">3</div>
+<div class="stepper-node-title">3. Nung củi khử oxy</div>
+</div>
+<!-- Bước 4 -->
+<div class="stepper-node">
+<div class="stepper-node-bubble">4</div>
+<div class="stepper-node-title">4. Thử nước &amp; Đóng gói</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- ĐƠN HÀNG 2: #GV-2026-8890 (Hoàn tất giao hàng, Đánh giá 5 sao & Mua lại) -->
+<article class="order-item-card">
+<div class="order-header-strip">
+<div class="order-meta-left">
+<span class="order-code-badge">
+<svg fill="none" height="16" stroke="var(--color-hoang-tho)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
+<rect height="13" rx="2" width="18" x="3" y="7"></rect>
+<path d="M16 3h-8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"></path>
+</svg>
+                  #GV-2026-8890
+                </span>
+<span class="order-meta-info">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+                  Ngày đặt: 02/02/2026
+                </span>
+<span class="order-meta-info">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<rect height="14" rx="2" width="20" x="2" y="5"></rect>
+<line x1="2" x2="22" y1="10" y2="10"></line>
+</svg>
+                  Đã thanh toán (Thẻ tín dụng)
+                </span>
+</div>
+<span class="order-status-badge completed">
+<span style="width: 7px; height: 7px; border-radius: 50%; background-color: #10b981;"></span>
+                Hoàn tất giao hàng
+              </span>
+</div>
+<div class="order-body-content">
+<div class="product-detail-flex">
+<div class="product-thumb-holder"><svg aria-label="Minh họa Bộ bát đĩa men tro wabi-sabi" height="100%" role="img" style="background: radial-gradient(circle at 50% 40%, #2f3b39 0%, #151d1c 100%); display: block; border-radius: 8px;" viewbox="0 0 120 120" width="100%"><defs><lineargradient id="plateGrad" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#818e88"></stop><stop offset="50%" stop-color="#55635e"></stop><stop offset="100%" stop-color="#2e3834"></stop></lineargradient><lineargradient id="bowlGrad" x1="0%" x2="0%" y1="0%" y2="100%"><stop offset="0%" stop-color="#9aa8a1"></stop><stop offset="100%" stop-color="#424d48"></stop></lineargradient></defs><circle cx="60" cy="60" fill="none" r="52" stroke="rgba(203, 213, 225, 0.2)" stroke-dasharray="3 3" stroke-width="1.5"></circle><ellipse cx="60" cy="100" fill="rgba(0, 0, 0, 0.45)" rx="44" ry="9"></ellipse><ellipse cx="60" cy="78" fill="url(#plateGrad)" rx="44" ry="16" stroke="#a1aea7" stroke-width="1.2"></ellipse><ellipse cx="60" cy="78" fill="none" rx="35" ry="11" stroke="#414c47" stroke-dasharray="2 4" stroke-width="1.5"></ellipse><ellipse cx="60" cy="78" fill="#222a27" opacity="0.5" rx="24" ry="7"></ellipse><ellipse cx="60" cy="60" fill="#2a3330" rx="26" ry="9" stroke="#a1aea7" stroke-width="1"></ellipse><path d="M34 60 C36 78 84 78 86 60 Z" fill="url(#bowlGrad)" stroke="#9aa8a1" stroke-width="1.2"></path><ellipse cx="60" cy="59" fill="#394541" rx="24" ry="7"></ellipse><circle cx="60" cy="59" fill="#c59b27" opacity="0.8" r="3"></circle><ellipse cx="44" cy="86" fill="#65736d" rx="14" ry="5" stroke="#9aa8a1" stroke-width="0.8"></ellipse><rect fill="#047857" height="14" opacity="0.95" rx="3" width="34" x="72" y="88"></rect><text fill="#ffffff" font-family="sans-serif" font-size="7.5" font-weight="800" text-anchor="middle" x="89" y="98">MEN TRO</text></svg></div>
+<div class="product-meta-desc">
+<span class="tag-product-origin" style="color: #047857;">Gốm Men Tro Trầm • Bộ 18 Món Gia Đình</span>
+<h2 class="product-title-text">Bộ bát đĩa 18 món men tro trầm phong cách wabi-sabi</h2>
+<p class="product-excerpt-text">Sắc xám tro ngả xanh đồng quê mộc mạc, gợn hạt sa thạch chống trầy xước. Bộ gồm 8 bát cơm, tô canh hoa sen, đĩa lá sen và âu cơm có nắp.</p>
+<div class="" style="font-size: 12.5px; color: var(--color-text-muted);">Số lượng: <strong style="color: var(--color-men-lam-dark);">01 bộ (18 món phụ kiện)</strong></div>
+</div>
+<div class="product-pricing-box">
+<div class="price-main-tag">9.200.000 đ</div>
+<div class="price-sub-note">Kiện gỗ chống sốc tận nhà</div>
+</div>
+</div>
+<!-- Đánh giá 5 sao & Cụm nút tác vụ -->
+<div class="order-action-strip">
+<div class="star-review-group">
+<div class="stars-cluster" title="5 sao đánh giá">
+<svg viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<svg viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<svg viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<svg viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+<svg viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+</div>
+<span class="review-quote-italic">"Nước men rất sâu, mộc mạc và chuẩn gu wabi-sabi. Đóng gói thùng gỗ xốp rất cẩn thận."</span>
+</div>
+<div class="buttons-action-cluster">
+<a class="btn-action-secondary" href="product-detail.html?id=8890">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="16" x2="8" y1="13" y2="13"></line>
+<line x1="16" x2="8" y1="17" y2="17"></line>
+</svg>
+<span class="">Xem chứng thư gốm</span>
+</a>
+<!-- Nút Mua lại đơn này dẫn sang cart.html -->
+<a class="btn-action-primary-reorder" href="cart.html?reorder=8890">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15">
+<polyline points="23 4 23 10 17 10"></polyline>
+<path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+</svg>
+<span class="">Mua lại đơn này</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: SiteFooter (Chân trang đồng bộ chuẩn đồ án gốm Việt) -->
+<footer class="site-footer" data-purpose="shared-footer">
+<div class="footer-container"><div class="footer-brand">
+<h3 class="">Gốm Việt • Tinh Hoa Gốm Sứ Bát Tràng</h3>
+<p class="">Gìn giữ và tôn vinh tinh hoa làng nghề gốm sứ Bát Tràng hơn 700 năm. Mỗi tác phẩm là sự kết tinh của đất sét phù sa sông Hồng, men lam cổ truyền và ngọn lửa lò bầu nung củi hoàn nguyên.</p>
+<div class="" style="font-size: 13px; color: var(--color-hoang-tho-light); display: flex; align-items: center; gap: 6px; font-weight: 600;">
+<svg fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          Chứng nhận Nghệ nhân Làng nghề Hà Nội
+        </div>
+</div>
+<div>
+<h4 class="footer-col-title">Liên Hệ &amp; Xưởng Sản Xuất</h4>
+<ul class="footer-links-list" style="font-size: 13px; line-height: 1.6;">
+<li class="" style="color: #cbd5e1;"><strong style="color: #f1f5f9;">Xưởng:</strong> Xóm 3, Thôn Bát Tràng, Gia Lâm, Hà Nội</li>
+<li class="" style="color: #cbd5e1;"><strong style="color: #f1f5f9;">Showroom:</strong> 28 Phố Gốm Bát Tràng, Hà Nội</li>
+<li class=""><a class="" href="tel:19008892"><strong>Hotline:</strong> 1900 8892 (8h00 - 21h00)</a></li>
+<li class=""><a class="" href="mailto:lienhe@gomviet.vn"><strong>Email:</strong> lienhe@gomviet.vn</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-col-title">Chính Sách &amp; Hỗ Trợ</h4>
+<ul class="footer-links-list">
+<li class=""><a class="" href="#chinh-sach-bao-hanh">Bảo trợ độc bản &amp; Triện nghệ nhân</a></li>
+<li class=""><a class="" href="#quy-trinh-nung-cui">Cam kết 100% nung củi 1.280°C</a></li>
+<li class=""><a class="" href="#dong-goi-van-chuyen">Đóng hòm gỗ chống sốc tận nhà</a></li>
+<li class=""><a class="" href="#tra-hang-doi-tra">Chính sách đổi trả trong 15 ngày</a></li>
+<li class=""><a class="" href="#huong-dan-dung-tra">Cẩm nang khai ấm &amp; Dưỡng tử sa</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-col-title">Dịch Vụ Nghệ Thuật</h4>
+<ul class="footer-links-list">
+<li class=""><a class="" href="products.html">Bộ sưu tập Men Lam &amp; Men Rạn</a></li>
+<li class=""><a class="" href="products.html">Ấm tử sa khoáng Lục Khôi dát vàng</a></li>
+<li class=""><a class="" href="history.html">Tra cứu tiến trình lò nung thủ công</a></li>
+<li class=""><a class="" href="user-profile.html">Đặc quyền Hội viên Thân thiết</a></li>
+<li class=""><a class="" href="#dat-che-tac-theo-yeu-cau">Chế tác quà tặng độc bản doanh nghiệp</a></li>
+</ul>
+</div></div>
+<!-- Dải bản quyền dưới cùng -->
+<div class="footer-bottom-bar"><div class="">
+        © 2026 Gốm Việt. Bảo lưu mọi bản quyền tác phẩm nghệ thuật gốm sứ thủ công Bát Tràng.
+      </div>
+<div class="">
+        Sắc màu gốm truyền thống: Men Lam Bát Tràng &amp; Men Hoàng Thổ.
+      </div></div>
+</footer>
+<!-- END: SiteFooter -->
+</body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trang chủ - TNNT Ceramics</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="header"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Gốm sứ Bát Tràng cho bàn trà, mâm cơm và gian thờ</h1>
+      <p>Ấm chén, bát đĩa, đồ thờ, lọ hoa và tượng gốm vẽ tay. Mỗi món đều có mô tả chi tiết và giá rõ ràng.</p>
+      <a class="btn" id="heroLink" href="danh-muc.html">Xem danh mục sản phẩm</a>
+    </div>
+    <div class="hero-img" id="heroImg"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="section">
+    <div class="section-head"><h2>Danh mục</h2></div>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>Sản phẩm nổi bật</h2><a href="danh-muc.html">Xem tất cả</a></div>
+    <div class="grid" id="featured"></div>
+  </section>
+</main>
+
+<div id="footer"></div>
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script>
+  renderLayout('home');
+  document.getElementById('cats').innerHTML = CATEGORIES.map(function (c) {
+    return '<a class="cat-tile" href="' + LINKS.list + '?cat=' + c.id + '">' + c.name + '</a>';
+  }).join('');
+  var FEATURED = [5, 8, 14, 17, 22, 28, 31, 12];
+  document.getElementById('featured').innerHTML = FEATURED.map(function (id) {
+    return cardHTML(PRODUCTS.find(function (p) { return p.id === id; }));
+  }).join('');
+  document.getElementById('heroImg').innerHTML = imgTag(PRODUCTS.find(function (p) { return p.id === 5; }));
+  document.getElementById('heroLink').href = LINKS.list;
+</script>
+</body>
+</html>

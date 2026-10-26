@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý người dùng - TNNT Ceramics</title>
+  <link rel="icon" href="sidebar/img/logo.png">
+  <link rel="stylesheet" href="user.css">
+</head>
+<body>
+  <!-- ==========================================================
+       1. GỌI SIDEBAR: chỉ cần đúng đoạn này.
+       Sidebar nằm ở sidebar/sidebar.html (đã có CSS và logo riêng, không sửa gì).
+       Chạy được khi mở file trực tiếp, không cần server.
+       ========================================================== -->
+  <div class="sidebar-slot">
+    <iframe src="sidebar/sidebar.html" title="Menu quản trị"></iframe>
+  </div>
+
+  <!-- ==========================================================
+       2. CỘT BÊN PHẢI SIDEBAR: thanh đầu trang + nội dung trang
+       ========================================================== -->
+  <div class="admin-col">
+
+    <!-- 2.1 Thanh đầu trang: đường dẫn bên trái, tài khoản đang đăng nhập bên phải -->
+    <header class="topbar">
+      <nav class="breadcrumb-nav" aria-label="Đường dẫn trang">
+        <span>Hệ thống quản trị</span>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-current">Quản lý người dùng</span>
+      </nav>
+
+      <div class="profile">
+        <div class="profile-avatar" aria-hidden="true"></div>
+        <div class="profile-info">
+          <div class="profile-name">Quản lý</div>
+          <div class="profile-mail">hgnam@ceramics.vn</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2.2 Nội dung trang quản lý người dùng -->
+    <main class="admin-main">
+
+      <!-- Tiêu đề trang + nút Thêm mới -->
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Danh sách người dùng</h1>
+        </div>
+        <a href="#modal-add-user" class="btn btn-primary" title="Thêm tài khoản mới">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Thêm người dùng</span>
+        </a>
+      </div>
+
+      <!-- Thanh tìm kiếm và bộ lọc nhanh -->
+      <div class="filter-bar">
+        <div class="search-input-box">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="search-input" placeholder="Tìm theo tên, email hoặc số điện thoại..." aria-label="Tìm người dùng">
+        </div>
+        <select class="filter-select" aria-label="Lọc theo vai trò">
+          <option>Tất cả vai trò</option>
+          <option>Quản lý</option>
+          <option>Khách hàng</option>
+        </select>
+        <select class="filter-select" aria-label="Lọc theo trạng thái">
+          <option>Tất cả trạng thái</option>
+          <option>Đang hoạt động</option>
+          <option>Tạm khóa</option>
+        </select>
+        <button type="button" class="btn btn-outline">Lọc</button>
+      </div>
+
+      <!-- BẢNG ĐÚNG 6 CỘT THEO YÊU CẦU: STT, Mã, Họ và tên, Email, SĐT, Thao tác
+           THÊM NGƯỜI DÙNG: copy nguyên một <tr> bên dưới, đổi STT, mã, tên, email, SĐT,
+           rồi đổi số trong href="#modal-edit-N" và copy thêm một hộp thoại sửa ở mục 3.
+           TÀI KHOẢN BỊ KHÓA: thêm class="is-locked" vào <tr> và dùng nút mở khóa xanh. -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="col-stt">STT</th>
+              <th class="col-code">Mã</th>
+              <th>Họ và tên</th>
+              <th>Email</th>
+              <th class="col-phone">SĐT</th>
+              <th class="col-action">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>01</td>
+            <td><span class="code-badge">USR-001</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Trần Nguyễn Hoàng Nam</div>
+                <span class="role-badge role-admin">Quản lý</span>
+              </div>
+            </td>
+            <td>hgnam@ceramics.vn</td>
+            <td>0912 345 678</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-1" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>02</td>
+            <td><span class="code-badge">USR-002</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Mai Văn Thanh</div>
+                <span class="role-badge role-customer">Khách hàng</span>
+              </div>
+            </td>
+            <td>mthanh@gmail.com</td>
+            <td>0988 765 432</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-2" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>03</td>
+            <td><span class="code-badge">USR-003</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Nguyễn Văn Ngọ</div>
+                <span class="role-badge role-customer">Khách hàng</span>
+              </div>
+            </td>
+            <td>nvngo@gmail.com</td>
+            <td>0983 219 888</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-3" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>04</td>
+            <td><span class="code-badge">USR-004</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Trần Văn Vở</div>
+                <span class="role-badge role-customer">Khách hàng</span>
+              </div>
+            </td>
+            <td>vanvo@gmail.com</td>
+            <td>0918 211 814</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-3" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>05</td>
+            <td><span class="code-badge">USR-005</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Lê Đại</div>
+                <span class="role-badge role-customer">Khách hàng</span>
+              </div>
+            </td>
+            <td>ledai@gmail.com</td>
+            <td>0815 239 518</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-3" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>06</td>
+            <td><span class="code-badge">USR-006</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Nguyễn Trọng Nghĩa </div>
+                <span class="role-badge role-customer">Khách hàng</span>
+              </div>
+            </td>
+            <td>nghia@gmail.com</td>
+            <td>0912 345 678</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-3" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+
+          <tr class="is-locked">
+            <td>07</td>
+            <td><span class="code-badge">USR-007</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Đỗ Mạnh Quân</div>
+                <span class="role-badge role-locked">Tài khoản đang bị khóa</span>
+              </div>
+            </td>
+            <td>manhquan@yahoo.com</td>
+            <td>0904 112 233</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-4" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <!-- NÚT MỞ KHÓA MÀU XANH -->
+                <a href="#toast-unlock-success" class="action-btn btn-unlock" title="Mở khóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>08</td>
+            <td><span class="code-badge">USR-008</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Trần Thu Hoài</div>
+                <span class="role-badge role-customer">Khách hàng</span>
+              </div>
+            </td>
+            <td>thuhoai@gmail.com</td>
+            <td>0911 316 841</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-3" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+                    
+          <tr class="is-locked">
+            <td>09</td>
+            <td><span class="code-badge">USR-009</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Huỳnh Thanh Thiện</div>
+                <span class="role-badge role-locked">Tài khoản đang bị khóa </span>
+              </div>
+            </td>
+            <td>thichnhinkhongdamvomom@yahoo.com</td>
+            <td>0915 133 273</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-4" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <!-- NÚT MỞ KHÓA MÀU XANH -->
+                <a href="#toast-unlock-success" class="action-btn btn-unlock" title="Mở khóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>10</td>
+            <td><span class="code-badge">USR-010</span></td>
+            <td>
+              <div class="user-info-group">
+                <div class="user-name">Nguyễn Thái Bình</div>
+                <span class="role-badge role-customer">Khách hàng</span>
+              </div>
+            </td>
+            <td>ntbinh@gmail.com</td>
+            <td>0916 311 428</td>
+            <td>
+              <div class="actions-group">
+                <a href="#modal-edit-3" class="action-btn" title="Chỉnh sửa thông tin">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
+                </a>
+                <a href="#toast-lock-success" class="action-btn btn-lock" title="Khóa tài khoản này">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </a>
+                <a href="#modal-delete-confirm" class="action-btn btn-delete" title="Xóa tài khoản">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+
+        <!-- Phân trang -->
+        <div class="pagination-bar">
+          <span class="pagination-info">Hiển thị <strong>1 - 10</strong> trên tổng số <strong>100</strong> người dùng</span>
+          <div class="pagination-links">
+            <a href="#" class="page-num active" aria-current="page">1</a>
+            <a href="#" class="page-num">2</a>
+            <a href="#" class="page-num">3</a>
+            <span class="page-dots">...</span>
+            <a href="#" class="page-num">10</a>
+            <a href="#" class="page-num" aria-label="Trang sau">»</a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- hết .admin-col -->
+
+
+  <!-- ==========================================================
+       3. HỘP THOẠI (Pure CSS :target)
+       ========================================================== -->
+
+  <!-- Thêm người dùng mới -->
+  <div id="modal-add-user" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Thêm người dùng mới</h3>
+        <a href="#" class="modal-close-icon" title="Đóng">✕</a>
+      </div>
+      <form action="#toast-add-success" method="get">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="add-code">Mã người dùng</label>
+            <input type="text" id="add-code" class="form-control" value="USR-011" readonly>
+          </div>
+          <div class="form-group">
+            <label for="add-name">Họ và tên *</label>
+            <input type="text" id="add-name" class="form-control" placeholder="Nhập họ và tên..." required>
+          </div>
+          <div class="form-group">
+            <label for="add-email">Email liên hệ *</label>
+            <input type="email" id="add-email" class="form-control" placeholder="example@ceramics.vn" required>
+          </div>
+          <div class="form-group">
+            <label for="add-phone">Số điện thoại *</label>
+            <input type="tel" id="add-phone" class="form-control" placeholder="0912 xxx xxx" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-outline">Hủy bỏ</a>
+          <button type="submit" class="btn btn-primary">Lưu người dùng</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sửa người dùng USR-001: mở bằng nút Sửa ở dòng 01 -->
+  <div id="modal-edit-1" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Chỉnh sửa người dùng</h3>
+        <a href="#" class="modal-close-icon" title="Đóng">✕</a>
+      </div>
+      <form action="#toast-edit-success" method="get">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="edit-1-code">Mã người dùng</label>
+            <input type="text" id="edit-1-code" class="form-control" value="USR-001" readonly>
+          </div>
+          <div class="form-group">
+            <label for="edit-1-name">Họ và tên *</label>
+            <input type="text" id="edit-1-name" class="form-control" value="Trần Nguyễn Hoàng Nam" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-1-email">Email liên hệ *</label>
+            <input type="email" id="edit-1-email" class="form-control" value="hgnam@ceramics.vn" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-1-phone">Số điện thoại *</label>
+            <input type="tel" id="edit-1-phone" class="form-control" value="0912 345 678" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-outline">Hủy bỏ</a>
+          <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sửa người dùng USR-002: mở bằng nút Sửa ở dòng 02 -->
+  <div id="modal-edit-2" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Chỉnh sửa người dùng</h3>
+        <a href="#" class="modal-close-icon" title="Đóng">✕</a>
+      </div>
+      <form action="#toast-edit-success" method="get">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="edit-2-code">Mã người dùng</label>
+            <input type="text" id="edit-2-code" class="form-control" value="USR-002" readonly>
+          </div>
+          <div class="form-group">
+            <label for="edit-2-name">Họ và tên *</label>
+            <input type="text" id="edit-2-name" class="form-control" value="Trần Văn Ngọ" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-2-email">Email liên hệ *</label>
+            <input type="email" id="edit-2-email" class="form-control" value="nghe.nhan.ngo@ceramics.vn" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-2-phone">Số điện thoại *</label>
+            <input type="tel" id="edit-2-phone" class="form-control" value="0988 765 432" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-outline">Hủy bỏ</a>
+          <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sửa người dùng USR-003: mở bằng nút Sửa ở dòng 03 -->
+  <div id="modal-edit-3" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Chỉnh sửa người dùng</h3>
+        <a href="#" class="modal-close-icon" title="Đóng">✕</a>
+      </div>
+      <form action="#toast-edit-success" method="get">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="edit-3-code">Mã người dùng</label>
+            <input type="text" id="edit-3-code" class="form-control" value="USR-003" readonly>
+          </div>
+          <div class="form-group">
+            <label for="edit-3-name">Họ và tên *</label>
+            <input type="text" id="edit-3-name" class="form-control" value="Lê Hoàng Nam" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-3-email">Email liên hệ *</label>
+            <input type="email" id="edit-3-email" class="form-control" value="hoangnam@gmail.com" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-3-phone">Số điện thoại *</label>
+            <input type="tel" id="edit-3-phone" class="form-control" value="0983 219 888" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-outline">Hủy bỏ</a>
+          <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sửa người dùng USR-004: mở bằng nút Sửa ở dòng 04 -->
+  <div id="modal-edit-4" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Chỉnh sửa người dùng</h3>
+        <a href="#" class="modal-close-icon" title="Đóng">✕</a>
+      </div>
+      <form action="#toast-edit-success" method="get">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="edit-4-code">Mã người dùng</label>
+            <input type="text" id="edit-4-code" class="form-control" value="USR-004" readonly>
+          </div>
+          <div class="form-group">
+            <label for="edit-4-name">Họ và tên *</label>
+            <input type="text" id="edit-4-name" class="form-control" value="Đỗ Mạnh Quân" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-4-email">Email liên hệ *</label>
+            <input type="email" id="edit-4-email" class="form-control" value="manhquan@yahoo.com" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-4-phone">Số điện thoại *</label>
+            <input type="tel" id="edit-4-phone" class="form-control" value="0904 112 233" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-outline">Hủy bỏ</a>
+          <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Xác nhận xóa tài khoản (dùng chung cho mọi dòng) -->
+  <div id="modal-delete-confirm" class="modal-backdrop">
+    <div class="modal-box modal-sm">
+      <div class="modal-header">
+        <h3 class="title-danger">Xác nhận xóa tài khoản</h3>
+        <a href="#" class="modal-close-icon" title="Đóng">✕</a>
+      </div>
+      <div class="modal-body has-icon">
+        <div class="modal-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        </div>
+        <p class="modal-text">
+          Bạn có chắc chắn muốn xóa tài khoản này khỏi hệ thống quản trị không? Thao tác này sẽ không thể khôi phục.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-outline">Hủy</a>
+        <a href="#toast-delete-success" class="btn btn-danger">Đồng ý xóa</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================
+       4. THÔNG BÁO KẾT QUẢ THAO TÁC (Pure CSS :target)
+       ========================================================== -->
+  <div id="toast-add-success" class="toast-box">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span>Đã thêm người dùng mới thành công!</span>
+    <a href="#" class="toast-close" title="Đóng">✕</a>
+  </div>
+
+  <div id="toast-edit-success" class="toast-box">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span>Đã cập nhật thông tin người dùng thành công!</span>
+    <a href="#" class="toast-close" title="Đóng">✕</a>
+  </div>
+
+  <div id="toast-lock-success" class="toast-box toast-danger">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+    <span>Đã khóa tài khoản thành công!</span>
+    <a href="#" class="toast-close" title="Đóng">✕</a>
+  </div>
+
+  <div id="toast-unlock-success" class="toast-box toast-success">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+    <span>Đã mở khóa tài khoản thành công!</span>
+    <a href="#" class="toast-close" title="Đóng">✕</a>
+  </div>
+
+  <div id="toast-delete-success" class="toast-box toast-danger">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+    <span>Đã xóa tài khoản khỏi cơ sở dữ liệu!</span>
+    <a href="#" class="toast-close" title="Đóng">✕</a>
+  </div>
+
+</body>
+</html>
