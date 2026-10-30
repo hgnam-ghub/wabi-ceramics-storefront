@@ -57,26 +57,20 @@
       </div>
 
       <!-- Thanh tìm kiếm và bộ lọc nhanh -->
-      <div class="filter-bar">
-        <div class="search-input-box">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="text" class="search-input" placeholder="Tìm theo tên, email hoặc số điện thoại..." aria-label="Tìm người dùng">
-        </div>
-        <select class="filter-select" aria-label="Lọc theo vai trò">
-          <option>Tất cả vai trò</option>
-          <option>Quản lý</option>
-          <option>Khách hàng</option>
-        </select>
-        <select class="filter-select" aria-label="Lọc theo trạng thái">
-          <option>Tất cả trạng thái</option>
-          <option>Đang hoạt động</option>
-          <option>Tạm khóa</option>
-        </select>
-        <button type="button" class="btn btn-outline">Lọc</button>
-      </div>
+    <div class="filter-bar">
+     <!-- 1. Giữ nguyên ô tìm kiếm -->
+    <div class="search-input-box">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input type="text" class="search-input" placeholder="Tìm theo tên, email hoặc số điện thoại..." aria-label="Tìm người dùng">
+   </div>
+  <!-- 3. THAY ĐỔI: Chuyển bộ lọc trạng thái thành ô Checkbox -->
+  <label class="filter-checkbox-label">
+    <input type="checkbox" id="show-locked-users"> Hiển thị tài khoản bị khóa
+  </label>
+</div>
 
       <!-- BẢNG ĐÚNG 6 CỘT THEO YÊU CẦU: STT, Mã, Họ và tên, Email, SĐT, Thao tác
            THÊM NGƯỜI DÙNG: copy nguyên một <tr> bên dưới, đổi STT, mã, tên, email, SĐT,
@@ -101,7 +95,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Trần Nguyễn Hoàng Nam</div>
-                <span class="role-badge role-admin">Quản lý</span>
               </div>
             </td>
             <td>hgnam@ceramics.vn</td>
@@ -136,7 +129,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Mai Văn Thanh</div>
-                <span class="role-badge role-customer">Khách hàng</span>
               </div>
             </td>
             <td>mthanh@gmail.com</td>
@@ -171,7 +163,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Nguyễn Văn Ngọ</div>
-                <span class="role-badge role-customer">Khách hàng</span>
               </div>
             </td>
             <td>nvngo@gmail.com</td>
@@ -206,7 +197,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Trần Văn Vở</div>
-                <span class="role-badge role-customer">Khách hàng</span>
               </div>
             </td>
             <td>vanvo@gmail.com</td>
@@ -241,7 +231,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Lê Đại</div>
-                <span class="role-badge role-customer">Khách hàng</span>
               </div>
             </td>
             <td>ledai@gmail.com</td>
@@ -276,7 +265,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Nguyễn Trọng Nghĩa </div>
-                <span class="role-badge role-customer">Khách hàng</span>
               </div>
             </td>
             <td>nghia@gmail.com</td>
@@ -312,7 +300,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Đỗ Mạnh Quân</div>
-                <span class="role-badge role-locked">Tài khoản đang bị khóa</span>
               </div>
             </td>
             <td>manhquan@yahoo.com</td>
@@ -348,7 +335,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Trần Thu Hoài</div>
-                <span class="role-badge role-customer">Khách hàng</span>
               </div>
             </td>
             <td>thuhoai@gmail.com</td>
@@ -383,7 +369,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Huỳnh Thanh Thiện</div>
-                <span class="role-badge role-locked">Tài khoản đang bị khóa </span>
               </div>
             </td>
             <td>thichnhinkhongdamvomom@yahoo.com</td>
@@ -419,7 +404,6 @@
             <td>
               <div class="user-info-group">
                 <div class="user-name">Nguyễn Thái Bình</div>
-                <span class="role-badge role-customer">Khách hàng</span>
               </div>
             </td>
             <td>ntbinh@gmail.com</td>
