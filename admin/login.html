@@ -40,7 +40,7 @@
         <!-- Đăng nhập đúng thì chuyển sang user.html.
              Sau này nối máy chủ: đổi action sang trang xử lý, và khi sai mật khẩu
              thì chuyển về login.html#login-error để hiện thông báo đỏ bên dưới. -->
-        <form class="login-form" action="user.html" method="post">
+        <form class="login-form" id="login-form">
 
           <div id="login-error" class="form-alert" role="alert">
             <svg viewBox="0 0 24 24">
@@ -94,5 +94,6 @@
     </main>
 
   </div>
+  <script src="js/login.js"></script>
 </body>
 </html>
