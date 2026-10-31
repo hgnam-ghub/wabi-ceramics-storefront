@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chỉnh sửa hồ sơ | TNNT Ceramics</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="profile-page">
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="index.html"><img class="logo-img" src="images/logo.jpg" alt=""><span>TNNT Ceramics</span></a>
+			<ul class="nav">
+				<li><a href="index.html">Trang chủ</a></li>
+				<li><a href="danh-muc.html">Danh mục sản phẩm</a>
+					<ul class="drop">
+						<li><a href="danh-muc.html?cat=am-chen">Ấm chén</a></li><li><a href="danh-muc.html?cat=bat-dia">Bát đĩa</a></li><li><a href="danh-muc.html?cat=do-tho">Đồ thờ, bát hương</a></li><li><a href="danh-muc.html?cat=loc-binh">Lộc bình, phong thuỷ</a></li><li><a href="danh-muc.html?cat=lo-hoa">Lọ hoa</a></li><li><a href="danh-muc.html?cat=tuong">Tượng gốm sứ</a></li><li><a href="danh-muc.html?cat=gia-dung">Gốm sứ gia dụng</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="actions"><a class="btn ghost" href="gio-hang.html">Giỏ hàng</a><a class="btn" href="auth.html">Đăng nhập</a></div>
+		</div>
+	</header>
+	<main class="profile-container">
+		<div class="profile-page-heading"><p class="profile-eyebrow">KHÔNG GIAN THÀNH VIÊN</p><h1>Tài khoản của tôi</h1></div>
+		<div class="profile-layout">
+			<aside class="profile-sidebar" aria-label="Tài khoản thành viên">
+				<section class="profile-summary"><div class="profile-avatar" aria-hidden="true">NA</div><h2>Nguyễn Văn An</h2><span class="profile-member-badge">Hội viên Gốm Mộc</span></section>
+				<nav class="profile-menu" aria-label="Danh mục tài khoản">
+					<a href="profile.html">Thông tin cá nhân</a>
+					<a class="active" href="profile-edit.html" aria-current="page">Chỉnh sửa hồ sơ</a>
+					<a href="order.html">Lịch sử mua hàng</a>
+					<a class="profile-logout" href="auth.html">Đăng xuất</a>
+				</nav>
+			</aside>
+			<div class="profile-content">
+				<section class="profile-panel profile-edit-panel">
+					<div class="profile-section-heading"><div><p class="profile-eyebrow">CẬP NHẬT HỒ SƠ</p><h2>Chỉnh sửa thông tin</h2></div></div>
+					<div class="profile-alert" id="save-alert" role="status" aria-live="polite" style="display:none">✓ Cập nhật thông tin thành công!</div>
+					<form class="profile-form" novalidate>
+						<div class="profile-form-grid">
+							<div class="profile-form-section-title profile-form-wide"><p class="profile-eyebrow">HỒ SƠ THÀNH VIÊN</p><h3>Thông tin cá nhân</h3></div>
+							<label class="profile-form-field profile-form-wide"><span>Họ và tên</span><input type="text" name="full-name" value="Nguyễn Văn An"></label>
+							<fieldset class="profile-form-field profile-gender-field"><legend>Giới tính</legend><label class="profile-radio"><input type="radio" name="gender" value="nam" checked><span>Nam</span></label><label class="profile-radio"><input type="radio" name="gender" value="nu"><span>Nữ</span></label><label class="profile-radio"><input type="radio" name="gender" value="khac"><span>Khác</span></label></fieldset>
+							<label class="profile-form-field"><span>Ngày sinh</span><input type="date" name="birth-date" value="1995-08-15"></label>
+							<label class="profile-form-field"><span>Số điện thoại</span><input type="tel" name="phone" value="0987654321"></label>
+							<label class="profile-form-field profile-form-wide"><span>Email</span><input type="email" name="email" value="nguyenvanan.ceramics@gmail.com"></label>
+							<div class="profile-form-section-title profile-form-wide"><p class="profile-eyebrow">GIAO HÀNG</p><h3>Địa chỉ nhận hàng</h3></div>
+							<label class="profile-form-field"><span>Tỉnh / Thành phố</span><select name="province"><option selected>TP. Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option><option>Hải Phòng</option><option>Cần Thơ</option></select></label>
+							<label class="profile-form-field"><span>Phường / Xã</span><select name="ward"><option selected>Phường Bát Tràng</option><option>Phường Hàng Bạc</option><option>Phường Đa Kao</option></select></label>
+							<label class="profile-form-field profile-form-wide"><span>Địa chỉ chi tiết</span><input type="text" name="address" placeholder="Số nhà, tên đường, ngõ..." value="Số 24, Ngõ Gốm"></label>
+						</div>
+						<div class="profile-form-actions"><button class="profile-action-button is-primary" type="button" id="btn-save">Lưu</button><a class="profile-action-button is-secondary btn-save-exit" href="profile.html">Lưu và thoát</a><a class="profile-action-button is-quiet btn-cancel" href="profile.html">Hủy</a></div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</main>
+	<footer class="site-footer">
+		<div class="wrap footer-grid">
+			<div><div class="footer-brand"><img class="footer-logo" src="images/logo.jpg" alt=""><b>TNNT Ceramics</b></div><p>Gốm sứ Bát Tràng và gốm gia dụng chọn lọc, mang nét tinh tế của gốm Việt vào mỗi bàn trà, mâm cơm và gian thờ.</p></div>
+			<div><h4>Thông tin liên hệ</h4><ul class="contact"><li><span>Địa chỉ</span>273 An Dương Vương, Phường Chợ Quán (Quận 5), Thành phố Hồ Chí Minh</li><li><span>Điện thoại</span><a href="tel:0863962925">0863962925</a></li><li><span>Đại diện</span>Trần Nguyễn Hoàng Nam - Giám đốc</li><li><span>Email</span><a href="mailto:tnntceramics@gmail.com">tnntceramics@gmail.com</a></li></ul></div>
+			<div><h4>Dòng sản phẩm</h4><ul><li><a href="danh-muc.html?cat=am-chen">Ấm chén</a></li><li><a href="danh-muc.html?cat=bat-dia">Bát đĩa</a></li><li><a href="danh-muc.html?cat=do-tho">Đồ thờ, bát hương</a></li><li><a href="danh-muc.html?cat=loc-binh">Lộc bình, phong thuỷ</a></li><li><a href="danh-muc.html?cat=lo-hoa">Lọ hoa</a></li><li><a href="danh-muc.html?cat=tuong">Tượng gốm sứ</a></li><li><a href="danh-muc.html?cat=gia-dung">Gốm sứ gia dụng</a></li></ul></div>
+			<div><h4>Chính sách</h4><ul><li><a href="#" class="policy-link">Chính sách đổi trả</a></li><li><a href="#" class="policy-link">Chính sách vận chuyển</a></li><li><a href="#" class="policy-link">Chính sách bảo hành</a></li><li><a href="#" class="policy-link">Chính sách thanh toán</a></li><li><a href="#" class="policy-link">Chính sách bảo mật</a></li></ul></div>
+		</div>
+		<div class="wrap copyright">&copy; TNNT Ceramics - Đồ án Lập trình web và ứng dụng, Khoa CNTT, Đại học Sài Gòn</div>
+	</footer>
+	<script>
+		document.getElementById('btn-save').addEventListener('click', () => {
+			document.getElementById('save-alert').style.display = 'flex';
+		});
+	</script>
+</body>
+</html>

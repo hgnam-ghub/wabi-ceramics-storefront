@@ -45,95 +45,27 @@
 					<h2>Nguyễn Văn An</h2>
 					<span class="profile-member-badge">Hội viên Gốm Mộc</span>
 				</section>
-				<nav class="profile-menu" role="tablist" aria-label="Danh mục tài khoản" aria-orientation="vertical">
-					<button class="active" id="profile-tab" type="button" role="tab" aria-selected="true" aria-controls="profile-panel" data-profile-tab="profile-panel">Thông tin cá nhân</button>
-					<button id="edit-tab" type="button" role="tab" aria-selected="false" aria-controls="edit-panel" data-profile-tab="edit-panel">Chỉnh sửa hồ sơ</button>
-					<button id="history-tab" type="button" role="tab" aria-selected="false" aria-controls="history-panel" data-profile-tab="history-panel">Lịch sử mua hàng</button>
+				<nav class="profile-menu" aria-label="Danh mục tài khoản">
+					<a class="active" href="profile.html" aria-current="page">Thông tin cá nhân</a>
+					<a href="profile-edit.html">Chỉnh sửa hồ sơ</a>
+					<a href="order.html">Lịch sử mua hàng</a>
 					<a class="profile-logout" href="auth.html">Đăng xuất</a>
 				</nav>
 			</aside>
 
 			<div class="profile-content">
-				<section class="profile-panel profile-tab-panel" id="profile-panel" role="tabpanel" aria-labelledby="profile-tab">
-					<div class="profile-section-heading">
-						<div><p class="profile-eyebrow">HỒ SƠ CỦA BẠN</p><h2>Thông tin cá nhân</h2></div>
-						<button class="profile-edit-link" type="button" data-profile-switch="edit-panel">Chỉnh sửa thông tin <span aria-hidden="true">↗</span></button>
+				<section class="profile-card">
+					<div class="profile-card-heading">
+						<h2>Thông tin tài khoản</h2>
+						<a class="btn-edit" href="profile-edit.html">Chỉnh sửa thông tin</a>
 					</div>
-					<dl class="profile-details">
-						<div><dt>Họ và tên</dt><dd>Nguyễn Văn An</dd></div>
-						<div><dt>Giới tính</dt><dd>Nam</dd></div>
-						<div><dt>Ngày sinh</dt><dd>18/04/1998</dd></div>
-						<div><dt>Số điện thoại</dt><dd>0903 456 789</dd></div>
-						<div><dt>Email</dt><dd>nguyenvanan@example.com</dd></div>
-					</dl>
-					<div class="profile-address-payment">
-						<article class="profile-panel profile-small-panel">
-							<div class="profile-section-heading"><div><p class="profile-eyebrow">GIAO HÀNG</p><h2>Địa chỉ mặc định</h2></div><span class="profile-line-icon" aria-hidden="true">⌂</span></div>
-							<p class="profile-recipient">Nguyễn Văn An <span>•</span> 0903 456 789</p>
-							<address>28 Nguyễn Thị Minh Khai, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh</address>
-						</article>
-						<article class="profile-panel profile-small-panel">
-							<div class="profile-section-heading"><div><p class="profile-eyebrow">THANH TOÁN</p><h2>Thanh toán mặc định</h2></div><span class="profile-line-icon" aria-hidden="true">◈</span></div>
-							<p class="profile-payment-name">Chuyển khoản ngân hàng</p>
-							<p class="profile-payment-note">Ngân hàng Á Châu (ACB) <span>•••• 2846</span></p>
-						</article>
-					</div>
-				</section>
-
-				<section class="profile-panel profile-tab-panel" id="edit-panel" role="tabpanel" aria-labelledby="edit-tab" hidden>
-					<div class="profile-section-heading">
-						<div><p class="profile-eyebrow">CẬP NHẬT HỒ SƠ</p><h2>Chỉnh sửa thông tin</h2></div>
-					</div>
-					<div class="profile-alert" id="profile-success" role="status" aria-live="polite" style="display: none;">✓ Cập nhật thông tin thành công!</div>
-					<form class="profile-form">
-					<div class="profile-form-grid">
-						<label class="profile-form-field profile-form-wide"><span>Họ và tên</span><input type="text" name="full-name" value="Nguyễn Văn An"></label>
-						<fieldset class="profile-form-field profile-gender-field">
-							<legend>Giới tính</legend>
-							<label class="profile-radio"><input type="radio" name="gender" value="nam" checked><span>Nam</span></label>
-							<label class="profile-radio"><input type="radio" name="gender" value="nu"><span>Nữ</span></label>
-						</fieldset>
-						<label class="profile-form-field"><span>Ngày sinh</span><input type="date" name="birth-date" value="1998-04-18"></label>
-						<label class="profile-form-field"><span>Số điện thoại</span><input type="text" name="phone" value="0903 456 789"></label>
-						<label class="profile-form-field"><span>Email</span><input type="text" name="email" value="nguyenvanan@example.com"></label>
-						<label class="profile-form-field profile-form-wide"><span>Địa chỉ chi tiết</span><textarea name="address" rows="3">28 Nguyễn Thị Minh Khai, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh</textarea></label>
-						<label class="profile-form-field profile-form-wide"><span>Phương thức thanh toán ưu tiên</span>
-							<select name="payment-method">
-								<option selected>Chuyển khoản ngân hàng</option>
-								<option>Thanh toán khi nhận hàng</option>
-							<option>Thẻ ATM nội địa</option>
-							</select>
-						</label>
-					</div>
-					<div class="profile-form-actions">
-						<button class="profile-action-button is-primary" type="button" id="save-profile">Lưu</button>
-						<button class="profile-action-button is-secondary" type="button" data-profile-exit="save">Lưu và thoát</button>
-						<button class="profile-action-button is-quiet" type="button" data-profile-exit="cancel">Hủy</button>
-					</div>
-					</form>
-				</section>
-
-				<section class="profile-panel profile-tab-panel" id="history-panel" role="tabpanel" aria-labelledby="history-tab" hidden>
-					<div class="profile-section-heading profile-orders-heading">
-						<div><p class="profile-eyebrow">NHỮNG MÓN GỐM ĐÃ CHỌN</p><h2>Lịch sử mua hàng</h2></div>
-						<span class="profile-order-count">03 đơn hàng</span>
-					</div>
-					<div class="profile-history-list" tabindex="0" aria-label="Danh sách lịch sử mua hàng">
-						<article class="profile-order">
-							<div class="profile-order-heading"><div><span class="profile-order-label">MÃ ĐƠN HÀNG</span><strong>#TN-261023-018</strong></div><span class="profile-order-status is-shipping">Đang giao hàng</span></div>
-							<div class="profile-order-meta"><p><span>Ngày đặt</span>23/10/2026</p><p><span>Địa chỉ nhận</span>28 Nguyễn Thị Minh Khai, P. Đa Kao, Q. 1, TP. Hồ Chí Minh</p><p><span>Dự kiến nhận</span>02/11/2026</p></div>
-							<div class="profile-order-products"><div class="profile-order-product"><img src="images/3.jpg" alt="Bộ ấm chén dáng Nhật - bọc đồng"><div><a class="product-link" href="#">Bộ ấm chén dáng Nhật - bọc đồng</a><span>Phân loại: Men rạn · Số lượng: 1</span></div><strong>850.000đ</strong></div><div class="profile-order-product"><img src="images/6.jpg" alt="Bộ bát đĩa Bát Tràng bèo xanh ngọc"><div><a class="product-link" href="#">Bộ bát đĩa Bát Tràng bèo xanh ngọc</a><span>Phân loại: Bộ 12 món · Số lượng: 1</span></div><strong>4.150.000đ</strong></div></div>
-						</article>
-						<article class="profile-order">
-							<div class="profile-order-heading"><div><span class="profile-order-label">MÃ ĐƠN HÀNG</span><strong>#TN-261012-006</strong></div><span class="profile-order-status is-delivered">Đã giao hàng</span></div>
-							<div class="profile-order-meta"><p><span>Ngày đặt</span>12/10/2026</p><p><span>Địa chỉ nhận</span>28 Nguyễn Thị Minh Khai, P. Đa Kao, Q. 1, TP. Hồ Chí Minh</p><p><span>Ngày nhận thực tế</span>15/10/2026</p></div>
-							<div class="profile-order-products"><div class="profile-order-product"><img src="images/5.jpg" alt="Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh"><div><a class="product-link" href="#">Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh</a><span>Phân loại: Bộ ấm trà · Số lượng: 1</span></div><strong>950.000đ</strong></div></div>
-						</article>
-						<article class="profile-order">
-							<div class="profile-order-heading"><div><span class="profile-order-label">MÃ ĐƠN HÀNG</span><strong>#TN-260928-003</strong></div><span class="profile-order-status is-cancelled">Đã hủy</span></div>
-							<div class="profile-order-meta profile-order-meta-compact"><p><span>Ngày đặt</span>28/09/2026</p><p><span>Ngày hủy đơn</span>29/09/2026</p></div>
-							<div class="profile-order-products"><div class="profile-order-product"><img src="images/7.jpg" alt="Bộ bát đĩa hoa mặt trời vẽ sen chuồn"><div><a class="product-link" href="#">Bộ bát đĩa hoa mặt trời vẽ sen chuồn</a><span>Phân loại: Bộ gia đình · Số lượng: 1</span></div><strong>2.340.000đ</strong></div></div>
-						</article>
+					<div class="profile-info-grid">
+						<div class="profile-info-item"><span>Họ và tên</span><strong>Nguyễn Văn An</strong></div>
+						<div class="profile-info-item"><span>Giới tính</span><strong>Nam</strong></div>
+						<div class="profile-info-item"><span>Ngày sinh</span><strong>15/08/1995</strong></div>
+						<div class="profile-info-item"><span>Số điện thoại</span><strong>0987 654 321</strong></div>
+						<div class="profile-info-item profile-info-wide"><span>Email</span><strong>nguyenvanan.ceramics@gmail.com</strong></div>
+						<div class="profile-info-item profile-info-wide"><span>Địa chỉ nhận hàng</span><strong>Số 24, Ngõ Gốm, Phường Bát Tràng, TP. Hà Nội</strong></div>
 					</div>
 				</section>
 			</div>
@@ -180,29 +112,5 @@
 		</div>
 		<div class="wrap copyright">&copy; TNNT Ceramics - Đồ án Lập trình web và ứng dụng, Khoa CNTT, Đại học Sài Gòn</div>
 	</footer>
-	<script>
-		const tabs = document.querySelectorAll('.profile-menu [role="tab"]');
-		const panels = document.querySelectorAll('.profile-tab-panel');
-		const alertBox = document.getElementById('profile-success');
-		function showProfileTab(panelId) {
-			tabs.forEach((tab) => {
-				const active = tab.getAttribute('aria-controls') === panelId;
-				tab.classList.toggle('active', active);
-				tab.setAttribute('aria-selected', active);
-			});
-			panels.forEach((panel) => { panel.hidden = panel.id !== panelId; });
-			if (panelId !== 'edit-panel') alertBox.style.display = 'none';
-		}
-		tabs.forEach((tab) => {
-			tab.addEventListener('click', () => showProfileTab(tab.getAttribute('aria-controls')));
-		});
-		document.querySelector('[data-profile-switch]').addEventListener('click', () => showProfileTab('edit-panel'));
-		document.getElementById('save-profile').addEventListener('click', () => {
-			alertBox.style.display = 'flex';
-		});
-		document.querySelectorAll('[data-profile-exit]').forEach((button) => {
-			button.addEventListener('click', () => showProfileTab('profile-panel'));
-		});
-	</script>
 </body>
 </html>
