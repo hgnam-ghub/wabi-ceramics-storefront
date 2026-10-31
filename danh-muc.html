@@ -5,86 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Danh mục sản phẩm - TNNT Ceramics</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="js/main.js"></script>
 </head>
 <body>
-<div id="header"></div>
-
+<header class="site-header"><div class="wrap">
+  <a class="logo" href="index.html"><img class="logo-img" src="images/logo.jpg" alt="" onerror="this.remove()"><span>TNNT Ceramics</span></a>
+  <ul class="nav">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="danh-muc.html" class="active">Danh mục sản phẩm</a><ul class="drop"><li><a href="danh-muc.html">Ấm chén</a></li><li><a href="danh-muc.html">Bát đĩa</a></li><li><a href="danh-muc.html">Đồ thờ, bát hương</a></li><li><a href="danh-muc.html">Lộc bình, phong thuỷ</a></li><li><a href="danh-muc.html">Lọ hoa</a></li><li><a href="danh-muc.html">Tượng gốm sứ</a></li><li><a href="danh-muc.html">Gốm sứ gia dụng</a></li></ul></li>
+    <li><a href="ve-chung-toi.html">Về chúng tôi</a></li>
+    <li><a href="cham-soc-gom.html">Chăm sóc gốm</a></li>
+  </ul>
+  <div class="actions"><a class="btn ghost" href="gio-hang.html">Giỏ hàng</a><a class="avatar" href="thong-tin-nguoi-dung.html" aria-label="Tài khoản người dùng" title="Tài khoản người dùng"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a></div>
+</div></header>
 <main class="wrap">
   <nav class="crumbs"><a href="index.html">Trang chủ</a> / Danh mục sản phẩm</nav>
   <div class="layout">
     <aside class="filter" aria-label="Bộ lọc sản phẩm">
-      <fieldset>
-        <h3>Tìm kiếm sản phẩm</h3>
-        <input type="text" id="fName" placeholder="Nhập từ khoá tìm kiếm">
-      </fieldset>
-      <fieldset>
-        <h3>Phân loại</h3>
-        <select id="fCat"></select>
-      </fieldset>
-      <fieldset>
-        <h3>Thương hiệu</h3>
-        <select id="fBrand"></select>
-      </fieldset>
-      <fieldset>
-        <h3>Khoảng giá</h3>
-        <select id="fPrice">
-          <option>Tất cả mức giá</option>
-          <option>Dưới 500.000đ</option>
-          <option>500.000đ - 1.000.000đ</option>
-          <option>1.000.000đ - 3.000.000đ</option>
-          <option>3.000.000đ - 10.000.000đ</option>
-          <option>Trên 10.000.000đ</option>
-        </select>
-      </fieldset>
+      <fieldset><h3>Tìm kiếm sản phẩm</h3><input type="text" placeholder="Nhập từ khoá tìm kiếm"></fieldset>
+      <fieldset><h3>Phân loại</h3><select><option>Tất cả phân loại</option><option>Ấm chén</option><option>Bát đĩa</option><option>Đồ thờ, bát hương</option><option>Lộc bình, phong thuỷ</option><option>Lọ hoa</option><option>Tượng gốm sứ</option><option>Gốm sứ gia dụng</option></select></fieldset>
+      <fieldset><h3>Thương hiệu</h3><select><option>Tất cả thương hiệu</option><option>Hương Vân Cát</option><option>Gốm Thành Thuỷ</option><option>Bát Tràng</option><option>Gốm Trường An</option></select></fieldset>
+      <fieldset><h3>Khoảng giá</h3><select><option>Tất cả mức giá</option><option>Dưới 500.000đ</option><option>500.000đ - 1.000.000đ</option><option>1.000.000đ - 3.000.000đ</option><option>3.000.000đ - 10.000.000đ</option><option>Trên 10.000.000đ</option></select></fieldset>
       <button class="btn" id="apply" type="button">Lọc sản phẩm</button>
     </aside>
-
     <section>
-      <div class="result-bar"><h1>Tất cả sản phẩm</h1><span id="count"></span></div>
-      <div class="grid" id="list"></div>
-      <ul class="pager" id="pager" aria-label="Phân trang"></ul>
+      <div class="result-bar"><h1>Tất cả sản phẩm</h1><span>Hiển thị 12 / 35 sản phẩm</span></div>
+      <div class="grid"><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/1.webp" alt="Ấm trà tử sa nguyên khoáng dáng Lê Hồ (Khoáng Lão)" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Hương Vân Cát</span><span class="name">Ấm trà tử sa nguyên khoáng dáng Lê Hồ (Khoáng Lão)</span><span class="price">120.000.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/2.webp" alt="Ấm tử sa Lục Phương thanh khôi nê vẽ Rồng kèm 2 chén cao cấp" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Hương Vân Cát</span><span class="name">Ấm tử sa Lục Phương thanh khôi nê vẽ Rồng kèm 2 chén cao cấp</span><span class="price">95.000.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/3.jpg" alt="Bộ ấm chén dáng Nhật - bọc đồng" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Gốm Thành Thuỷ</span><span class="name">Bộ ấm chén dáng Nhật - bọc đồng</span><span class="price">850.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/4.jpg" alt="Bộ ấm chén men rạn cổ Trúc lâm thất hiền" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Gốm Thành Thuỷ</span><span class="name">Bộ ấm chén men rạn cổ Trúc lâm thất hiền</span><span class="price">620.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/5.jpg" alt="Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Bát Tràng</span><span class="name">Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh</span><span class="price">950.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/6.jpg" alt="Bộ bát đĩa Bát Tràng bèo xanh ngọc" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Gốm Thành Thuỷ</span><span class="name">Bộ bát đĩa Bát Tràng bèo xanh ngọc</span><span class="price">4.150.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/7.jpg" alt="Bộ bát đĩa hoa mặt trời vẽ sen chuồn" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Bát Tràng</span><span class="name">Bộ bát đĩa hoa mặt trời vẽ sen chuồn</span><span class="price">2.340.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/8.jpg" alt="Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Bát Tràng</span><span class="name">Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng</span><span class="price">590.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/9.jpg" alt="Bộ bát đĩa quà tặng Bát Tràng cao cấp vẽ tay ngò gai" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Bát Tràng</span><span class="name">Bộ bát đĩa quà tặng Bát Tràng cao cấp vẽ tay ngò gai</span><span class="price">690.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/10.jpg" alt="Bộ bát đĩa Bát Tràng men kem vẽ hoa Đào xanh" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Bát Tràng</span><span class="name">Bộ bát đĩa Bát Tràng men kem vẽ hoa Đào xanh</span><span class="price">1.100.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/11.jpg" alt="Bộ đồ thờ Bát Tràng men rạn nổi rồng Phúc Quý" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Gốm Trường An</span><span class="name">Bộ đồ thờ Bát Tràng men rạn nổi rồng Phúc Quý</span><span class="price">1.300.000đ</span></div></a><a class="card" href="chi-tiet.html"><div class="thumb"><img src="images/12.jpg" alt="Bộ đồ thờ Bát Tràng men lam" loading="lazy" onerror="this.onerror=null;this.src=PLACEHOLDER"></div><div class="info"><span class="brand">Gốm Trường An</span><span class="name">Bộ đồ thờ Bát Tràng men lam</span><span class="price">9.910.000đ</span></div></a></div>
+      <ul class="pager" id="pager" aria-label="Phân trang"><li><button type="button" data-dir="prev" aria-label="Trang trước"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button></li><li><button type="button" data-page="1" class="on" aria-current="page">1</button></li><li><button type="button" data-page="2">2</button></li><li><button type="button" data-page="3">3</button></li><li><button type="button" data-dir="next" aria-label="Trang sau"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></li></ul>
     </section>
   </div>
 </main>
-
-<div id="footer"></div>
-<script src="js/data.js"></script>
-<script src="js/common.js"></script>
-<script>
-  renderLayout('list');
-  var PER_PAGE = 12;
-  var pages = Math.ceil(PRODUCTS.length / PER_PAGE);
-
-  // Giao diện tĩnh: luôn hiển thị trang 1 (12 sản phẩm đầu), thao tác lọc/phân trang chỉ phản hồi trên giao diện.
-  document.getElementById('list').innerHTML = PRODUCTS.slice(0, PER_PAGE).map(cardHTML).join('');
-  document.getElementById('count').textContent = 'Hiển thị ' + PER_PAGE + ' / ' + PRODUCTS.length + ' sản phẩm';
-
-  var catHTML = '<option value="all">Tất cả phân loại</option>';
-  CATEGORIES.forEach(function (c) {
-    catHTML += '<option value="' + c.id + '">' + c.name + '</option>';
-  });
-  document.getElementById('fCat').innerHTML = catHTML;
-
-  var brands = [];
-  PRODUCTS.forEach(function (p) {
-    if (p.brand !== 'Đang cập nhật' && brands.indexOf(p.brand) === -1) brands.push(p.brand);
-  });
-  document.getElementById('fBrand').innerHTML = '<option value="all">Tất cả thương hiệu</option>' +
-    brands.map(function (b) { return '<option value="' + b + '">' + b + '</option>'; }).join('');
-
-  var pagerHTML = '';
-  for (var i = 1; i <= pages; i++) {
-    pagerHTML += '<li><button type="button" data-page="' + i + '"' + (i === 1 ? ' class="on" aria-current="page"' : '') + '>' + i + '</button></li>';
-  }
-  document.getElementById('pager').innerHTML = pagerHTML;
-  document.getElementById('pager').addEventListener('click', function (e) {
-    var b = e.target.closest('button');
-    if (!b) return;
-    toast('Đã chuyển sang trang ' + b.dataset.page);
-  });
-  document.getElementById('apply').addEventListener('click', function () {
-    toast('Đã áp dụng bộ lọc');
-  });
-</script>
+<footer class="site-footer"><div class="wrap footer-grid">
+  <div><div class="footer-brand"><img class="footer-logo" src="images/logo.jpg" alt="" onerror="this.remove()"><b>TNNT Ceramics</b></div>
+  <p>Gốm sứ Bát Tràng và gốm gia dụng chọn lọc, mang nét tinh tế của gốm Việt vào mỗi bàn trà, mâm cơm và gian thờ.</p></div>
+  <div><h4>Thông tin liên hệ</h4><ul class="contact">
+    <li><span>Địa chỉ</span>273 An Dương Vương, Phường Chợ Quán (Quận 5), Thành phố Hồ Chí Minh</li>
+    <li><span>Điện thoại</span>0863962925</li>
+    <li><span>Đại diện</span>Trần Nguyễn Hoàng Nam - Giám đốc</li>
+    <li><span>Email</span>tnntceramics@gmail.com</li></ul></div>
+  <div><h4>Dòng sản phẩm</h4><ul><li>Ấm chén</li><li>Bát đĩa</li><li>Đồ thờ, bát hương</li><li>Lộc bình, phong thuỷ</li><li>Lọ hoa</li><li>Tượng gốm sứ</li><li>Gốm sứ gia dụng</li></ul></div>
+  <div><h4>Chính sách</h4><ul><li><a href="#" class="policy-link">Chính sách đổi trả</a></li><li><a href="#" class="policy-link">Chính sách vận chuyển</a></li><li><a href="#" class="policy-link">Chính sách bảo hành</a></li><li><a href="#" class="policy-link">Chính sách thanh toán</a></li><li><a href="#" class="policy-link">Chính sách bảo mật</a></li></ul></div>
+</div>
+<div class="wrap copyright">&copy; TNNT Ceramics - Đồ án Lập trình web và ứng dụng, Khoa CNTT, Đại học Sài Gòn</div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
