@@ -826,3 +826,25 @@ select:focus-visible {
   .action-btn { transition: none; }
   .btn-primary:hover { transform: none; }
 }
+
+
+/* ==========================================================
+   8. BỔ SUNG
+   ========================================================== */
+/* ô tick "Hiển thị tài khoản bị khóa": chỉ để trưng giao diện, chưa xử lý gì */
+.filter-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-main);
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-checkbox-label input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
