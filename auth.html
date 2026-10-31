@@ -27,7 +27,7 @@
 
 
 			<section class="auth-form-panel fade-in" id="login-panel" role="tabpanel" aria-labelledby="login-tab">
-    			<p class="auth-notice" id="password-help">Vui lòng liên hệ quản trị viên để được hỗ trợ đặt lại mật khẩu.</p>
+				<p class="auth-notice" id="password-help">Vui lòng liên hệ quản trị viên để được hỗ trợ đặt lại mật khẩu.</p>
 				<h1>Chào mừng bạn trở lại</h1>
 				<p class="auth-intro">Tiếp tục khám phá những món gốm mang dấu ấn riêng.</p>
 
@@ -42,7 +42,7 @@
 
 				<div class="auth-options">
 					<label class="auth-checkbox"><input type="checkbox" name="remember"> <span>Ghi nhớ đăng nhập</span></label>
-					<a class="auth-help-link" href="#password-help">Quên mật khẩu?</a>
+					<button class="auth-help-link" id="password-help-toggle" type="button" aria-controls="password-help" aria-expanded="false">Quên mật khẩu?</button>
 				</div>
 				<a class="btn-auth" href="index.html">Đăng Nhập</a>
 				<p class="auth-switch-copy">Chưa có tài khoản? <button class="auth-inline-switch" type="button" data-auth-tab="register-panel">Đăng ký ngay</button></p>
@@ -85,6 +85,8 @@
 	</main>
 
 	<script>
+		const alertBox = document.getElementById('password-help');
+		const helpButton = document.getElementById('password-help-toggle');
 		const setAuthTab = (id) => {
 			document.querySelectorAll('.auth-tab').forEach((tab) => {
 				const active = tab.dataset.authTab === id;
@@ -94,8 +96,17 @@
 			document.querySelectorAll('.auth-form-panel').forEach((panel) => {
 				panel.hidden = panel.id !== id; panel.classList.toggle('fade-in', !panel.hidden);
 			});
+			if (id !== 'login-panel') {
+				alertBox.style.display = 'none';
+				helpButton.setAttribute('aria-expanded', 'false');
+			}
 		};
 		document.querySelectorAll('[data-auth-tab]').forEach((button) => button.addEventListener('click', () => setAuthTab(button.dataset.authTab)));
+		helpButton.addEventListener('click', () => {
+			const isVisible = alertBox.style.display === 'flex';
+			alertBox.style.display = isVisible ? 'none' : 'flex';
+			helpButton.setAttribute('aria-expanded', String(!isVisible));
+		});
 	</script>
 </body>
 </html>
