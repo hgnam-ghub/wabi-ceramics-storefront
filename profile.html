@@ -27,7 +27,7 @@
 			</ul>
 			<div class="actions">
 				<a class="btn ghost" href="gio-hang.html">Giỏ hàng</a>
-				<a class="btn" href="auth.html">Đăng nhập</a>
+				<a class="btn" href="login.html">Đăng nhập</a>
 			</div>
 		</div>
 	</header>
@@ -48,16 +48,17 @@
 				<nav class="profile-menu" aria-label="Danh mục tài khoản">
 					<a class="active" href="profile.html" aria-current="page">Thông tin cá nhân</a>
 					<a href="profile-edit.html">Chỉnh sửa hồ sơ</a>
+					<a href="address.html">Sổ địa chỉ</a>
 					<a href="order.html">Lịch sử mua hàng</a>
-					<a class="profile-logout" href="auth.html">Đăng xuất</a>
+					<a class="profile-logout" href="login.html">Đăng xuất</a>
 				</nav>
 			</aside>
 
-			<div class="profile-content">
-				<section class="profile-card">
+			<div class="profile-content profile-overview-content">
+				<section class="profile-card profile-overview-card">
 					<div class="profile-card-heading">
-						<h2>Thông tin tài khoản</h2>
-						<a class="btn-edit" href="profile-edit.html">Chỉnh sửa thông tin</a>
+						<h2>Thông tin cá nhân</h2>
+						<a class="btn-text-link" href="profile-edit.html">Chỉnh sửa hồ sơ</a>
 					</div>
 					<div class="profile-info-grid">
 						<div class="profile-info-item"><span>Họ và tên</span><strong>Nguyễn Văn An</strong></div>
@@ -65,8 +66,16 @@
 						<div class="profile-info-item"><span>Ngày sinh</span><strong>15/08/1995</strong></div>
 						<div class="profile-info-item"><span>Số điện thoại</span><strong>0987 654 321</strong></div>
 						<div class="profile-info-item profile-info-wide"><span>Email</span><strong>nguyenvanan.ceramics@gmail.com</strong></div>
-						<div class="profile-info-item profile-info-wide"><span>Địa chỉ nhận hàng</span><strong>Số 24, Ngõ Gốm, Phường Bát Tràng, TP. Hà Nội</strong></div>
 					</div>
+				</section>
+				<section class="default-address-card">
+					<div class="default-address-heading"><h3 class="default-address-title">Địa chỉ nhận hàng mặc định</h3></div>
+					<div class="default-address-details">
+						<div><span>Người nhận</span><strong>Nguyễn Văn An</strong></div>
+						<div><span>Số điện thoại</span><strong>0987 654 321</strong></div>
+						<div class="default-address-full"><span>Địa chỉ</span><address>Số 24, Ngõ Gốm, Phường Bát Tràng, TP. Hà Nội</address></div>
+					</div>
+					<a class="btn-address-link" href="address.html">Quản lý sổ địa chỉ <span aria-hidden="true">→</span></a>
 				</section>
 			</div>
 		</div>

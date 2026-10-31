@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sổ địa chỉ | TNNT Ceramics</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="profile-page">
+	<header class="site-header">
+		<div class="wrap">
+			<a class="logo" href="index.html"><img class="logo-img" src="images/logo.jpg" alt=""><span>TNNT Ceramics</span></a>
+			<ul class="nav">
+				<li><a href="index.html">Trang chủ</a></li>
+				<li><a href="danh-muc.html">Danh mục sản phẩm</a>
+					<ul class="drop">
+						<li><a href="danh-muc.html?cat=am-chen">Ấm chén</a></li><li><a href="danh-muc.html?cat=bat-dia">Bát đĩa</a></li><li><a href="danh-muc.html?cat=do-tho">Đồ thờ, bát hương</a></li><li><a href="danh-muc.html?cat=loc-binh">Lộc bình, phong thuỷ</a></li><li><a href="danh-muc.html?cat=lo-hoa">Lọ hoa</a></li><li><a href="danh-muc.html?cat=tuong">Tượng gốm sứ</a></li><li><a href="danh-muc.html?cat=gia-dung">Gốm sứ gia dụng</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="actions"><a class="btn ghost" href="gio-hang.html">Giỏ hàng</a><a class="btn" href="login.html">Đăng nhập</a></div>
+		</div>
+	</header>
+	<main class="profile-container">
+		<div class="profile-page-heading"><p class="profile-eyebrow">KHÔNG GIAN THÀNH VIÊN</p><h1>Tài khoản của tôi</h1></div>
+		<div class="profile-layout">
+			<aside class="profile-sidebar" aria-label="Tài khoản thành viên">
+				<section class="profile-summary"><div class="profile-avatar" aria-hidden="true">NA</div><h2>Nguyễn Văn An</h2><span class="profile-member-badge">Hội viên Gốm Mộc</span></section>
+				<nav class="profile-menu" aria-label="Danh mục tài khoản">
+					<a href="profile.html">Thông tin cá nhân</a>
+					<a href="profile-edit.html">Chỉnh sửa hồ sơ</a>
+					<a class="active" href="address.html" aria-current="page">Sổ địa chỉ</a>
+					<a href="order.html">Lịch sử mua hàng</a>
+					<a class="profile-logout" href="login.html">Đăng xuất</a>
+				</nav>
+			</aside>
+			<div class="profile-content">
+				<section class="profile-panel address-page-panel">
+					<div class="address-page-heading"><div><p class="profile-eyebrow">GIAO HÀNG</p><h2>Sổ địa chỉ nhận hàng</h2></div><button type="button" class="btn-add-address" id="btn-open-modal">+ Thêm địa chỉ mới</button></div>
+					<div class="address-scroll-box" tabindex="0" aria-label="Danh sách địa chỉ nhận hàng">
+						<div class="address-list">
+							<article class="address-card is-default">
+								<div class="address-card-heading">
+									<p class="address-recipient"><strong>Nguyễn Văn An</strong><span>•</span><span>0987 654 321</span></p>
+									<span class="address-default-badge">Mặc định</span>
+								</div>
+								<address class="address-full-line">Số 24, Ngõ Gốm, Phường Bát Tràng, TP. Hà Nội</address>
+								<div class="address-card-actions"><button type="button" class="btn-action btn-edit">Chỉnh sửa</button></div>
+							</article>
+							<article class="address-card">
+								<div class="address-card-heading">
+									<p class="address-recipient"><strong>Nguyễn Văn An</strong><span>•</span><span>0912 345 678</span></p>
+								</div>
+								<address class="address-full-line">Tầng 4, Tòa nhà Craft Center, Phường Tràng Tiền, TP. Hà Nội</address>
+								<div class="address-card-actions"><button type="button" class="btn-action btn-set-default">Thiết lập mặc định</button><button type="button" class="btn-action btn-edit">Chỉnh sửa</button><button type="button" class="btn-action btn-delete">Xóa</button></div>
+							</article>
+							<article class="address-card">
+								<div class="address-card-heading">
+									<p class="address-recipient"><strong>Nguyễn Văn An</strong><span>•</span><span>0938 111 222</span></p>
+								</div>
+								<address class="address-full-line">Số 105, Hẻm Gốm Mộc, Phường Tân Định, TP. Hồ Chí Minh</address>
+								<div class="address-card-actions"><button type="button" class="btn-action btn-set-default">Thiết lập mặc định</button><button type="button" class="btn-action btn-edit">Chỉnh sửa</button><button type="button" class="btn-action btn-delete">Xóa</button></div>
+							</article>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+	<div class="address-modal-overlay" id="address-modal" aria-hidden="true">
+		<section class="address-modal" role="dialog" aria-modal="true" aria-labelledby="address-modal-title">
+			<div class="address-modal-heading"><h2 id="address-modal-title">Địa chỉ nhận hàng</h2><button type="button" class="address-modal-close" id="btn-close-modal" aria-label="Đóng">&times;</button></div>
+			<form class="address-modal-form" novalidate>
+				<label class="profile-form-field"><span>Họ tên người nhận</span><input type="text" name="recipient" placeholder="Nhập họ tên người nhận"></label>
+				<label class="profile-form-field"><span>Số điện thoại</span><input type="tel" name="phone" placeholder="Nhập số điện thoại"></label>
+				<div class="address-modal-row">
+					<label class="profile-form-field"><span>Tỉnh / Thành phố</span><select name="province"><option value="" selected disabled>Chọn tỉnh / thành phố</option><option>TP. Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option></select></label>
+					<label class="profile-form-field"><span>Phường / Xã</span><select name="ward"><option value="" selected disabled>Chọn phường / xã</option><option>Phường Bát Tràng</option><option>Phường Tràng Tiền</option><option>Phường Đa Kao</option></select></label>
+				</div>
+				<label class="profile-form-field"><span>Số nhà, tên đường</span><input type="text" name="address" placeholder="Số nhà, tên đường, ngõ..."></label>
+				<label class="address-modal-default"><input type="checkbox" name="default-address"><span>Đặt làm địa chỉ mặc định</span></label>
+				<div class="address-modal-actions"><button type="button" id="btn-save-address" class="btn-primary">Lưu địa chỉ</button><button type="button" id="btn-close-modal-cancel" class="btn-secondary">Hủy</button></div>
+			</form>
+		</section>
+	</div>
+	<footer class="site-footer">
+		<div class="wrap footer-grid">
+			<div><div class="footer-brand"><img class="footer-logo" src="images/logo.jpg" alt=""><b>TNNT Ceramics</b></div><p>Gốm sứ Bát Tràng và gốm gia dụng chọn lọc, mang nét tinh tế của gốm Việt vào mỗi bàn trà, mâm cơm và gian thờ.</p></div>
+			<div><h4>Thông tin liên hệ</h4><ul class="contact"><li><span>Địa chỉ</span>273 An Dương Vương, Phường Chợ Quán (Quận 5), Thành phố Hồ Chí Minh</li><li><span>Điện thoại</span><a href="tel:0863962925">0863962925</a></li><li><span>Đại diện</span>Trần Nguyễn Hoàng Nam - Giám đốc</li><li><span>Email</span><a href="mailto:tnntceramics@gmail.com">tnntceramics@gmail.com</a></li></ul></div>
+			<div><h4>Dòng sản phẩm</h4><ul><li><a href="danh-muc.html?cat=am-chen">Ấm chén</a></li><li><a href="danh-muc.html?cat=bat-dia">Bát đĩa</a></li><li><a href="danh-muc.html?cat=do-tho">Đồ thờ, bát hương</a></li><li><a href="danh-muc.html?cat=loc-binh">Lộc bình, phong thuỷ</a></li><li><a href="danh-muc.html?cat=lo-hoa">Lọ hoa</a></li><li><a href="danh-muc.html?cat=tuong">Tượng gốm sứ</a></li><li><a href="danh-muc.html?cat=gia-dung">Gốm sứ gia dụng</a></li></ul></div>
+			<div><h4>Chính sách</h4><ul><li><a href="#" class="policy-link">Chính sách đổi trả</a></li><li><a href="#" class="policy-link">Chính sách vận chuyển</a></li><li><a href="#" class="policy-link">Chính sách bảo hành</a></li><li><a href="#" class="policy-link">Chính sách thanh toán</a></li><li><a href="#" class="policy-link">Chính sách bảo mật</a></li></ul></div>
+		</div>
+		<div class="wrap copyright">&copy; TNNT Ceramics - Đồ án Lập trình web và ứng dụng, Khoa CNTT, Đại học Sài Gòn</div>
+	</footer>
+	<script>
+		const modal = document.getElementById('address-modal');
+		const closeModal = () => { modal.classList.remove('show'); modal.setAttribute('aria-hidden', 'true'); };
+		document.getElementById('btn-open-modal').addEventListener('click', () => { modal.classList.add('show'); modal.setAttribute('aria-hidden', 'false'); });
+		document.querySelectorAll('.btn-edit').forEach((button) => button.addEventListener('click', () => { modal.classList.add('show'); modal.setAttribute('aria-hidden', 'false'); }));
+		document.getElementById('btn-save-address').addEventListener('click', closeModal);
+		document.getElementById('btn-close-modal').addEventListener('click', closeModal);
+		document.getElementById('btn-close-modal-cancel').addEventListener('click', closeModal);
+		modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
+	</script>
+</body>
+</html>

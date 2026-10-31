@@ -3,8 +3,7 @@ const LINKS = {
   list: 'danh-muc.html',
   detail: 'chi-tiet.html',
   cart: 'gio-hang.html',
-  login: 'auth.html',
-  register: 'auth.html'
+  login: 'login.html'
 };
 const SHOP_NAME = 'TNNT Ceramics';
 const LOGO = 'images/logo.jpg';

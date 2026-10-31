@@ -18,7 +18,7 @@
 					</ul>
 				</li>
 			</ul>
-			<div class="actions"><a class="btn ghost" href="gio-hang.html">Giỏ hàng</a><a class="btn" href="auth.html">Đăng nhập</a></div>
+			<div class="actions"><a class="btn ghost" href="gio-hang.html">Giỏ hàng</a><a class="btn" href="login.html">Đăng nhập</a></div>
 		</div>
 	</header>
 	<main class="profile-container">
@@ -29,28 +29,23 @@
 				<nav class="profile-menu" aria-label="Danh mục tài khoản">
 					<a href="profile.html">Thông tin cá nhân</a>
 					<a class="active" href="profile-edit.html" aria-current="page">Chỉnh sửa hồ sơ</a>
+					<a href="address.html">Sổ địa chỉ</a>
 					<a href="order.html">Lịch sử mua hàng</a>
-					<a class="profile-logout" href="auth.html">Đăng xuất</a>
+					<a class="profile-logout" href="login.html">Đăng xuất</a>
 				</nav>
 			</aside>
 			<div class="profile-content">
 				<section class="profile-panel profile-edit-panel">
 					<div class="profile-section-heading"><div><p class="profile-eyebrow">CẬP NHẬT HỒ SƠ</p><h2>Chỉnh sửa thông tin</h2></div></div>
-					<div class="profile-alert" id="save-alert" role="status" aria-live="polite" style="display:none">✓ Cập nhật thông tin thành công!</div>
 					<form class="profile-form" novalidate>
 						<div class="profile-form-grid">
-							<div class="profile-form-section-title profile-form-wide"><p class="profile-eyebrow">HỒ SƠ THÀNH VIÊN</p><h3>Thông tin cá nhân</h3></div>
-							<label class="profile-form-field profile-form-wide"><span>Họ và tên</span><input type="text" name="full-name" value="Nguyễn Văn An"></label>
-							<fieldset class="profile-form-field profile-gender-field"><legend>Giới tính</legend><label class="profile-radio"><input type="radio" name="gender" value="nam" checked><span>Nam</span></label><label class="profile-radio"><input type="radio" name="gender" value="nu"><span>Nữ</span></label><label class="profile-radio"><input type="radio" name="gender" value="khac"><span>Khác</span></label></fieldset>
-							<label class="profile-form-field"><span>Ngày sinh</span><input type="date" name="birth-date" value="1995-08-15"></label>
-							<label class="profile-form-field"><span>Số điện thoại</span><input type="tel" name="phone" value="0987654321"></label>
-							<label class="profile-form-field profile-form-wide"><span>Email</span><input type="email" name="email" value="nguyenvanan.ceramics@gmail.com"></label>
-							<div class="profile-form-section-title profile-form-wide"><p class="profile-eyebrow">GIAO HÀNG</p><h3>Địa chỉ nhận hàng</h3></div>
-							<label class="profile-form-field"><span>Tỉnh / Thành phố</span><select name="province"><option selected>TP. Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option><option>Hải Phòng</option><option>Cần Thơ</option></select></label>
-							<label class="profile-form-field"><span>Phường / Xã</span><select name="ward"><option selected>Phường Bát Tràng</option><option>Phường Hàng Bạc</option><option>Phường Đa Kao</option></select></label>
-							<label class="profile-form-field profile-form-wide"><span>Địa chỉ chi tiết</span><input type="text" name="address" placeholder="Số nhà, tên đường, ngõ..." value="Số 24, Ngõ Gốm"></label>
+							<label class="profile-form-field profile-form-wide"><span>Họ và tên</span><input type="text" name="full-name" placeholder="Nhập họ và tên"></label>
+							<fieldset class="profile-form-field profile-gender-field"><legend>Giới tính</legend><label class="profile-radio"><input type="radio" name="gender" value="nam"><span>Nam</span></label><label class="profile-radio"><input type="radio" name="gender" value="nu"><span>Nữ</span></label><label class="profile-radio"><input type="radio" name="gender" value="khac"><span>Khác</span></label></fieldset>
+							<label class="profile-form-field"><span>Ngày sinh</span><input type="date" name="birth-date" aria-label="Chọn ngày sinh"></label>
+							<label class="profile-form-field"><span>Số điện thoại</span><input type="tel" name="phone" placeholder="Nhập số điện thoại"></label>
+							<label class="profile-form-field profile-form-wide"><span>Email</span><input type="email" name="email" placeholder="Nhập email"></label>
 						</div>
-						<div class="profile-form-actions"><button class="profile-action-button is-primary" type="button" id="btn-save">Lưu</button><a class="profile-action-button is-secondary btn-save-exit" href="profile.html">Lưu và thoát</a><a class="profile-action-button is-quiet btn-cancel" href="profile.html">Hủy</a></div>
+						<div class="profile-form-actions"><button class="profile-action-button is-primary" type="button">Lưu</button><a class="profile-action-button is-secondary btn-save-exit" href="profile.html">Lưu và quay lại</a><a class="profile-action-button is-quiet btn-cancel" href="profile.html">Hủy</a></div>
 					</form>
 				</section>
 			</div>
@@ -65,10 +60,5 @@
 		</div>
 		<div class="wrap copyright">&copy; TNNT Ceramics - Đồ án Lập trình web và ứng dụng, Khoa CNTT, Đại học Sài Gòn</div>
 	</footer>
-	<script>
-		document.getElementById('btn-save').addEventListener('click', () => {
-			document.getElementById('save-alert').style.display = 'flex';
-		});
-	</script>
 </body>
 </html>
