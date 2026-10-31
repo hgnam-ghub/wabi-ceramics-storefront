@@ -3,11 +3,11 @@ const LINKS = {
   list: 'danh-muc.html',
   detail: 'chi-tiet.html',
   cart: 'gio-hang.html',
-  login: 'dang-nhap.html',
-  register: 'dang-ky.html'
+  login: 'auth.html',
+  register: 'auth.html'
 };
 const SHOP_NAME = 'TNNT Ceramics';
-const LOGO = 'images/logo.jpg'; 
+const LOGO = 'images/logo.jpg';
 const PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="#e3ece7"/>' +
   '<text x="200" y="205" font-family="Arial" font-size="20" text-anchor="middle" fill="#5d6678">Chưa có ảnh</text></svg>');
