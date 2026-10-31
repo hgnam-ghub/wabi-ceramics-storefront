@@ -71,7 +71,7 @@
 	</main>
 	<div class="address-modal-overlay" id="address-modal" aria-hidden="true">
 		<section class="address-modal" role="dialog" aria-modal="true" aria-labelledby="address-modal-title">
-			<div class="address-modal-heading"><h2 id="address-modal-title">Địa chỉ nhận hàng</h2><button type="button" class="address-modal-close" id="btn-close-modal" aria-label="Đóng">&times;</button></div>
+			<div class="address-modal-heading"><h2 id="address-modal-title">Địa chỉ nhận hàng</h2></div>
 			<form class="address-modal-form" novalidate>
 				<label class="profile-form-field"><span>Họ tên người nhận</span><input type="text" name="recipient" placeholder="Nhập họ tên người nhận"></label>
 				<label class="profile-form-field"><span>Số điện thoại</span><input type="tel" name="phone" placeholder="Nhập số điện thoại"></label>
@@ -100,7 +100,6 @@
 		document.getElementById('btn-open-modal').addEventListener('click', () => { modal.classList.add('show'); modal.setAttribute('aria-hidden', 'false'); });
 		document.querySelectorAll('.btn-edit').forEach((button) => button.addEventListener('click', () => { modal.classList.add('show'); modal.setAttribute('aria-hidden', 'false'); }));
 		document.getElementById('btn-save-address').addEventListener('click', closeModal);
-		document.getElementById('btn-close-modal').addEventListener('click', closeModal);
 		document.getElementById('btn-close-modal-cancel').addEventListener('click', closeModal);
 		modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
 	</script>
