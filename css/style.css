@@ -33,8 +33,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.25;margin:0}
 .btn.ghost{background:transparent;color:var(--indigo)}
 .btn.ghost:hover{background:var(--celadon-soft)}
 .actions{align-items:center}
-.avatar{width:42px;height:42px;border-radius:50%;background:var(--celadon-soft);color:var(--indigo);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
-.avatar:hover{border-color:var(--indigo)}
+.avatar,.cart{width:42px;height:42px;border-radius:50%;background:var(--celadon-soft);color:var(--indigo);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.avatar:hover,.cart:hover{border-color:var(--indigo)}
 
 /* Hero */
 .hero{background:var(--indigo);color:var(--white)}
@@ -117,11 +117,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.25;margin:0}
 .contact li{display:grid;grid-template-columns:78px 1fr;gap:8px}
 .contact span{color:var(--celadon)}
 .copyright{border-top:1px solid #34456a;padding-top:16px;padding-bottom:20px;font-size:.88rem;color:#9aa6bd}
-/* Thông báo nhỏ (không ghi nhận dữ liệu) */
+/* Thông báo nhỏ  */
 #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--white);padding:12px 22px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:50}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @media (prefers-reduced-motion:reduce){#toast{transition:none}}
-/* Trang phụ: Về chúng tôi, Chăm sóc gốm */
+/* Về chúng tôi, Chăm sóc gốm */
 .page-head{background:var(--indigo);color:var(--white);padding:44px 0}
 .page-head h1{font-size:2.2rem;margin-bottom:8px}
 .page-head p{margin:0;max-width:60ch;color:#dbe3f1}
@@ -157,7 +157,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.25;margin:0}
   .about .pic{margin:0 auto}
 }
 
-/* Chăm sóc gốm: bố cục phong phú hơn */
+/* Chăm sóc gốm */
 .feature{display:grid;grid-template-columns:1.1fr .9fr;background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:36px}
 .feature:hover{border-color:var(--indigo)}
 .feature .cover{background:var(--celadon-soft);min-height:320px}
@@ -196,7 +196,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.25;margin:0}
   .feature .cover{min-height:220px}
 }
 
-/* Chăm sóc gốm: trang tĩnh, bài viết hiển thị đầy đủ */
+/* Chăm sóc gốm */
 .story{display:grid;grid-template-columns:.9fr 1.1fr;gap:38px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line)}
 .story:last-child{border-bottom:0}
 .story:nth-child(even) .pic{order:2}
