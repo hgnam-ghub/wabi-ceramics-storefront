@@ -2,6 +2,18 @@ var PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="#e3ece7"/>' +
   '<text x="200" y="205" font-family="Arial" font-size="20" text-anchor="middle" fill="#5d6678">Chưa có ảnh</text></svg>');
 
+document.addEventListener('error', function (event) {
+  var image = event.target;
+  if (!(image instanceof HTMLImageElement)) return;
+
+  if (image.dataset.imageFallback === 'remove') {
+    image.remove();
+  } else if (image.dataset.imageFallback === 'placeholder') {
+    image.removeAttribute('data-image-fallback');
+    image.src = PLACEHOLDER;
+  }
+}, true);
+
 function toast(msg) {
   var t = document.getElementById('toast');
   if (!t) return;
@@ -17,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     a.addEventListener('click', function (e) { e.preventDefault(); toast('Nội dung chính sách đang được cập nhật'); });
   });
 
-  // Phân trang 
+  // Phân trang
   var pager = document.getElementById('pager');
   if (pager) pager.addEventListener('click', function (e) {
     if (e.target.closest('button')) toast('Đã chuyển trang');

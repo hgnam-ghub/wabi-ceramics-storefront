@@ -4,25 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Chỉnh sửa hồ sơ | TNNT Ceramics</title>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/profile.css">
 </head>
 <body class="profile-page">
     <header class="site-header"><div class="wrap">
-        <a class="logo" href="index.html"><img class="logo-img" src="images/logo.jpg" alt="" onerror="this.remove()"><span>TNNT Ceramics</span></a>
+        <a class="logo" href="index.html"><img class="logo-img" src="images/logo.jpg" alt=""><span>TNNT Ceramics</span></a>
         <ul class="nav">
 			<li><a href="index.html">Trang chủ</a></li>
             <li><a href="danh-muc.html">Danh mục sản phẩm</a><ul class="drop"><li><a href="danh-muc.html">Ấm chén</a></li><li><a href="danh-muc.html">Bát đĩa</a></li><li><a href="danh-muc.html">Đồ thờ, bát hương</a></li><li><a href="danh-muc.html">Lộc bình, phong thuỷ</a></li><li><a href="danh-muc.html">Lọ hoa</a></li><li><a href="danh-muc.html">Tượng gốm sứ</a></li><li><a href="danh-muc.html">Gốm sứ gia dụng</a></li></ul></li>
             <li><a href="ve-chung-toi.html">Về chúng tôi</a></li>
             <li><a href="cham-soc-gom.html">Chăm sóc gốm</a></li>
         </ul>
-        <div class="actions"><a class="btn ghost" href="gio-hang.html">Giỏ hàng</a><a class="avatar" href="profile.html" aria-label="Tài khoản người dùng" title="Tài khoản người dùng"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a></div>
+        <div class="actions"><a class="cart" href="cart.html" aria-label="Giỏ hàng" title="Giỏ hàng"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M3 4h2.5l2.2 11h10.6l2-8H6.4"/></svg></a><a class="avatar" href="profile.html" aria-label="Tài khoản người dùng" title="Tài khoản người dùng"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a></div>
         </div>
     </header>
 	<main class="profile-container">
-		<div class="profile-page-heading"><p class="profile-eyebrow">KHÔNG GIAN THÀNH VIÊN</p><h1>Tài khoản của tôi</h1></div>
+		<div class="profile-page-heading"><h1>Tài khoản của tôi</h1></div>
 		<div class="profile-layout">
 			<aside class="profile-sidebar" aria-label="Tài khoản thành viên">
-				<section class="profile-summary"><div class="profile-avatar" aria-hidden="true">NA</div><h2>Nguyễn Văn An</h2><span class="profile-member-badge">Hội viên Gốm Mộc</span></section>
+				<section class="profile-summary"><div class="profile-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h2>Nguyễn Văn An</h2><span class="profile-member-badge">Hội viên Gốm Mộc</span></section>
 				<nav class="profile-menu" aria-label="Danh mục tài khoản">
 					<a href="profile.html">Thông tin cá nhân</a>
 					<a class="active" href="profile-edit.html" aria-current="page">Chỉnh sửa hồ sơ</a>
@@ -33,12 +34,12 @@
 			</aside>
 			<div class="profile-content">
 				<section class="profile-panel profile-edit-panel">
-					<div class="profile-section-heading"><div><p class="profile-eyebrow">CẬP NHẬT HỒ SƠ</p><h2>Chỉnh sửa thông tin</h2></div></div>
+					<div class="profile-section-heading"><div><h2>Chỉnh sửa thông tin</h2></div></div>
 					<form class="profile-form" novalidate>
 						<div class="profile-form-grid">
-							<label class="profile-form-field profile-form-wide"><span>Họ và tên</span><input type="text" name="full-name" placeholder="Nhập họ và tên"></label>
-							<fieldset class="profile-form-field profile-gender-field"><legend>Giới tính</legend><label class="profile-radio"><input type="radio" name="gender" value="nam"><span>Nam</span></label><label class="profile-radio"><input type="radio" name="gender" value="nu"><span>Nữ</span></label><label class="profile-radio"><input type="radio" name="gender" value="khac"><span>Khác</span></label></fieldset>
-							<label class="profile-form-field"><span>Ngày sinh</span><input type="date" name="birth-date" aria-label="Chọn ngày sinh"></label>
+							<label class="profile-form-field profile-form-wide"><span>Họ và tên</span><input type="text" name="full-name" placeholder="Nhập họ và tên" value="Nguyễn Văn An"></label>
+							<fieldset class="profile-form-field profile-gender-field"><legend>Giới tính</legend><label class="profile-radio"><input type="radio" name="gender" value="nam" checked><span>Nam</span></label><label class="profile-radio"><input type="radio" name="gender" value="nu"><span>Nữ</span></label><label class="profile-radio"><input type="radio" name="gender" value="khac"><span>Khác</span></label></fieldset>
+							<label class="profile-form-field"><span>Ngày sinh</span><input type="date" name="birth-date" aria-label="Chọn ngày sinh" value="1995-08-15"></label>
 							<label class="profile-form-field"><span>Số điện thoại</span><input type="tel" name="phone" placeholder="Nhập số điện thoại"></label>
 							<label class="profile-form-field profile-form-wide"><span>Email</span><input type="email" name="email" placeholder="Nhập email"></label>
 						</div>
