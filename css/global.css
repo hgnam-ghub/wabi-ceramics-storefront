@@ -58,7 +58,7 @@ h1,h2,h3{line-height:1.25;margin:0}
 .site-header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 .site-header .wrap{display:flex;align-items:center;gap:28px;height:68px}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--indigo);white-space:nowrap}
-.logo-img{height:44px;width:auto}
+.logo-img{height:47px;width:auto}
 .nav{display:flex;gap:6px;flex:1}
 .nav>li{list-style:none;position:relative}
 .nav,.nav ul{margin:0;padding:0}
@@ -110,7 +110,7 @@ h1,h2,h3{line-height:1.25;margin:0}
 .site-footer a:hover{color:var(--white);text-decoration:underline}
 .footer-brand{display:flex;align-items:center;gap:12px}
 .footer-brand b{font-family:var(--serif);font-size:1.4rem;color:var(--white)}
-.footer-logo{height:52px;width:auto;background:var(--white);border-radius:8px;padding:5px}
+.footer-logo{height:60px;width:auto;background:var(--white);border-radius:8px;padding:5px}
 .contact li{display:grid;grid-template-columns:78px 1fr;gap:8px}
 .contact span{color:var(--celadon)}
 .copyright{border-top:1px solid #34456a;padding-top:16px;padding-bottom:20px;font-size:.88rem;color:#9aa6bd}

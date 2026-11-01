@@ -148,7 +148,7 @@
 .profile-form-section-title h3{margin:0 0 2px;color:var(--ink);font-size:1.08rem}
 .profile-form-field input,.profile-form-field textarea,.profile-form-field select{width:100%;min-height:50px;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--white);color:var(--ink);font:inherit;font-size:1rem}
 .profile-form-field textarea{min-height:88px;resize:vertical}
-.profile-form-field input:focus,.profile-form-field textarea:focus,.profile-form-field select:focus{border-color:var(--indigo);outline:2px solid color-mix(in srgb,var(--indigo) 14%,transparent);outline-offset:1px}
+.profile-form-field input:not([type="radio"]):focus,.profile-form-field textarea:focus,.profile-form-field select:focus{border-color:var(--indigo);outline:2px solid color-mix(in srgb,var(--indigo) 14%,transparent);outline-offset:1px}
 .profile-form-wide{grid-column:1/-1}
 .profile-gender-field{display:flex;flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap}
 .profile-gender-field legend{width:100%;margin-bottom:0}
