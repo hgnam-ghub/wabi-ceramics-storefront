@@ -419,12 +419,51 @@ select:focus-visible {
 }
 
 /* Chiều rộng cột (cột Họ và tên, Email tự co giãn) */
-.data-table .col-stt    { width: 8%; }
-.data-table .col-code   { width: 12%; }
-.data-table .col-name   { width: 26%; } /* Định nghĩa thêm cho cột Họ và tên */
-.data-table .col-email  { width: 26%; } /* Định nghĩa thêm cho cột Email */
-.data-table .col-phone  { width: 14%; }
-.data-table .col-action { width: 14%; }
+.user-list-table {
+  table-layout: fixed;
+}
+
+.user-list-table .col-stt    { width: 5%; }
+.user-list-table .col-code   { width: 10%; }
+.user-list-table .col-name   { width: 25%; }
+.user-list-table .col-email  { width: 25%; }
+.user-list-table .col-phone  { width: 10%; }
+.user-list-table .col-status { width: 13%; }
+.user-list-table .col-action { width: 12%; }
+
+.user-list-table .col-name,
+.user-list-table .col-email,
+.user-list-table .col-phone,
+.user-list-table .col-status {
+  white-space: nowrap;
+}
+
+.user-list-table .col-name,
+.user-list-table .col-email {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-list-table td:nth-child(4),
+.user-list-table td:nth-child(5),
+.user-list-table td:nth-child(6) {
+  white-space: nowrap;
+}
+
+.user-list-table td:nth-child(4) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-list-table .user-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-list-table .user-status {
+  justify-content: center;
+}
 .code-badge {
   white-space: nowrap;
   padding: 3px 8px;
@@ -447,6 +486,36 @@ select:focus-visible {
 .user-name {
   font-weight: 600;
   color: var(--text-main);
+}
+
+.user-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.status-active {
+  background-color: #16a34a;
+}
+
+.status-locked {
+  background-color: #dc2626;
+}
+
+.data-table tbody tr.is-locked .user-name {
+  color: inherit;
 }
 
 /* Nhãn vai trò: .role-badge là kiểu chung, mỗi vai trò thêm một class màu.
@@ -600,7 +669,7 @@ select:focus-visible {
 
 /* ==========================================================
    6. HỘP THOẠI (MODAL) VÀ THÔNG BÁO (TOAST)
-   Mở bằng :target (địa chỉ có #id), không cần JavaScript
+   Mở bằng radio ẩn + label (đường dẫn trang không đổi, không giật), không cần JavaScript
    ========================================================== */
 .modal-backdrop {
   position: fixed;
@@ -614,7 +683,22 @@ select:focus-visible {
   backdrop-filter: blur(2px);
 }
 
-.modal-backdrop:target {
+#r-modal-add-user:checked ~ #modal-add-user,
+#r-modal-edit-1:checked ~ #modal-edit-1,
+#r-modal-edit-2:checked ~ #modal-edit-2,
+#r-modal-edit-3:checked ~ #modal-edit-3,
+#r-modal-edit-4:checked ~ #modal-edit-4,
+#r-modal-edit-5:checked ~ #modal-edit-5,
+#r-modal-edit-6:checked ~ #modal-edit-6,
+#r-modal-edit-7:checked ~ #modal-edit-7,
+#r-modal-edit-8:checked ~ #modal-edit-8,
+#r-modal-edit-9:checked ~ #modal-edit-9,
+#r-modal-edit-10:checked ~ #modal-edit-10,
+#r-modal-address:checked ~ #modal-address,
+#r-modal-address-add:checked ~ #modal-address-add,
+#r-modal-address-edit:checked ~ #modal-address-edit,
+#r-modal-address-delete-confirm:checked ~ #modal-address-delete-confirm,
+#r-modal-delete-confirm:checked ~ #modal-delete-confirm {
   display: flex;
 }
 
@@ -765,7 +849,15 @@ select:focus-visible {
   font-size: 13.5px;
 }
 
-.toast-box:target {
+#r-toast-add-success:checked ~ #toast-add-success,
+#r-toast-edit-success:checked ~ #toast-edit-success,
+#r-toast-lock-success:checked ~ #toast-lock-success,
+#r-toast-unlock-success:checked ~ #toast-unlock-success,
+#r-toast-delete-success:checked ~ #toast-delete-success,
+#r-toast-address-add-success:checked ~ #toast-address-add-success,
+#r-toast-address-edit-success:checked ~ #toast-address-edit-success,
+#r-toast-address-default-success:checked ~ #toast-address-default-success,
+#r-toast-address-delete-success:checked ~ #toast-address-delete-success {
   display: flex;
   animation: toastIn 0.25s ease-out;
 }
@@ -821,8 +913,624 @@ select:focus-visible {
 /* người dùng đã tắt hiệu ứng chuyển động trong hệ điều hành thì tắt luôn */
 @media (prefers-reduced-motion: reduce) {
   .modal-box,
-  .toast-box:target { animation: none; }
+  .toast-box { animation: none !important; }
   .btn,
   .action-btn { transition: none; }
   .btn-primary:hover { transform: none; }
+}
+
+
+/* ==========================================================
+   8. BỔ SUNG
+   ========================================================== */
+/* ô tick "Hiển thị tài khoản bị khóa": chỉ để trưng giao diện, chưa xử lý gì */
+.filter-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-main);
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-checkbox-label input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+
+/* ==========================================================
+   9. SỔ ĐỊA CHỈ (một danh sách dùng chung, chỉ hiện địa chỉ)
+   ========================================================== */
+.action-btn.btn-address:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: var(--primary-soft);
+}
+
+.modal-box.modal-lg { max-width: 680px; }
+
+/* danh sách địa chỉ: cuộn trong hộp khi có nhiều địa chỉ */
+.modal-body.addr-list {
+  max-height: 62vh;
+  overflow-y: auto;
+  background-color: var(--bg-page);
+}
+
+.addr-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+/* địa chỉ mặc định: viền và vạch đất nung bên trái */
+.addr-card.is-default {
+  border-color: var(--accent);
+  box-shadow: inset 4px 0 0 var(--accent);
+}
+
+.addr-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.addr-text {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.addr-badge {
+  flex-shrink: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background-color: var(--accent-soft);
+}
+
+.addr-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.btn.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.btn-outline.btn-outline-danger { color: var(--danger-dark); }
+
+.btn-outline.btn-outline-danger:hover {
+  background-color: var(--danger-bg);
+  border-color: var(--danger);
+}
+
+/* hai ô cạnh nhau: Tỉnh / Thành phố và Phường / Xã */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+select.form-control {
+  padding-right: 32px;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%235b6b82' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") no-repeat right 12px center;
+  appearance: none;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+
+/* ==========================================================
+   10. CÔNG TẮC ẨN (radio) THAY CHO LIÊN KẾT #
+   Bấm label = chọn radio tương ứng = hiện hộp thoại / thông báo.
+   Radio nằm cố định ngoài màn hình nên trang không nhảy, URL không đổi.
+   ========================================================== */
+.ui-state {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+label.btn,
+label.action-btn,
+label.modal-close-icon,
+label.toast-close {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Đồng bộ khung danh sách với trang quản lý sản phẩm. */
+body {
+  background-color: #ffffff;
+}
+
+.admin-col,
+.admin-main {
+  background-color: #ffffff;
+}
+
+.topbar {
+  box-shadow: none;
+}
+
+.filter-bar {
+  padding: 16px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.search-input,
+.filter-select {
+  background-color: #ffffff;
+}
+
+.table-container {
+  border: 0;
+  border-top: 1px solid #f1f3f5;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.data-table {
+  min-width: 1040px;
+}
+
+.data-table th {
+  padding: 14px 16px;
+  background-color: #ffffff;
+  border-bottom-color: #dbe3eb;
+}
+
+.data-table td {
+  padding: 13px 16px;
+  border-bottom-color: #e5ebf1;
+}
+
+.data-table tbody tr:nth-child(even) td {
+  background-color: rgba(248, 250, 252, 0.5);
+}
+
+.data-table tbody tr:hover td {
+  background-color: #eef2f6;
+}
+
+.pagination-bar {
+  padding: 16px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.standalone-form-card {
+  overflow: hidden;
+}
+
+.standalone-form-card .modal-body {
+  background-color: #ffffff;
+}
+
+.standalone-form-card .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .standalone-form-card .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Popup dùng cùng hệ kích thước, khoảng cách và màu với product.css. */
+.modal-backdrop {
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: none;
+}
+
+.modal-box {
+  width: min(100%, 980px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+  animation: none;
+}
+
+.modal-box.modal-sm {
+  max-width: 440px;
+}
+
+.modal-box.modal-lg {
+  max-width: 680px;
+}
+
+.modal-header {
+  flex-shrink: 0;
+  padding: 18px 28px;
+  background: var(--bg-head);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.modal-close-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 25px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.modal-close-icon:hover {
+  color: var(--text-main);
+  background-color: transparent;
+}
+
+.modal-form {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 26px 28px;
+}
+
+.modal-body.has-icon {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.modal-footer {
+  flex-shrink: 0;
+  padding: 16px 28px;
+  background: rgba(248, 250, 252, 0.6);
+  border-top: 1px solid #f1f5f9;
+}
+
+.form-control {
+  width: 100%;
+  height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-control:not(textarea) {
+  height: 42px;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(23, 60, 86, 0.12);
+}
+
+.toast-box {
+  top: 24px;
+  right: 24px;
+  max-width: 430px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+}
+
+@media (max-width: 560px) {
+  .modal-header {
+    padding: 16px 20px;
+  }
+
+  .modal-body {
+    padding: 22px 20px;
+  }
+
+  .modal-footer {
+    padding: 14px 20px;
+  }
+}
+
+/* Trang chỉnh sửa người dùng: các card dùng cùng nhịp điệu với product.html. */
+.user-edit-page {
+  background: #ffffff;
+}
+
+.edit-back-link {
+  margin-bottom: 14px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--primary);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.user-edit-page .page-header {
+  margin-bottom: 20px;
+}
+
+.edit-page-header {
+  align-items: center;
+}
+
+.edit-page-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-card {
+  overflow: hidden;
+  background: #ffffff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.edit-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.edit-card-header h2 {
+  color: var(--text-main);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.edit-card-header p {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.edit-card-body {
+  padding: 24px;
+}
+
+.edit-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.edit-form-grid .form-control[readonly] {
+  background: #f1f5f9;
+  color: var(--text-muted);
+}
+
+.address-card-section {
+  margin-top: 24px;
+}
+
+.address-card-header {
+  background: #ffffff;
+}
+
+.address-card-section .edit-card-header {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.address-table-wrap {
+  overflow-x: auto;
+}
+
+.address-table {
+  min-width: 700px;
+}
+
+.address-table th,
+.address-table td {
+  text-align: left;
+}
+
+.address-table th {
+  background: #f9fafb;
+}
+
+.address-table th:first-child,
+.address-table td:first-child,
+.address-table .address-status,
+.address-table .col-action {
+  text-align: center;
+}
+
+.address-index {
+  width: 70px;
+}
+
+.address-detail {
+  width: 58%;
+}
+
+.address-status {
+  width: 160px;
+}
+
+.address-text-cell {
+  color: var(--text-main);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.address-default-button {
+  padding: 0;
+  border: 0;
+  color: var(--primary);
+  background: transparent;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.address-default-button:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.address-table .actions-group {
+  gap: 7px;
+}
+
+.address-table .action-btn {
+  width: 32px;
+  height: 32px;
+}
+
+.user-code-badge {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d9e2ec;
+  border-radius: 6px;
+  color: #1e3a5f;
+  background: #f0f4f8;
+  font-family: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .edit-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .edit-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-card-body {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+/* Bố cục form giống popup sản phẩm: trường đầu tiên trải full chiều rộng,
+   các trường còn lại chia hai cột. */
+#modal-add-user .modal-box,
+#modal-edit-1 .modal-box,
+#modal-edit-2 .modal-box,
+#modal-edit-3 .modal-box,
+#modal-edit-4 .modal-box,
+#modal-edit-5 .modal-box,
+#modal-edit-6 .modal-box,
+#modal-edit-7 .modal-box,
+#modal-edit-8 .modal-box,
+#modal-edit-9 .modal-box,
+#modal-edit-10 .modal-box {
+  max-width: 680px;
+}
+
+#modal-add-user .modal-body,
+#modal-edit-1 .modal-body,
+#modal-edit-2 .modal-body,
+#modal-edit-3 .modal-body,
+#modal-edit-4 .modal-body,
+#modal-edit-5 .modal-body,
+#modal-edit-6 .modal-body,
+#modal-edit-7 .modal-body,
+#modal-edit-8 .modal-body,
+#modal-edit-9 .modal-body,
+#modal-edit-10 .modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 14px;
+}
+
+#modal-add-user .modal-body .form-group:first-child,
+#modal-edit-1 .modal-body .form-group:first-child,
+#modal-edit-2 .modal-body .form-group:first-child,
+#modal-edit-3 .modal-body .form-group:first-child,
+#modal-edit-4 .modal-body .form-group:first-child,
+#modal-edit-5 .modal-body .form-group:first-child,
+#modal-edit-6 .modal-body .form-group:first-child,
+#modal-edit-7 .modal-body .form-group:first-child,
+#modal-edit-8 .modal-body .form-group:first-child,
+#modal-edit-9 .modal-body .form-group:first-child,
+#modal-edit-10 .modal-body .form-group:first-child {
+  grid-column: 1 / -1;
+}
+
+#modal-address .modal-body.addr-list {
+  background: #ffffff;
+}
+
+@media (max-width: 560px) {
+  #modal-add-user .modal-body,
+  #modal-edit-1 .modal-body,
+  #modal-edit-2 .modal-body,
+  #modal-edit-3 .modal-body,
+  #modal-edit-4 .modal-body,
+  #modal-edit-5 .modal-body,
+  #modal-edit-6 .modal-body,
+  #modal-edit-7 .modal-body,
+  #modal-edit-8 .modal-body,
+  #modal-edit-9 .modal-body,
+  #modal-edit-10 .modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  #modal-add-user .modal-body .form-group:first-child,
+  #modal-edit-1 .modal-body .form-group:first-child,
+  #modal-edit-2 .modal-body .form-group:first-child,
+  #modal-edit-3 .modal-body .form-group:first-child,
+  #modal-edit-4 .modal-body .form-group:first-child,
+  #modal-edit-5 .modal-body .form-group:first-child,
+  #modal-edit-6 .modal-body .form-group:first-child,
+  #modal-edit-7 .modal-body .form-group:first-child,
+  #modal-edit-8 .modal-body .form-group:first-child,
+  #modal-edit-9 .modal-body .form-group:first-child,
+  #modal-edit-10 .modal-body .form-group:first-child {
+    grid-column: auto;
+  }
 }

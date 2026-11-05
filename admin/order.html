@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý đơn hàng - TNNT Ceramics</title>
+  <link rel="icon" href="sidebar/img/logo.png">
+  <link rel="stylesheet" href="css/order.css">
+</head>
+<body>
+  <div class="sidebar-slot"><iframe src="sidebar/sidebar.html" title="Menu quản trị"></iframe></div>
+  <div class="admin-col">
+    <header class="topbar"><nav class="breadcrumb"><span>Hệ thống quản trị</span><span>/</span><strong>Quản lý đơn hàng</strong></nav><div class="profile"><div class="avatar">AD</div><div class="profile-info"><div class="profile-name">Quản lý</div><div class="profile-mail">hgnam@ceramics.vn</div></div></div></header>
+    <main class="main">
+      <div class="heading"><div><h1>Quản lý đơn hàng</h1></div><a class="btn btn-outline" href="order-statistics.html">Xem thống kê khách hàng</a></div>
+      <form class="filter-bar">
+        <div class="field"><label for="order-search">Mã đơn hàng / khách hàng</label><input id="order-search" placeholder="Nhập mã hoặc tên khách hàng"></div>
+        <div class="field"><label for="order-status">Tình trạng đơn hàng</label><select id="order-status"><option>Tất cả tình trạng</option><option>Chưa xác nhận</option><option>Đã xác nhận</option><option>Đã giao thành công</option><option>Đã huỷ đơn</option></select></div>
+        <div class="field"><label for="from-date">Từ ngày đặt hàng</label><input id="from-date" type="date"></div>
+        <div class="field"><label for="to-date">Đến ngày đặt hàng</label><input id="to-date" type="date"></div>
+        <div class="field"><label for="delivery-address">Địa điểm giao hàng</label><input id="delivery-address" placeholder="Nhập địa chỉ giao hàng"></div>
+        <div class="field"><label for="ward">Phường</label><select id="ward"><option>Tất cả phường</option><option>Phường 1</option><option>Phường 2</option><option>Phường 10</option></select></div>
+        <div class="field"><label for="district">Quận</label><select id="district"><option>Tất cả quận</option><option>Quận 1</option><option>Quận 5</option><option>Quận Bình Thạnh</option><option>Thủ Đức</option></select></div>
+        <div class="field"><label for="city">Thành phố</label><select id="city"><option>Tất cả thành phố</option><option>TP. Hồ Chí Minh</option><option>Hà Nội</option><option>Đà Nẵng</option></select></div>
+        <button class="btn btn-primary" type="button">Lọc đơn hàng</button>
+      </form>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Ngày đặt</th><th>Địa điểm giao</th><th>Tổng tiền</th><th>Cập nhật tình trạng</th><th>Chi tiết</th></tr></thead>
+          <tbody>
+            <tr><td><a class="order-code" href="order-detail.html">#DH-2025-001</a></td><td class="customer">Nguyễn Trọng Nghĩa</td><td>05/11/2026</td><td>Quận 5, TP.HCM</td><td class="money">2.450.000đ</td><td><select class="status-select"><option>Chưa xác nhận</option><option>Đã xác nhận</option><option>Đã giao thành công</option><option>Đã huỷ đơn</option></select></td><td><a class="detail-link" href="order-detail.html">Xem</a></td></tr>
+            <tr><td><a class="order-code" href="order-detail.html">#DH-2025-002</a></td><td class="customer">Trần Thu Hoài</td><td>04/11/2026</td><td>Quận Bình Thạnh, TP.HCM</td><td class="money">1.280.000đ</td><td><select class="status-select"><option>Chưa xác nhận</option><option>Đã xác nhận</option><option>Đã giao thành công</option><option>Đã huỷ đơn</option></select></td><td><a class="detail-link" href="order-detail.html">Xem</a></td></tr>
+            <tr><td><a class="order-code" href="order-detail.html">#DH-2025-003</a></td><td class="customer">Mai Văn Thanh</td><td>03/11/2026</td><td>Thủ Đức, TP.HCM</td><td class="money">3.890.000đ</td><td><select class="status-select"><option>Chưa xác nhận</option><option>Đã xác nhận</option><option>Đã giao thành công</option><option>Đã huỷ đơn</option></select></td><td><a class="detail-link" href="order-detail.html">Xem</a></td></tr>
+            <tr><td><a class="order-code" href="order-detail.html">#DH-2025-004</a></td><td class="customer">Lê Đại</td><td>02/11/2026</td><td>Quận 1, TP.HCM</td><td class="money">760.000đ</td><td><select class="status-select"><option>Chưa xác nhận</option><option>Đã xác nhận</option><option>Đã giao thành công</option><option>Đã huỷ đơn</option></select></td><td><a class="detail-link" href="order-detail.html">Xem</a></td></tr>
+            <tr><td><a class="order-code" href="order-detail.html">#DH-2025-005</a></td><td class="customer">Đỗ Mạnh Quân</td><td>01/11/2026</td><td>Quận Hải Châu, Đà Nẵng</td><td class="money">5.120.000đ</td><td><select class="status-select"><option>Chưa xác nhận</option><option>Đã xác nhận</option><option>Đã giao thành công</option><option>Đã huỷ đơn</option></select></td><td><a class="detail-link" href="order-detail.html">Xem</a></td></tr>
+            <tr><td><a class="order-code" href="order-detail.html">#DH-2025-006</a></td><td class="customer">Phạm Minh Anh</td><td>31/10/2026</td><td>Quận Cầu Giấy, Hà Nội</td><td class="money">1.950.000đ</td><td><select class="status-select"><option>Chưa xác nhận</option><option>Đã xác nhận</option><option>Đã giao thành công</option><option>Đã huỷ đơn</option></select></td><td><a class="detail-link" href="order-detail.html">Xem</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pager"><span>Hiển thị 1-6 trong tổng số 35 đơn hàng</span><nav class="pages"><a class="page active" href="#">1</a><a class="page" href="#">2</a><a class="page" href="#">3</a><span>...</span><a class="page" href="#">6</a></nav></div>
+    </main>
+  </div>
+</body>
+</html>

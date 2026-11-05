@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý sản phẩm - TNNT Ceramics</title>
+  <link rel="icon" href="sidebar/img/logo.png">
+  <link rel="stylesheet" href="css/product.css">
+</head>
+<body>
+  <div class="sidebar-slot">
+    <iframe src="sidebar/sidebar.html" title="Menu quản trị"></iframe>
+  </div>
+
+  <div class="admin-col">
+    <header class="topbar">
+      <nav class="breadcrumb-nav" aria-label="Đường dẫn trang">
+        <span>Hệ thống quản trị</span>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-current">Quản lý sản phẩm</span>
+      </nav>
+      <div class="profile">
+        <div class="profile-avatar" aria-hidden="true">AD</div>
+        <div class="profile-info">
+          <div class="profile-name">Quản lý</div>
+          <div class="profile-mail">hgnam@ceramics.vn</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="page-header">
+        <div class="page-title">
+          <h1>Danh sách sản phẩm</h1>
+        </div>
+        <button type="button" class="btn btn-primary" id="add-product-button">
+          <span aria-hidden="true">+</span>
+          <span>Thêm sản phẩm</span>
+        </button>
+      </div>
+
+      <form class="filter-bar" id="filter-form">
+        <div class="search-input-box">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" class="search-input" placeholder="Tìm theo tên sản phẩm, mã sản phẩm..." aria-label="Tìm sản phẩm">
+        </div>
+        <select class="filter-select" aria-label="Lọc theo phân loại">
+          <option>Tất cả phân loại</option>
+          <option>Ấm chén</option>
+          <option>Bát đĩa</option>
+          <option>Đồ thờ, bát hương</option>
+          <option>Lộc bình, phong thuỷ</option>
+          <option>Lọ hoa</option>
+          <option>Tượng gốm sứ</option>
+          <option>Gốm sứ gia dụng</option>
+        </select>
+        <select class="filter-select" aria-label="Lọc theo trạng thái">
+          <option>Tất cả trạng thái</option>
+          <option>Đang bán</option>
+          <option>Ẩn</option>
+        </select>
+        <button type="submit" class="btn btn-outline">Lọc</button>
+      </form>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="col-stt">STT</th>
+              <th class="col-image">Hình ảnh</th>
+              <th class="col-code">Mã SP</th>
+              <th>Tên sản phẩm</th>
+              <th>Phân loại</th>
+              <th>Giá bán</th>
+              <th>Đã bán</th>
+              <th>Trạng thái</th>
+              <th class="col-action">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td><img class="product-thumb" src="images/1.webp" alt="Ấm trà tử sa nguyên khoáng dáng Lê Hồ"></td>
+              <td><span class="code-badge">SP-001</span></td>
+              <td class="product-name">Ấm trà tử sa nguyên khoáng dáng Lê Hồ</td>
+              <td><span class="category-badge">Ấm chén</span></td>
+              <td class="price-cell">120.000.000đ</td>
+              <td>18</td>
+              <td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group">
+                <button class="action-btn edit-product" type="button" title="Sửa" data-name="Ấm trà tử sa nguyên khoáng dáng Lê Hồ" data-code="SP-001" data-category="Ấm chén" data-price="120000000" data-stock="12" data-image="images/1.webp" data-description="Ấm trà đất nung tử sa Hương Vân Cát.">✎</button>
+                <button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button>
+                <button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="18"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td><img class="product-thumb" src="images/2.webp" alt="Ấm tử sa Lục Phương thanh khôi nê vẽ Rồng"></td>
+              <td><span class="code-badge">SP-002</span></td>
+              <td class="product-name">Ấm tử sa Lục Phương thanh khôi nê vẽ Rồng</td>
+              <td><span class="category-badge">Ấm chén</span></td>
+              <td class="price-cell">95.000.000đ</td>
+              <td>7</td>
+              <td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group">
+                <button class="action-btn edit-product" type="button" title="Sửa" data-name="Ấm tử sa Lục Phương thanh khôi nê vẽ Rồng" data-code="SP-002" data-category="Ấm chén" data-price="95000000" data-stock="8" data-image="images/2.webp" data-description="Ấm trà gốm tử sa bát giác vẽ rồng.">✎</button>
+                <button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button>
+                <button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="7"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td><img class="product-thumb" src="images/3.jpg" alt="Bộ ấm chén dáng Nhật bọc đồng"></td>
+              <td><span class="code-badge">SP-003</span></td>
+              <td class="product-name">Bộ ấm chén dáng Nhật - bọc đồng</td>
+              <td><span class="category-badge">Ấm chén</span></td>
+              <td class="price-cell">850.000đ</td>
+              <td>0</td>
+              <td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group">
+                <button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ ấm chén dáng Nhật - bọc đồng" data-code="SP-003" data-category="Ấm chén" data-price="850000" data-stock="20" data-image="images/3.jpg" data-description="Bộ ấm chén trà gốm sứ Bát Tràng men rạn.">✎</button>
+                <button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button>
+                <button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="0"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td><img class="product-thumb" src="images/6.jpg" alt="Bộ bát đĩa Bát Tràng bèo xanh ngọc"></td>
+              <td><span class="code-badge">SP-004</span></td>
+              <td class="product-name">Bộ bát đĩa Bát Tràng bèo xanh ngọc</td>
+              <td><span class="category-badge">Bát đĩa</span></td>
+              <td class="price-cell">4.150.000đ</td>
+              <td>12</td>
+              <td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group">
+                <button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ bát đĩa Bát Tràng bèo xanh ngọc" data-code="SP-004" data-category="Bát đĩa" data-price="4150000" data-stock="15" data-image="images/6.jpg" data-description="Bộ bát đĩa gốm sứ cao cấp màu xanh rêu.">✎</button>
+                <button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button>
+                <button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="12"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td><img class="product-thumb" src="images/7.jpg" alt="Bộ bát đĩa hoa mặt trời vẽ sen chuồn"></td>
+              <td><span class="code-badge">SP-005</span></td>
+              <td class="product-name">Bộ bát đĩa hoa mặt trời vẽ sen chuồn</td>
+              <td><span class="category-badge">Bát đĩa</span></td>
+              <td class="price-cell">2.340.000đ</td>
+              <td>0</td>
+              <td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group">
+                <button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ bát đĩa hoa mặt trời vẽ sen chuồn" data-code="SP-005" data-category="Bát đĩa" data-price="2340000" data-stock="9" data-image="images/7.jpg" data-description="Bộ bát đĩa gốm sứ họa tiết hoa sen.">✎</button>
+                <button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button>
+                <button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="0"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>06</td>
+              <td><img class="product-thumb" src="images/11.jpg" alt="Bộ đồ thờ Bát Tràng men rạn"></td>
+              <td><span class="code-badge">SP-006</span></td>
+              <td class="product-name">Bộ đồ thờ Bát Tràng men rạn nổi rồng</td>
+              <td><span class="category-badge">Đồ thờ</span></td>
+              <td class="price-cell">1.300.000đ</td>
+              <td>3</td>
+              <td><span class="status-badge status-hidden">Ẩn</span></td>
+              <td><div class="actions-group">
+                <button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ đồ thờ Bát Tràng men rạn nổi rồng" data-code="SP-006" data-category="Đồ thờ, bát hương" data-price="1300000" data-stock="0" data-image="images/11.jpg" data-description="Bộ đồ thờ gốm sứ men rạn giả cổ.">✎</button>
+                <button class="action-btn btn-lock" type="button" title="Hiện sản phẩm" aria-label="Hiện sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button>
+                <button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="3"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>07</td>
+              <td><img class="product-thumb" src="images/4.jpg" alt="Bộ ấm chén men rạn cổ Trúc lâm thất hiền"></td>
+              <td><span class="code-badge">SP-007</span></td>
+              <td class="product-name">Bộ ấm chén men rạn cổ Trúc lâm thất hiền</td>
+              <td><span class="category-badge">Ấm chén</span></td>
+              <td class="price-cell">620.000đ</td><td>9</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ ấm chén men rạn cổ Trúc lâm thất hiền" data-code="SP-007" data-category="Ấm chén" data-price="620000" data-stock="18" data-image="images/4.jpg" data-description="Bộ ấm chén men rạn giả cổ.">✎</button><button class="action-btn btn-lock" type="button" title="Hiện sản phẩm" aria-label="Hiện sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="9"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>08</td>
+              <td><img class="product-thumb" src="images/5.jpg" alt="Bộ ấm chén Bát Tràng men hoả biến"></td>
+              <td><span class="code-badge">SP-008</span></td>
+              <td class="product-name">Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh</td>
+              <td><span class="category-badge">Ấm chén</span></td>
+              <td class="price-cell">950.000đ</td><td>14</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh" data-code="SP-008" data-category="Ấm chén" data-price="950000" data-stock="22" data-image="images/5.jpg" data-description="Bộ ấm chén men hoả biến sắc xanh lam.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="14"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>09</td>
+              <td><img class="product-thumb" src="images/8.jpg" alt="Bộ bát đĩa Bát Tràng 11 món cao cấp"></td>
+              <td><span class="code-badge">SP-009</span></td>
+              <td class="product-name">Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng</td>
+              <td><span class="category-badge">Bát đĩa</span></td>
+              <td class="price-cell">590.000đ</td><td>21</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng" data-code="SP-009" data-category="Bát đĩa" data-price="590000" data-stock="27" data-image="images/8.jpg" data-description="Bộ bát đĩa gốm sứ họa tiết hoa đào.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="21"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><img class="product-thumb" src="images/9.jpg" alt="Bộ bát đĩa quà tặng Bát Tràng"></td>
+              <td><span class="code-badge">SP-010</span></td>
+              <td class="product-name">Bộ bát đĩa quà tặng Bát Tràng cao cấp vẽ tay ngò gai</td>
+              <td><span class="category-badge">Bát đĩa</span></td>
+              <td class="price-cell">690.000đ</td><td>0</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ bát đĩa quà tặng Bát Tràng cao cấp vẽ tay ngò gai" data-code="SP-010" data-category="Bát đĩa" data-price="690000" data-stock="16" data-image="images/9.jpg" data-description="Bộ bát đĩa quà tặng vẽ tay.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="0"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td><img class="product-thumb" src="images/10.jpg" alt="Bộ bát đĩa Bát Tràng men kem"></td>
+              <td><span class="code-badge">SP-011</span></td>
+              <td class="product-name">Bộ bát đĩa Bát Tràng men kem vẽ hoa Đào xanh</td>
+              <td><span class="category-badge">Bát đĩa</span></td>
+              <td class="price-cell">1.100.000đ</td><td>11</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ bát đĩa Bát Tràng men kem vẽ hoa Đào xanh" data-code="SP-011" data-category="Bát đĩa" data-price="1100000" data-stock="12" data-image="images/10.jpg" data-description="Bộ bát đĩa men kem vẽ hoa đào.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="11"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td><img class="product-thumb" src="images/12.jpg" alt="Bộ đồ thờ Bát Tràng men lam"></td>
+              <td><span class="code-badge">SP-012</span></td>
+              <td class="product-name">Bộ đồ thờ Bát Tràng men lam</td>
+              <td><span class="category-badge">Đồ thờ</span></td>
+              <td class="price-cell">9.910.000đ</td><td>4</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ đồ thờ Bát Tràng men lam" data-code="SP-012" data-category="Đồ thờ, bát hương" data-price="9910000" data-stock="6" data-image="images/12.jpg" data-description="Bộ đồ thờ Bát Tràng men lam.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="4"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td><img class="product-thumb" src="images/13.jpg" alt="Bộ đồ thờ Bát Tràng Trường Xuân"></td>
+              <td><span class="code-badge">SP-013</span></td>
+              <td class="product-name">Bộ đồ thờ Bát Tràng Trường Xuân men rạn đắp nổi hoa sen</td>
+              <td><span class="category-badge">Đồ thờ</span></td>
+              <td class="price-cell">2.600.000đ</td><td>6</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bộ đồ thờ Bát Tràng Trường Xuân men rạn đắp nổi hoa sen" data-code="SP-013" data-category="Đồ thờ, bát hương" data-price="2600000" data-stock="8" data-image="images/13.jpg" data-description="Bộ đồ thờ men rạn đắp nổi hoa sen.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="6"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td><img class="product-thumb" src="images/14.jpg" alt="Bát hương men rạn nổi rồng"></td>
+              <td><span class="code-badge">SP-014</span></td>
+              <td class="product-name">Bát hương men rạn nổi rồng cao cấp Trường Xuân</td>
+              <td><span class="category-badge">Đồ thờ</span></td>
+              <td class="price-cell">520.000đ</td><td>0</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bát hương men rạn nổi rồng cao cấp Trường Xuân" data-code="SP-014" data-category="Đồ thờ, bát hương" data-price="520000" data-stock="10" data-image="images/14.jpg" data-description="Bát hương men rạn nổi rồng.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="0"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td><img class="product-thumb" src="images/15.jpg" alt="Bát hương vẽ vàng Hoa Sen"></td>
+              <td><span class="code-badge">SP-015</span></td>
+              <td class="product-name">Bát hương vẽ vàng Hoa Sen men lam Vạn Phúc</td>
+              <td><span class="category-badge">Đồ thờ</span></td>
+              <td class="price-cell">1.300.000đ</td><td>8</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bát hương vẽ vàng Hoa Sen men lam Vạn Phúc" data-code="SP-015" data-category="Đồ thờ, bát hương" data-price="1300000" data-stock="9" data-image="images/15.jpg" data-description="Bát hương vẽ vàng hoa sen.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="8"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td><img class="product-thumb" src="images/16.jpg" alt="Lọ lộc bình Bát Tràng men lam"></td>
+              <td><span class="code-badge">SP-016</span></td>
+              <td class="product-name">Lọ lộc bình Bát Tràng men lam Tứ</td>
+              <td><span class="category-badge">Lộc bình</span></td>
+              <td class="price-cell">6.800.000đ</td><td>5</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Lọ lộc bình Bát Tràng men lam Tứ" data-code="SP-016" data-category="Lộc bình, phong thuỷ" data-price="6800000" data-stock="7" data-image="images/16.jpg" data-description="Lọ lộc bình men lam.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="5"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td><img class="product-thumb" src="images/17.jpg" alt="Bình hút lộc màu trắng mệnh kim"></td>
+              <td><span class="code-badge">SP-017</span></td>
+              <td class="product-name">Bình hút lộc màu trắng mệnh kim vẽ vàng</td>
+              <td><span class="category-badge">Lộc bình</span></td>
+              <td class="price-cell">1.050.000đ</td><td>2</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bình hút lộc màu trắng mệnh kim vẽ vàng" data-code="SP-017" data-category="Lộc bình, phong thuỷ" data-price="1050000" data-stock="5" data-image="images/17.jpg" data-description="Bình hút lộc vẽ vàng.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="2"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td><img class="product-thumb" src="images/18.jpg" alt="Trứng phong thuỷ tài lộc"></td>
+              <td><span class="code-badge">SP-018</span></td>
+              <td class="product-name">Trứng phong thuỷ tài lộc Thuận Buồm Xuôi Gió</td>
+              <td><span class="category-badge">Lộc bình</span></td>
+              <td class="price-cell">2.500.000đ</td><td>0</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Trứng phong thuỷ tài lộc Thuận Buồm Xuôi Gió" data-code="SP-018" data-category="Lộc bình, phong thuỷ" data-price="2500000" data-stock="4" data-image="images/18.jpg" data-description="Trứng phong thuỷ tài lộc.">✎</button><button class="action-btn btn-lock" type="button" title="Ẩn sản phẩm" aria-label="Ẩn sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="0"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td><img class="product-thumb" src="images/19.jpg" alt="Mai bình men trắng đắp nổi"></td>
+              <td><span class="code-badge">SP-019</span></td>
+              <td class="product-name">Mai bình men trắng đắp nổi Công Danh Phúc Quý</td>
+              <td><span class="category-badge">Lộc bình</span></td>
+              <td class="price-cell">13.000.000đ</td><td>1</td><td><span class="status-badge status-hidden">Ẩn</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Mai bình men trắng đắp nổi Công Danh Phúc Quý" data-code="SP-019" data-category="Lộc bình, phong thuỷ" data-price="13000000" data-stock="0" data-image="images/19.jpg" data-description="Mai bình men trắng đắp nổi.">✎</button><button class="action-btn btn-lock" type="button" title="Hiện sản phẩm" aria-label="Hiện sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="1"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td><img class="product-thumb" src="images/20.jpg" alt="Bình hút tài lộc Thuận Buồm Xuôi Gió"></td>
+              <td><span class="code-badge">SP-020</span></td>
+              <td class="product-name">Bình hút tài lộc Thuận Buồm Xuôi Gió Phú Quý</td>
+              <td><span class="category-badge">Lộc bình</span></td>
+              <td class="price-cell">1.750.000đ</td><td>13</td><td><span class="status-badge">Đang bán</span></td>
+              <td><div class="actions-group"><button class="action-btn edit-product" type="button" title="Sửa" data-name="Bình hút tài lộc Thuận Buồm Xuôi Gió Phú Quý" data-code="SP-020" data-category="Lộc bình, phong thuỷ" data-price="1750000" data-stock="15" data-image="images/20.jpg" data-description="Bình hút tài lộc men hoàng thổ.">✎</button><button class="action-btn btn-lock" type="button" title="Hiện sản phẩm" aria-label="Hiện sản phẩm"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle></svg></button><button class="action-btn btn-delete delete-product" type="button" title="Xóa" aria-label="Xóa sản phẩm" data-sold="13"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination-bar">
+        <span class="pagination-info">Hiển thị <strong>1-20</strong> trong tổng số <strong>35</strong> sản phẩm</span>
+        <nav class="pagination" aria-label="Phân trang sản phẩm">
+          <a class="page-num disabled" href="#" aria-disabled="true">‹</a>
+          <a class="page-num active" href="#" aria-current="page">1</a>
+          <a class="page-num" href="#">2</a>
+          <a class="page-num" href="#">3</a>
+          <span class="page-dots">...</span>
+          <a class="page-num" href="#">›</a>
+        </nav>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="product-modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-title">Thêm sản phẩm</h2>
+        </div>
+        <button type="button" class="modal-close" data-close-modal aria-label="Đóng">×</button>
+      </div>
+      <form id="product-form">
+        <div class="modal-body">
+          <div class="modal-grid">
+            <div class="product-details">
+              <div class="form-group form-span">
+              <label for="product-name">Tên sản phẩm</label>
+              <input class="form-control" id="product-name" required>
+              </div>
+              <div class="form-grid">
+              <div class="form-group">
+                <label for="product-code">Mã sản phẩm</label>
+                <input class="form-control" id="product-code" readonly aria-describedby="product-code-hint">
+                <small class="image-hint" id="product-code-hint">Mã được hệ thống tự động tạo.</small>
+              </div>
+              <div class="form-group">
+                <label for="product-category">Phân loại</label>
+                <select class="form-control" id="product-category" required>
+                  <option value="">Chọn phân loại</option>
+                  <option>Ấm chén</option>
+                  <option>Bát đĩa</option>
+                  <option>Đồ thờ, bát hương</option>
+                  <option>Lộc bình, phong thuỷ</option>
+                  <option>Lọ hoa</option>
+                  <option>Tượng gốm sứ</option>
+                  <option>Gốm sứ gia dụng</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="product-price">Giá bán (VNĐ)</label>
+                <input class="form-control" id="product-price" type="number" min="0" required>
+              </div>
+              <div class="form-group">
+                <label for="product-stock">Số lượng kho</label>
+                <input class="form-control" id="product-stock" type="number" min="0" required>
+              </div>
+              </div>
+              <div class="form-group form-span">
+              <label for="product-description">Mô tả chi tiết</label>
+              <textarea class="form-control" id="product-description" rows="5"></textarea>
+              </div>
+            </div>
+            <div class="image-column">
+              <label class="image-label" for="product-image">Hình ảnh sản phẩm</label>
+              <input id="product-image" type="file" accept="image/*">
+              <small class="image-hint">PNG, JPG tối đa 5MB</small>
+              <div class="image-preview-wrap" id="image-preview-wrap" hidden>
+                <img id="image-preview" class="image-preview" alt="Xem trước hình ảnh">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-close-modal>Hủy</button>
+          <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="delete-modal" aria-hidden="true">
+    <div class="modal-box delete-modal-box" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+      <div class="modal-header">
+        <div>
+          <h2 id="delete-modal-title">Cảnh báo xóa vĩnh viễn</h2>
+        </div>
+        <button type="button" class="modal-close" data-close-delete-modal aria-label="Đóng">×</button>
+      </div>
+      <div class="modal-body delete-modal-body">
+        <p id="delete-modal-message"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="delete-modal-cancel" data-close-delete-modal>Hủy bỏ</button>
+        <button type="button" class="btn btn-danger" id="delete-modal-confirm">Xóa vĩnh viễn</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="status-modal" aria-hidden="true">
+    <div class="modal-box status-modal-box" role="dialog" aria-modal="true" aria-labelledby="status-modal-title">
+      <div class="modal-header">
+        <div>
+          <h2 id="status-modal-title">Xác nhận ẩn sản phẩm</h2>
+        </div>
+        <button type="button" class="modal-close" data-close-status-modal aria-label="Đóng">×</button>
+      </div>
+      <div class="modal-body status-modal-body">
+        <p id="status-modal-message"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close-status-modal>Hủy bỏ</button>
+        <button type="button" class="btn btn-warning" id="status-modal-confirm">Ẩn sản phẩm</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/data.js"></script>
+  <script>
+    const modal = document.getElementById('product-modal');
+    const form = document.getElementById('product-form');
+    const imageInput = document.getElementById('product-image');
+    const imagePreview = document.getElementById('image-preview');
+    const imagePreviewWrap = document.getElementById('image-preview-wrap');
+    const toast = document.getElementById('toast');
+    const productCodeInput = document.getElementById('product-code');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const deleteModal = document.getElementById('delete-modal');
+    const deleteModalTitle = document.getElementById('delete-modal-title');
+    const deleteModalMessage = document.getElementById('delete-modal-message');
+    const deleteModalConfirm = document.getElementById('delete-modal-confirm');
+    const deleteModalCancel = document.getElementById('delete-modal-cancel');
+    const statusModal = document.getElementById('status-modal');
+    const statusModalTitle = document.getElementById('status-modal-title');
+    const statusModalMessage = document.getElementById('status-modal-message');
+    const statusModalConfirm = document.getElementById('status-modal-confirm');
+    let selectedStatusButton = null;
+    let selectedDeleteButton = null;
+    const eyeIcon = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+    const eyeSlashIcon = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg>';
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('is-visible');
+      window.setTimeout(function () { toast.classList.remove('is-visible'); }, 4000);
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function closeDeleteModal() {
+      deleteModal.classList.remove('is-open');
+      deleteModal.setAttribute('aria-hidden', 'true');
+      selectedDeleteButton = null;
+    }
+
+    function closeStatusModal() {
+      statusModal.classList.remove('is-open');
+      statusModal.setAttribute('aria-hidden', 'true');
+      selectedStatusButton = null;
+    }
+
+    function openStatusModal(button) {
+      const row = button.closest('tr');
+      const productName = row.querySelector('.product-name').textContent.trim();
+      const isHidden = row.querySelector('.status-badge').classList.contains('status-hidden');
+      selectedStatusButton = button;
+      button.innerHTML = isHidden ? eyeIcon : eyeSlashIcon;
+
+      if (isHidden) {
+        statusModalTitle.textContent = 'Xác nhận hiển thị lại sản phẩm';
+        statusModalMessage.textContent = 'Bạn muốn hiển thị lại sản phẩm "' + productName + '"? Khách hàng sẽ có thể tiếp tục xem và đặt mua sản phẩm này trên trang bán hàng.';
+        statusModalConfirm.textContent = 'Hiển thị sản phẩm';
+        statusModalConfirm.className = 'btn btn-primary';
+      } else {
+        statusModalTitle.textContent = 'Xác nhận ẩn sản phẩm';
+        statusModalMessage.textContent = 'Bạn có chắc chắn muốn ẩn sản phẩm "' + productName + '" khỏi trang bán hàng không? Khách hàng sẽ tạm thời không thể nhìn thấy và tìm kiếm sản phẩm này.';
+        statusModalConfirm.textContent = 'Ẩn sản phẩm';
+        statusModalConfirm.className = 'btn btn-warning';
+      }
+
+      statusModal.classList.add('is-open');
+      statusModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function openDeleteModal(button) {
+      const sold = Number(button.dataset.sold);
+      const productName = button.closest('tr').querySelector('.product-name').textContent.trim();
+      selectedDeleteButton = button;
+
+      if (sold > 0) {
+        deleteModalTitle.textContent = 'Không thể xóa sản phẩm';
+        deleteModalMessage.textContent = 'Sản phẩm "' + productName + '" đã phát sinh ' + sold + ' lượt bán. Để bảo toàn lịch sử đơn hàng và báo cáo doanh thu, hệ thống không cho phép xóa vĩnh viễn. Bạn có muốn chuyển sản phẩm này sang trạng thái "Ẩn" trên trang bán hàng không?';
+        deleteModalCancel.textContent = 'Đóng';
+        deleteModalConfirm.textContent = 'Đồng ý ẩn sản phẩm';
+        deleteModalConfirm.className = 'btn btn-primary';
+      } else {
+        deleteModalTitle.textContent = 'Cảnh báo xóa vĩnh viễn';
+        deleteModalMessage.textContent = 'Sản phẩm "' + productName + '" chưa phát sinh giao dịch nào. Bạn có chắc chắn muốn xóa vĩnh viễn sản phẩm này khỏi hệ thống? Dữ liệu và hình ảnh sẽ bị xóa hoàn toàn và KHÔNG THỂ khôi phục.';
+        deleteModalCancel.textContent = 'Hủy bỏ';
+        deleteModalConfirm.textContent = 'Xóa vĩnh viễn';
+        deleteModalConfirm.className = 'btn btn-danger';
+      }
+
+      deleteModal.classList.add('is-open');
+      deleteModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function showImage(source) {
+      imagePreview.src = source;
+      imagePreviewWrap.hidden = false;
+    }
+
+    function clearImage() {
+      imageInput.value = '';
+      imagePreview.removeAttribute('src');
+      imagePreviewWrap.hidden = true;
+    }
+
+    function getNextProductCode() {
+      const productCodes = Array.from(document.querySelectorAll('.code-badge'))
+        .map(function (badge) {
+          const match = badge.textContent.trim().match(/^SP-(\d+)$/);
+          return match ? Number(match[1]) : 0;
+        });
+      const nextNumber = Math.max.apply(null, productCodes.concat(0)) + 1;
+      return 'SP-' + String(nextNumber).padStart(3, '0');
+    }
+
+    document.getElementById('add-product-button').addEventListener('click', function () {
+      form.reset();
+      document.getElementById('modal-title').textContent = 'Thêm sản phẩm';
+      productCodeInput.value = getNextProductCode();
+      productCodeInput.readOnly = true;
+      submitButton.textContent = 'Thêm sản phẩm';
+      clearImage();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    });
+
+    document.querySelectorAll('[data-close-modal]').forEach(function (button) {
+      button.addEventListener('click', closeModal);
+    });
+
+    document.querySelectorAll('.edit-product').forEach(function (button) {
+      button.addEventListener('click', function () {
+        document.getElementById('modal-title').textContent = 'Sửa thông tin sản phẩm';
+        document.getElementById('product-name').value = button.dataset.name;
+        productCodeInput.value = button.dataset.code;
+        productCodeInput.readOnly = true;
+        submitButton.textContent = 'Cập nhật sản phẩm';
+        document.getElementById('product-category').value = button.dataset.category;
+        document.getElementById('product-price').value = button.dataset.price;
+        document.getElementById('product-stock').value = button.dataset.stock;
+          document.getElementById('product-description').value = button.dataset.description;
+          showImage(button.dataset.image);
+          modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    imageInput.addEventListener('change', function () {
+      const file = imageInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.addEventListener('load', function () {
+        showImage(reader.result);
+      });
+      reader.readAsDataURL(file);
+    });
+
+    document.querySelectorAll('.delete-product').forEach(function (button) {
+      button.addEventListener('click', function () {
+        openDeleteModal(button);
+      });
+    });
+
+    document.querySelectorAll('[data-close-delete-modal]').forEach(function (button) {
+      button.addEventListener('click', closeDeleteModal);
+    });
+
+    document.querySelectorAll('.btn-lock').forEach(function (button) {
+      button.addEventListener('click', function () {
+        openStatusModal(button);
+      });
+    });
+
+    document.querySelectorAll('[data-close-status-modal]').forEach(function (button) {
+      button.addEventListener('click', closeStatusModal);
+    });
+
+    statusModalConfirm.addEventListener('click', function () {
+      if (!selectedStatusButton) return;
+      const row = selectedStatusButton.closest('tr');
+      const statusBadge = row.querySelector('.status-badge');
+      const isHidden = statusBadge.classList.contains('status-hidden');
+      statusBadge.classList.toggle('status-hidden', !isHidden);
+      statusBadge.textContent = isHidden ? 'Đang bán' : 'Ẩn';
+      selectedStatusButton.title = isHidden ? 'Ẩn sản phẩm' : 'Hiện sản phẩm';
+      selectedStatusButton.setAttribute('aria-label', selectedStatusButton.title);
+      selectedStatusButton.innerHTML = isHidden ? eyeSlashIcon : eyeIcon;
+      showToast(isHidden ? 'Đã hiển thị lại sản phẩm.' : 'Đã ẩn sản phẩm khỏi trang bán hàng.');
+      closeStatusModal();
+    });
+
+    document.querySelectorAll('.btn-lock').forEach(function (button) {
+      const isHidden = button.closest('tr').querySelector('.status-badge').classList.contains('status-hidden');
+      button.innerHTML = isHidden ? eyeIcon : eyeSlashIcon;
+      button.title = isHidden ? 'Hiện sản phẩm' : 'Ẩn sản phẩm';
+      button.setAttribute('aria-label', button.title);
+    });
+
+    deleteModalConfirm.addEventListener('click', function () {
+      if (!selectedDeleteButton) return;
+      if (Number(selectedDeleteButton.dataset.sold) > 0) {
+        showToast('Sản phẩm đã được chuyển sang trạng thái ẩn.');
+      } else {
+        showToast('Đã xóa sản phẩm khỏi hệ thống.');
+      }
+      closeDeleteModal();
+    });
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      closeModal();
+      showToast('Đã lưu thông tin sản phẩm.');
+    });
+  </script>
+</body>
+</html>
