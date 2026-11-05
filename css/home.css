@@ -1,0 +1,15 @@
+/* Hero */
+.hero{background:var(--indigo);color:var(--white)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:56px;padding-bottom:56px}
+.hero h1{font-size:2.5rem;margin-bottom:16px}
+.hero p{max-width:46ch;color:#dbe3f1;margin:0 0 26px;font-size:1.05rem}
+.hero .btn{background:var(--white);color:var(--indigo);border-color:var(--white)}
+.hero .btn:hover{background:var(--celadon-soft)}
+.hero-img{border:6px solid var(--white);border-radius:140px 140px 8px 8px;overflow:hidden;aspect-ratio:4/5;max-width:360px;margin-left:auto;background:var(--celadon-soft)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .hero-img{margin:0 auto}
+}

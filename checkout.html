@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanh toán - TNNT Ceramics</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="logo" href="index.html"><img class="logo-img" src="images/logo.png" alt=""><span>TNNT Ceramics</span></a>
+  <ul class="nav">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="danh-muc.html">Danh mục sản phẩm</a><ul class="drop"><li><a href="danh-muc.html">Ấm chén</a></li><li><a href="danh-muc.html">Bát đĩa</a></li><li><a href="danh-muc.html">Đồ thờ, bát hương</a></li><li><a href="danh-muc.html">Lộc bình, phong thuỷ</a></li><li><a href="danh-muc.html">Lọ hoa</a></li><li><a href="danh-muc.html">Tượng gốm sứ</a></li><li><a href="danh-muc.html">Gốm sứ gia dụng</a></li></ul></li>
+    <li><a href="ve-chung-toi.html">Về chúng tôi</a></li>
+    <li><a href="cham-soc-gom.html">Chăm sóc gốm</a></li>
+  </ul>
+  <div class="actions"><a class="cart" href="cart.html" aria-label="Giỏ hàng" title="Giỏ hàng"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M3 4h2.5l2.2 11h10.6l2-8H6.4"/></svg></a><a class="avatar" href="profile.html" aria-label="Tài khoản người dùng" title="Tài khoản người dùng"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a></div>
+</div></header>
+
+<main class="checkout-container">
+  <div class="checkout-heading">
+    <h1>Thanh toán</h1>
+  </div>
+
+  <form class="checkout-form">
+    <input class="checkout-state" type="radio" name="address-mode" id="checkout-address-saved" checked>
+    <input class="checkout-state" type="radio" name="address-mode" id="checkout-address-new">
+    <input class="checkout-state" type="radio" name="shipping" id="checkout-shipping-standard" checked>
+    <input class="checkout-state" type="radio" name="shipping" id="checkout-shipping-fast">
+    <input class="checkout-state" type="radio" name="payment" id="checkout-payment-cod" checked>
+    <input class="checkout-state" type="radio" name="payment" id="checkout-payment-card">
+    <input class="checkout-state" type="radio" name="payment" id="checkout-payment-bank">
+
+    <div class="checkout-layout">
+      <div class="checkout-details">
+        <section class="checkout-section" aria-labelledby="checkout-address-title">
+          <div class="checkout-section-heading">
+            <h2 id="checkout-address-title">Địa chỉ giao hàng</h2>
+            <a class="checkout-address-manage" href="address.html" target="_blank" rel="noopener noreferrer">Quản lý sổ địa chỉ ↗</a>
+          </div>
+          <div class="checkout-mode-options">
+            <label class="checkout-mode-option" for="checkout-address-saved"><span class="checkout-radio-mark" aria-hidden="true"></span>Chọn địa chỉ đã lưu</label>
+            <label class="checkout-mode-option" for="checkout-address-new"><span class="checkout-radio-mark" aria-hidden="true"></span>Nhập địa chỉ mới</label>
+          </div>
+          <div class="checkout-address-panels">
+            <div class="checkout-address-panel checkout-address-panel-saved">
+              <div class="checkout-address-cards">
+                <input class="checkout-card-radio" type="radio" name="saved-address" id="checkout-saved-address-1" checked>
+                <label class="checkout-address-card" for="checkout-saved-address-1">
+                  <span class="checkout-address-card-top"><strong>Nguyễn Văn An</strong><span class="checkout-address-badge">Mặc định</span></span>
+                  <span>0987 654 321</span>
+                  <address>Số 24, Ngõ Gốm, Phường Bát Tràng, TP. Hà Nội</address>
+                </label>
+                <input class="checkout-card-radio" type="radio" name="saved-address" id="checkout-saved-address-2">
+                <label class="checkout-address-card" for="checkout-saved-address-2">
+                  <span class="checkout-address-card-top"><strong>Nguyễn Văn An</strong></span>
+                  <span>0912 345 678</span>
+                  <address>Tầng 4, Tòa nhà Craft Center, Phường Tràng Tiền, TP. Hà Nội</address>
+                </label>
+                <input class="checkout-card-radio" type="radio" name="saved-address" id="checkout-saved-address-3">
+                <label class="checkout-address-card" for="checkout-saved-address-3">
+                  <span class="checkout-address-card-top"><strong>Nguyễn Văn An</strong></span>
+                  <span>0938 111 222</span>
+                  <address>Số 105, Hẻm Gốm Mộc, Phường Tân Định, TP. Hồ Chí Minh</address>
+                </label>
+              </div>
+            </div>
+            <div class="checkout-address-panel checkout-address-panel-new">
+              <div class="checkout-fields">
+                <label class="checkout-field"><span>Họ tên người nhận</span><input type="text" name="recipient" autocomplete="name" placeholder="Nhập họ tên người nhận"></label>
+                <label class="checkout-field"><span>Số điện thoại</span><input type="tel" name="phone" autocomplete="tel" placeholder="Nhập số điện thoại"></label>
+                <label class="checkout-field"><span>Tỉnh / Thành phố</span><select name="province"><option value="" selected disabled>Chọn tỉnh / thành phố</option><option>TP. Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option></select></label>
+                <label class="checkout-field"><span>Phường / Xã</span><select name="ward"><option value="" selected disabled>Chọn phường / xã</option><option>Phường Bát Tràng</option><option>Phường Tràng Tiền</option><option>Phường Đa Kao</option></select></label>
+                <label class="checkout-field checkout-field-wide"><span>Số nhà, tên đường</span><input type="text" name="address" autocomplete="street-address" placeholder="Số nhà, tên đường, ngõ..."></label>
+                <label class="checkout-save-address"><input type="checkbox" name="save-address"><span>Lưu vào sổ địa chỉ</span></label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-section" aria-labelledby="checkout-shipping-title">
+          <div class="checkout-section-heading"><h2 id="checkout-shipping-title">Phương thức vận chuyển</h2></div>
+          <div class="checkout-choice-list">
+            <label class="checkout-choice" for="checkout-shipping-standard">
+              <span class="checkout-radio-mark" aria-hidden="true"></span>
+              <span class="checkout-choice-copy"><strong>Giao hàng tiêu chuẩn</strong><small>3–5 ngày</small></span>
+              <strong class="checkout-choice-price">500.000đ</strong>
+            </label>
+            <label class="checkout-choice" for="checkout-shipping-fast">
+              <span class="checkout-radio-mark" aria-hidden="true"></span>
+              <span class="checkout-choice-copy"><strong>Hỏa tốc &amp; Đóng gói chuyên dụng đồ gốm</strong><small>Chống sốc 3 lớp an toàn</small></span>
+              <strong class="checkout-choice-price">1.000.000đ</strong>
+            </label>
+          </div>
+        </section>
+
+        <section class="checkout-section" aria-labelledby="checkout-payment-title">
+          <div class="checkout-section-heading"><h2 id="checkout-payment-title">Phương thức thanh toán</h2></div>
+          <div class="checkout-payment-list">
+            <div class="checkout-payment-option">
+              <label class="checkout-choice" for="checkout-payment-cod">
+                <span class="checkout-radio-mark" aria-hidden="true"></span>
+                <span class="checkout-choice-copy"><strong>Thanh toán khi nhận hàng (COD)</strong><small>Được kiểm tra sản phẩm gốm nguyên vẹn trước khi thanh toán tiền mặt</small></span>
+              </label>
+            </div>
+            <div class="checkout-payment-option">
+              <label class="checkout-choice" for="checkout-payment-card">
+                <span class="checkout-radio-mark" aria-hidden="true"></span>
+                <span class="checkout-choice-copy"><strong>Thẻ Tín dụng / Ghi nợ</strong><small>Credit / Debit Card</small></span>
+                <span class="checkout-card-brands">Visa / Mastercard / JCB</span>
+              </label>
+              <div class="checkout-payment-panel checkout-card-fields">
+                <label class="checkout-field checkout-field-wide"><span>Số thẻ</span><input type="text" inputmode="numeric" autocomplete="off" placeholder="1234 5678 9012 3456"></label>
+                <label class="checkout-field checkout-field-wide"><span>Tên chủ thẻ</span><input type="text" autocomplete="off" placeholder="NGUYEN VAN A"></label>
+                <label class="checkout-field"><span>Ngày hết hạn</span><input type="text" inputmode="numeric" autocomplete="off" placeholder="MM/YY"></label>
+                <label class="checkout-field"><span>Mã CVV</span><input type="password" inputmode="numeric" autocomplete="off" placeholder="123"></label>
+              </div>
+            </div>
+            <div class="checkout-payment-option">
+              <label class="checkout-choice" for="checkout-payment-bank">
+                <span class="checkout-radio-mark" aria-hidden="true"></span>
+                <span class="checkout-choice-copy"><strong>Chuyển khoản trực tiếp qua ngân hàng</strong></span>
+              </label>
+              <div class="checkout-payment-panel checkout-bank-info">
+                <p><span>Tên ngân hàng</span><strong>Vietcombank</strong></p>
+                <p><span>Số tài khoản</span><strong>0123 4567 8999</strong></p>
+                <p><span>Chủ tài khoản</span><strong>TNNT CERAMICS</strong></p>
+                <p><span>Cú pháp</span><strong>DHG001_[SĐT]</strong></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-section checkout-notes" aria-labelledby="checkout-notes-title">
+          <div class="checkout-section-heading"><h2 id="checkout-notes-title">Ghi chú đơn hàng</h2></div>
+          <label class="checkout-field"><span class="checkout-visually-hidden">Ghi chú đơn hàng</span><textarea name="order-note" placeholder="Ghi chú thời gian giao hoặc dặn dò đóng gói hàng dễ vỡ..."></textarea></label>
+        </section>
+      </div>
+
+      <aside class="checkout-summary" aria-labelledby="checkout-summary-title">
+        <h2 id="checkout-summary-title">Đơn hàng của bạn (2 món)</h2>
+        <div class="checkout-products">
+          <article class="checkout-product">
+            <img src="images/5.jpg" alt="Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh">
+            <div class="checkout-product-copy"><h3><a href="chi-tiet.html">Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh</a></h3><span>x1</span></div>
+            <strong>950.000đ</strong>
+          </article>
+          <article class="checkout-product">
+            <img src="images/8.jpg" alt="Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng">
+            <div class="checkout-product-copy"><h3><a href="chi-tiet.html">Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng</a></h3><span>x1</span></div>
+            <strong>590.000đ</strong>
+          </article>
+        </div>
+        <div class="checkout-totals">
+          <p><span>Tạm tính</span><strong>900.000.000đ</strong></p>
+          <p><span>Phí vận chuyển</span><strong>500.000đ</strong></p>
+          <p><span>Giảm giá</span><strong>1.000.000 đ</strong></p>
+        </div>
+        <hr>
+        <p class="checkout-grand-total"><span>Tổng thanh toán</span><strong>850.000.000đ</strong></p>
+        <a class="checkout-submit" href="order.html">Đặt hàng ngay</a>
+      </aside>
+    </div>
+  </form>
+</main>
+
+<footer class="site-footer"><div class="wrap footer-grid">
+  <div><div class="footer-brand"><img class="footer-logo" src="images/logo.png" alt=""><b>TNNT Ceramics</b></div>
+  <p>Gốm sứ Bát Tràng và gốm gia dụng chọn lọc, mang nét tinh tế của gốm Việt vào mỗi bàn trà, mâm cơm và gian thờ.</p></div>
+  <div><h4>Thông tin liên hệ</h4><ul class="contact">
+    <li><span>Địa chỉ</span>273 An Dương Vương, Phường Chợ Quán (Quận 5), Thành phố Hồ Chí Minh</li>
+    <li><span>Điện thoại</span>0863962925</li>
+    <li><span>Đại diện</span>Trần Nguyễn Hoàng Nam - Giám đốc</li>
+    <li><span>Email</span>tnntceramics@gmail.com</li></ul></div>
+  <div><h4>Dòng sản phẩm</h4><ul><li>Ấm chén</li><li>Bát đĩa</li><li>Đồ thờ, bát hương</li><li>Lộc bình, phong thuỷ</li><li>Lọ hoa</li><li>Tượng gốm sứ</li><li>Gốm sứ gia dụng</li></ul></div>
+  <div><h4>Chính sách</h4><ul><li><a href="#" class="policy-link">Chính sách đổi trả</a></li><li><a href="#" class="policy-link">Chính sách vận chuyển</a></li><li><a href="#" class="policy-link">Chính sách bảo hành</a></li><li><a href="#" class="policy-link">Chính sách thanh toán</a></li><li><a href="#" class="policy-link">Chính sách bảo mật</a></li></ul></div>
+</div>
+<div class="wrap copyright">&copy; TNNT Ceramics - Đồ án Lập trình web và ứng dụng, Khoa CNTT, Đại học Sài Gòn</div></footer>
+</body>
+</html>
