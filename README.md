@@ -1,2 +1,1 @@
 # wabi-ceramics-storefront
-a
