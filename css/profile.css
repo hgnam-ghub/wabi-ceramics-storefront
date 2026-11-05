@@ -1,9 +1,9 @@
 /* Profile */
 .profile-page{background:var(--porcelain);color:var(--ink)}
-.profile-container{width:min(1180px,calc(100% - 48px));margin:0 auto;padding:34px 0 64px}
+.profile-container{width:min(1440px,calc(100% - 64px));margin:0 auto;padding:34px 0 64px}
 .profile-page-heading{margin-bottom:22px}
 .profile-page-heading h1{font-size:2rem;color:var(--ink)}
-.profile-layout{display:grid;grid-template-columns:minmax(300px,27fr) minmax(0,73fr);align-items:start;gap:24px}
+.profile-layout{display:grid;grid-template-columns:250px minmax(0,1fr);align-items:start;gap:28px}
 .profile-sidebar,.profile-panel{border:1px solid var(--line);border-radius:6px;background:var(--white)}
 .profile-sidebar{overflow:hidden}
 .profile-summary{display:flex;flex-direction:column;align-items:center;padding:26px 18px 22px;text-align:center;border-bottom:1px solid var(--line)}
@@ -69,6 +69,7 @@
 .btn-action.btn-delete:hover{border-color:var(--gold);background:var(--celadon-soft)}
 .address-modal-overlay{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;background:color-mix(in srgb,var(--ink) 48%,transparent)}
 .address-modal-overlay.show{display:flex}
+body.address-modal-open{overflow:hidden}
 .address-modal{width:min(560px,100%);max-height:min(90vh,760px);overflow-y:auto;padding:26px;border:1px solid var(--line);border-radius:9px;background:var(--white);box-shadow:0 24px 70px color-mix(in srgb,var(--ink) 24%,transparent)}
 .address-modal-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
 .address-modal-heading h2{margin:0;color:var(--ink);font-size:1.45rem}
@@ -109,11 +110,11 @@
   .profile-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
   .profile-menu .profile-logout{margin-top:0;border-top:0}
 }
-@media (max-width:760px){
+@media (max-width:1120px){
   .profile-overview-content{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  .profile-container{width:min(100% - 28px,520px);padding:26px 0 42px}
+  .profile-container{width:calc(100% - 32px);padding:26px 0 42px}
   .profile-page-heading h1{font-size:1.7rem}
   .profile-sidebar{grid-template-columns:1fr}
   .profile-summary{border-right:0;border-bottom:1px solid var(--line)}

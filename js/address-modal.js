@@ -1,6 +1,14 @@
 const modal = document.getElementById('address-modal');
-const closeModal = () => { modal.classList.remove('show'); modal.setAttribute('aria-hidden', 'true'); };
-const openModal = () => { modal.classList.add('show'); modal.setAttribute('aria-hidden', 'false'); };
+const closeModal = () => {
+	modal.classList.remove('show');
+	modal.setAttribute('aria-hidden', 'true');
+	document.body.classList.remove('address-modal-open');
+};
+const openModal = () => {
+	modal.classList.add('show');
+	modal.setAttribute('aria-hidden', 'false');
+	document.body.classList.add('address-modal-open');
+};
 
 document.getElementById('btn-open-modal').addEventListener('click', openModal);
 document.querySelectorAll('.btn-edit').forEach((button) => button.addEventListener('click', openModal));

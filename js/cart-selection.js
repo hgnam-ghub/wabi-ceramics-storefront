@@ -2,12 +2,6 @@ const productCheckboxes = Array.from(
   document.querySelectorAll("[data-cart-product]:not(:disabled)")
 );
 const cartMasterCheckbox = document.querySelector("[data-cart-select-all]");
-const brandControls = Array.from(document.querySelectorAll("[data-cart-brand]"), (group) => ({
-  masterCheckbox: group.querySelector("[data-cart-brand-toggle]"),
-  productCheckboxes: Array.from(
-    group.querySelectorAll("[data-cart-product]:not(:disabled)")
-  ),
-}));
 
 const syncMasterCheckbox = (masterCheckbox, checkboxes) => {
   if (!masterCheckbox) return;
@@ -18,31 +12,19 @@ const syncMasterCheckbox = (masterCheckbox, checkboxes) => {
   masterCheckbox.disabled = checkboxes.length === 0;
 };
 
-const syncAllMasterCheckboxes = () => {
-  brandControls.forEach(({ masterCheckbox, productCheckboxes: brandProducts }) => {
-    syncMasterCheckbox(masterCheckbox, brandProducts);
-  });
+const syncCartMasterCheckbox = () => {
   syncMasterCheckbox(cartMasterCheckbox, productCheckboxes);
 };
 
-brandControls.forEach(({ masterCheckbox, productCheckboxes: brandProducts }) => {
-  masterCheckbox.addEventListener("change", () => {
-    brandProducts.forEach((checkbox) => {
-      checkbox.checked = masterCheckbox.checked;
-    });
-    syncAllMasterCheckboxes();
-  });
-
-  brandProducts.forEach((checkbox) => {
-    checkbox.addEventListener("change", syncAllMasterCheckboxes);
-  });
+productCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", syncCartMasterCheckbox);
 });
 
-cartMasterCheckbox.addEventListener("change", () => {
+cartMasterCheckbox?.addEventListener("change", () => {
   productCheckboxes.forEach((checkbox) => {
     checkbox.checked = cartMasterCheckbox.checked;
   });
-  syncAllMasterCheckboxes();
+  syncCartMasterCheckbox();
 });
 
-syncAllMasterCheckboxes();
+syncCartMasterCheckbox();

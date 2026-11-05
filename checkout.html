@@ -7,13 +7,6 @@
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="stylesheet" href="css/global.css">
 <link rel="stylesheet" href="css/checkout.css">
-<style>
-.checkout-address-cards{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;padding:2px 3px 12px;overscroll-behavior-x:contain;scroll-padding-inline:3px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-color:var(--line) transparent;scrollbar-width:thin}
-.checkout-address-cards .checkout-address-card{flex:0 0 min(320px,calc(100vw - 64px));scroll-snap-align:start;scroll-snap-stop:always}
-.checkout-section-heading>a.checkout-address-manage{display:inline-flex;min-height:38px;align-items:center;padding:7px 12px;border:1px solid var(--indigo);border-radius:5px;background:var(--white);color:var(--indigo);font-weight:700;text-decoration:none}
-.checkout-section-heading>a.checkout-address-manage:hover{background:#f1f4ef}
-.checkout-section-heading>a.checkout-address-manage:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-</style>
 </head>
 <body>
 <header class="site-header"><div class="wrap">
@@ -33,6 +26,8 @@
   </div>
 
   <form class="checkout-form">
+    <input class="checkout-state" type="radio" name="address-mode" id="checkout-address-saved" checked>
+    <input class="checkout-state" type="radio" name="address-mode" id="checkout-address-new">
     <input class="checkout-state" type="radio" name="shipping" id="checkout-shipping-standard" checked>
     <input class="checkout-state" type="radio" name="shipping" id="checkout-shipping-fast">
     <input class="checkout-state" type="radio" name="payment" id="checkout-payment-cod" checked>
@@ -45,6 +40,10 @@
           <div class="checkout-section-heading">
             <h2 id="checkout-address-title">Địa chỉ giao hàng</h2>
             <a class="checkout-address-manage" href="address.html" target="_blank" rel="noopener noreferrer">Quản lý sổ địa chỉ ↗</a>
+          </div>
+          <div class="checkout-mode-options">
+            <label class="checkout-mode-option" for="checkout-address-saved"><span class="checkout-radio-mark" aria-hidden="true"></span>Chọn địa chỉ đã lưu</label>
+            <label class="checkout-mode-option" for="checkout-address-new"><span class="checkout-radio-mark" aria-hidden="true"></span>Nhập địa chỉ mới</label>
           </div>
           <div class="checkout-address-panels">
             <div class="checkout-address-panel checkout-address-panel-saved">
@@ -67,6 +66,16 @@
                   <span>0938 111 222</span>
                   <address>Số 105, Hẻm Gốm Mộc, Phường Tân Định, TP. Hồ Chí Minh</address>
                 </label>
+              </div>
+            </div>
+            <div class="checkout-address-panel checkout-address-panel-new">
+              <div class="checkout-fields">
+                <label class="checkout-field"><span>Họ tên người nhận</span><input type="text" name="recipient" autocomplete="name" placeholder="Nhập họ tên người nhận"></label>
+                <label class="checkout-field"><span>Số điện thoại</span><input type="tel" name="phone" autocomplete="tel" placeholder="Nhập số điện thoại"></label>
+                <label class="checkout-field"><span>Tỉnh / Thành phố</span><select name="province"><option value="" selected disabled>Chọn tỉnh / thành phố</option><option>TP. Hà Nội</option><option>TP. Hồ Chí Minh</option><option>Đà Nẵng</option></select></label>
+                <label class="checkout-field"><span>Phường / Xã</span><select name="ward"><option value="" selected disabled>Chọn phường / xã</option><option>Phường Bát Tràng</option><option>Phường Tràng Tiền</option><option>Phường Đa Kao</option></select></label>
+                <label class="checkout-field checkout-field-wide"><span>Số nhà, tên đường</span><input type="text" name="address" autocomplete="street-address" placeholder="Số nhà, tên đường, ngõ..."></label>
+                <label class="checkout-save-address"><input type="checkbox" name="save-address"><span>Lưu vào sổ địa chỉ</span></label>
               </div>
             </div>
           </div>
@@ -136,12 +145,12 @@
         <div class="checkout-products">
           <article class="checkout-product">
             <img src="images/5.jpg" alt="Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh">
-            <div class="checkout-product-copy"><h3>Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh</h3><span>x1</span></div>
+            <div class="checkout-product-copy"><h3><a href="chi-tiet.html">Bộ ấm chén Bát Tràng men hoả biến dáng trống màu xanh</a></h3><span>x1</span></div>
             <strong>950.000đ</strong>
           </article>
           <article class="checkout-product">
             <img src="images/8.jpg" alt="Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng">
-            <div class="checkout-product-copy"><h3>Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng</h3><span>x1</span></div>
+            <div class="checkout-product-copy"><h3><a href="chi-tiet.html">Bộ bát đĩa Bát Tràng 11 món cao cấp vẽ đào hồng</a></h3><span>x1</span></div>
             <strong>590.000đ</strong>
           </article>
         </div>
@@ -152,7 +161,6 @@
         </div>
         <hr>
         <p class="checkout-grand-total"><span>Tổng thanh toán</span><strong>850.000.000đ</strong></p>
-        <div class="checkout-promise"><span class="checkout-promise-icon" aria-hidden="true">✓</span><p>Đổi mới 100% nếu sản phẩm nứt vỡ trong quá trình vận chuyển.</p></div>
         <a class="checkout-submit" href="order.html">Đặt hàng ngay</a>
       </aside>
     </div>
