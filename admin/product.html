@@ -33,10 +33,10 @@
         <div class="page-title">
           <h1>Danh sách sản phẩm</h1>
         </div>
-        <button type="button" class="btn btn-primary" id="add-product-button">
+        <a href="product-add.html" class="btn btn-primary">
           <span aria-hidden="true">+</span>
           <span>Thêm sản phẩm</span>
-        </button>
+        </a>
       </div>
 
       <form class="filter-bar" id="filter-form">
@@ -314,73 +314,6 @@
     </main>
   </div>
 
-  <div class="modal-backdrop" id="product-modal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <div class="modal-header">
-        <div>
-          <h2 id="modal-title">Thêm sản phẩm</h2>
-        </div>
-        <button type="button" class="modal-close" data-close-modal aria-label="Đóng">×</button>
-      </div>
-      <form id="product-form">
-        <div class="modal-body">
-          <div class="modal-grid">
-            <div class="product-details">
-              <div class="form-group form-span">
-              <label for="product-name">Tên sản phẩm</label>
-              <input class="form-control" id="product-name" required>
-              </div>
-              <div class="form-grid">
-              <div class="form-group">
-                <label for="product-code">Mã sản phẩm</label>
-                <input class="form-control" id="product-code" readonly aria-describedby="product-code-hint">
-                <small class="image-hint" id="product-code-hint">Mã được hệ thống tự động tạo.</small>
-              </div>
-              <div class="form-group">
-                <label for="product-category">Phân loại</label>
-                <select class="form-control" id="product-category" required>
-                  <option value="">Chọn phân loại</option>
-                  <option>Ấm chén</option>
-                  <option>Bát đĩa</option>
-                  <option>Đồ thờ, bát hương</option>
-                  <option>Lộc bình, phong thuỷ</option>
-                  <option>Lọ hoa</option>
-                  <option>Tượng gốm sứ</option>
-                  <option>Gốm sứ gia dụng</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="product-price">Giá bán (VNĐ)</label>
-                <input class="form-control" id="product-price" type="number" min="0" required>
-              </div>
-              <div class="form-group">
-                <label for="product-stock">Số lượng kho</label>
-                <input class="form-control" id="product-stock" type="number" min="0" required>
-              </div>
-              </div>
-              <div class="form-group form-span">
-              <label for="product-description">Mô tả chi tiết</label>
-              <textarea class="form-control" id="product-description" rows="5"></textarea>
-              </div>
-            </div>
-            <div class="image-column">
-              <label class="image-label" for="product-image">Hình ảnh sản phẩm</label>
-              <input id="product-image" type="file" accept="image/*">
-              <small class="image-hint">PNG, JPG tối đa 5MB</small>
-              <div class="image-preview-wrap" id="image-preview-wrap" hidden>
-                <img id="image-preview" class="image-preview" alt="Xem trước hình ảnh">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline" data-close-modal>Hủy</button>
-          <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <div class="modal-backdrop" id="delete-modal" aria-hidden="true">
     <div class="modal-box delete-modal-box" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
       <div class="modal-header">
@@ -420,14 +353,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="js/data.js"></script>
   <script>
-    const modal = document.getElementById('product-modal');
-    const form = document.getElementById('product-form');
-    const imageInput = document.getElementById('product-image');
-    const imagePreview = document.getElementById('image-preview');
-    const imagePreviewWrap = document.getElementById('image-preview-wrap');
     const toast = document.getElementById('toast');
-    const productCodeInput = document.getElementById('product-code');
-    const submitButton = form.querySelector('button[type="submit"]');
     const deleteModal = document.getElementById('delete-modal');
     const deleteModalTitle = document.getElementById('delete-modal-title');
     const deleteModalMessage = document.getElementById('delete-modal-message');
@@ -446,11 +372,6 @@
       toast.textContent = message;
       toast.classList.add('is-visible');
       window.setTimeout(function () { toast.classList.remove('is-visible'); }, 4000);
-    }
-
-    function closeModal() {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
     }
 
     function closeDeleteModal() {
@@ -511,67 +432,19 @@
       deleteModal.setAttribute('aria-hidden', 'false');
     }
 
-    function showImage(source) {
-      imagePreview.src = source;
-      imagePreviewWrap.hidden = false;
-    }
-
-    function clearImage() {
-      imageInput.value = '';
-      imagePreview.removeAttribute('src');
-      imagePreviewWrap.hidden = true;
-    }
-
-    function getNextProductCode() {
-      const productCodes = Array.from(document.querySelectorAll('.code-badge'))
-        .map(function (badge) {
-          const match = badge.textContent.trim().match(/^SP-(\d+)$/);
-          return match ? Number(match[1]) : 0;
-        });
-      const nextNumber = Math.max.apply(null, productCodes.concat(0)) + 1;
-      return 'SP-' + String(nextNumber).padStart(3, '0');
-    }
-
-    document.getElementById('add-product-button').addEventListener('click', function () {
-      form.reset();
-      document.getElementById('modal-title').textContent = 'Thêm sản phẩm';
-      productCodeInput.value = getNextProductCode();
-      productCodeInput.readOnly = true;
-      submitButton.textContent = 'Thêm sản phẩm';
-      clearImage();
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-    });
-
-    document.querySelectorAll('[data-close-modal]').forEach(function (button) {
-      button.addEventListener('click', closeModal);
-    });
-
     document.querySelectorAll('.edit-product').forEach(function (button) {
       button.addEventListener('click', function () {
-        document.getElementById('modal-title').textContent = 'Sửa thông tin sản phẩm';
-        document.getElementById('product-name').value = button.dataset.name;
-        productCodeInput.value = button.dataset.code;
-        productCodeInput.readOnly = true;
-        submitButton.textContent = 'Cập nhật sản phẩm';
-        document.getElementById('product-category').value = button.dataset.category;
-        document.getElementById('product-price').value = button.dataset.price;
-        document.getElementById('product-stock').value = button.dataset.stock;
-          document.getElementById('product-description').value = button.dataset.description;
-          showImage(button.dataset.image);
-          modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
+        const params = new URLSearchParams({
+          name: button.dataset.name,
+          code: button.dataset.code,
+          category: button.dataset.category,
+          price: button.dataset.price,
+          stock: button.dataset.stock,
+          image: button.dataset.image,
+          description: button.dataset.description
+        });
+        window.location.href = 'product-edit.html?' + params.toString();
       });
-    });
-
-    imageInput.addEventListener('change', function () {
-      const file = imageInput.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.addEventListener('load', function () {
-        showImage(reader.result);
-      });
-      reader.readAsDataURL(file);
     });
 
     document.querySelectorAll('.delete-product').forEach(function (button) {
@@ -625,11 +498,6 @@
       closeDeleteModal();
     });
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      closeModal();
-      showToast('Đã lưu thông tin sản phẩm.');
-    });
   </script>
 </body>
 </html>
