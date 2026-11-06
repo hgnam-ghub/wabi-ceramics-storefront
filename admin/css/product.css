@@ -58,4 +58,37 @@ button { cursor: pointer; }
 .data-table .status-badge.status-hidden::before {
   background: #dc2626;
 }
+.product-form-page {
+  max-width: 1180px;
+}
+.product-form-page .edit-page-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-form-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, .04);
+}
+.product-form-card .modal-grid {
+  width: 100%;
+}
+.product-form-card .modal-grid .form-control {
+  background: #fff;
+}
+.product-form-card .form-control[readonly] {
+  color: var(--text-muted);
+  background: #f0f4f8;
+}
+@media (max-width: 700px) {
+  .product-form-card {
+    padding: 20px;
+  }
+  .product-form-page .edit-page-actions {
+    width: 100%;
+  }
+}
 .btn-danger:hover { background: #b91c1c; border-color: #b91c1c; }
