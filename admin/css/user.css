@@ -312,6 +312,13 @@ select:focus-visible {
   padding: 0 18px;     /* Thay đổi padding để nút vuông vắn */
 }
 
+.filter-trigger {
+  flex-shrink: 0;
+  color: #ffffff;
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
 .search-input-box {
   position: relative;
   flex: 1;
