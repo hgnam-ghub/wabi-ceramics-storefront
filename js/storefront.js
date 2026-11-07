@@ -2,18 +2,6 @@ var PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="#e3ece7"/>' +
   '<text x="200" y="205" font-family="Arial" font-size="20" text-anchor="middle" fill="#5d6678">Chưa có ảnh</text></svg>');
 
-document.addEventListener('error', function (event) {
-  var image = event.target;
-  if (!(image instanceof HTMLImageElement)) return;
-
-  if (image.dataset.imageFallback === 'remove') {
-    image.remove();
-  } else if (image.dataset.imageFallback === 'placeholder') {
-    image.removeAttribute('data-image-fallback');
-    image.src = PLACEHOLDER;
-  }
-}, true);
-
 function toast(msg) {
   var t = document.getElementById('toast');
   if (!t) return;
@@ -29,15 +17,33 @@ document.addEventListener('DOMContentLoaded', function () {
     a.addEventListener('click', function (e) { e.preventDefault(); toast('Nội dung chính sách đang được cập nhật'); });
   });
 
-  // Phân trang
+  // Phân trang:
   var pager = document.getElementById('pager');
   if (pager) pager.addEventListener('click', function (e) {
     if (e.target.closest('button')) toast('Đã chuyển trang');
   });
 
-  // Bộ lọc
-  var apply = document.getElementById('apply');
-  if (apply) apply.addEventListener('click', function () { toast('Đã lọc sản phẩm'); });
+  // Ô nhập giá
+  function words(n) {
+    var ty = Math.floor(n / 1e9), tr = Math.floor(n % 1e9 / 1e6), ng = Math.floor(n % 1e6 / 1e3), le = n % 1e3, p = [];
+    if (ty) p.push(ty + ' tỷ');
+    if (tr) p.push(tr + ' triệu');
+    if (ng) p.push(ng + ' nghìn');
+    if (le) p.push(le);
+    return p.join(' ') + ' đồng';
+  }
+  document.querySelectorAll('.price-input').forEach(function (inp) {
+    var hint = inp.parentNode.querySelector('.price-hint');
+    inp.addEventListener('input', function () {
+      var before = inp.value.slice(0, inp.selectionStart).replace(/\D/g, '').length;
+      var d = inp.value.replace(/\D/g, '').replace(/^0+/, '').slice(0, 12);
+      inp.value = d.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      hint.textContent = d ? '= ' + words(parseInt(d, 10)) : '';
+      var i = 0, c = 0;
+      while (i < inp.value.length && c < before) { if (/\d/.test(inp.value.charAt(i))) c++; i++; }
+      inp.setSelectionRange(i, i);
+    });
+  });
 
   // Trang chi tiết
   var qty = document.getElementById('qty');
