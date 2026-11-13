@@ -83,8 +83,8 @@ body.address-modal-open{overflow:hidden}
 .btn-secondary:hover{border-color:var(--indigo);color:var(--indigo)}
 .product-link:hover{text-decoration:underline;text-underline-offset:3px}
 .profile-order-count{flex:none;color:var(--muted);font-size:.9rem}
-.profile-order{padding:16px 0 18px;border-top:1px solid var(--line)}
-.profile-order-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.profile-order{margin-bottom:14px;padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--white)}
+.profile-order-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .profile-order-heading>div{display:flex;align-items:baseline;gap:10px}
 .profile-order-heading strong{color:var(--ink);font-size:.96rem}
 .profile-order-label{color:var(--muted);font-size:.76rem;font-weight:700;letter-spacing:.6px}
@@ -93,7 +93,7 @@ body.address-modal-open{overflow:hidden}
 .profile-order-meta{display:grid;grid-template-columns:.75fr 1.8fr .9fr;gap:14px;margin-bottom:10px}
 .profile-order-meta p{margin:0;color:var(--ink);font-size:.9rem;line-height:1.55}
 .profile-order-meta p span{display:block;margin-bottom:3px;color:var(--muted);font-size:.82rem}
-.profile-order-meta-compact{grid-template-columns:1fr;margin-bottom:8px}
+.profile-order-meta-compact{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:8px}
 .profile-order-products{border-top:1px solid var(--line)}
 .profile-order-product{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
 .profile-order-product img{width:56px;height:56px;object-fit:cover;border:1px solid var(--line);border-radius:4px;background:var(--porcelain)}
@@ -160,6 +160,8 @@ body.address-modal-open{overflow:hidden}
 .profile-action-button:hover{border-color:var(--indigo);color:var(--indigo)}
 .profile-action-button.is-primary{border-color:var(--indigo);background:var(--indigo);color:var(--white)}
 .profile-action-button.is-primary:hover{border-color:var(--ink);background:var(--ink)}
+#btn-save-profile,#btn-save-profile-exit{border:1px solid var(--indigo);background:var(--indigo);color:var(--white)}
+#btn-save-profile:hover,#btn-save-profile-exit:hover{border-color:var(--ink);background:var(--ink);color:var(--white)}
 .profile-action-button.is-quiet{border-color:transparent;background:transparent;color:var(--muted)}
 .profile-history-list{max-height:520px;overflow-y:auto;padding-right:10px;scrollbar-color:var(--celadon) var(--porcelain);scrollbar-width:thin}
 .profile-history-list::-webkit-scrollbar{width:7px}
