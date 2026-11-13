@@ -434,12 +434,34 @@
 
     document.querySelectorAll('.edit-product').forEach(function (button) {
       button.addEventListener('click', function () {
+        const brands = {
+          'SP-001': 'Hương Vân Cát',
+          'SP-002': 'Hương Vân Cát',
+          'SP-003': 'Gốm Thành Thuỷ',
+          'SP-004': 'Gốm Thành Thuỷ',
+          'SP-005': 'Bát Tràng',
+          'SP-006': 'Gốm Thành Thuỷ',
+          'SP-007': 'Bát Tràng',
+          'SP-008': 'Bát Tràng',
+          'SP-009': 'Bát Tràng',
+          'SP-010': 'Bát Tràng',
+          'SP-011': 'Gốm Trường An',
+          'SP-012': 'Gốm Trường An',
+          'SP-013': 'Gốm Trường An',
+          'SP-014': 'Gốm Trường An',
+          'SP-015': 'Gốm Trường An',
+          'SP-016': 'Gốm Trường An',
+          'SP-017': 'Bát Tràng',
+          'SP-018': 'Gốm Trường An',
+          'SP-019': 'Gốm Trường An',
+          'SP-020': 'Gốm Trường An'
+        };
         const params = new URLSearchParams({
           name: button.dataset.name,
           code: button.dataset.code,
+          brand: brands[button.dataset.code] || '',
           category: button.dataset.category,
           price: button.dataset.price,
-          stock: button.dataset.stock,
           image: button.dataset.image,
           description: button.dataset.description
         });

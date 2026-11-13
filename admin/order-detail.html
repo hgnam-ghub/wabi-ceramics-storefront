@@ -9,16 +9,28 @@
       <div class="heading"><div><h1>Chi tiết đơn hàng #DH-2025-001</h1><p>Thông tin khách hàng, sản phẩm và lịch sử xử lý đơn hàng.</p></div><a class="btn btn-outline" href="order.html">← Danh sách đơn hàng</a></div>
       <div class="detail-grid">
         <section>
-          <div class="panel"><h2>Thông tin giao hàng</h2><div class="info-list"><div class="info-item"><label>Khách hàng</label><strong>Nguyễn Trọng Nghĩa</strong></div><div class="info-item"><label>Số điện thoại</label><strong>0912 345 678</strong></div><div class="info-item"><label>Địa chỉ nhận hàng</label><strong>125 Nguyễn Trãi, Quận 5, TP.HCM</strong></div><div class="info-item"><label>Ngày đặt hàng</label><strong>05/11/2026 09:30</strong></div></div></div>
+          <div class="panel"><h2>Thông tin giao hàng</h2><div class="info-list"><div class="info-item"><label>Khách hàng</label><strong>Nguyễn Trọng Nghĩa</strong></div><div class="info-item"><label>Số điện thoại</label><strong>0912 345 678</strong></div><div class="info-item"><label>Địa chỉ nhận hàng</label><strong>125 Nguyễn Trãi, Phường Bến Nghé, TP.HCM</strong></div><div class="info-item"><label>Ngày đặt hàng</label><strong>05/11/2026 09:30</strong></div></div></div>
           <div class="panel"><h2>Sản phẩm trong đơn</h2><div class="items-table-wrap"><table class="items-table"><thead><tr><th>Hình ảnh</th><th>Sản phẩm</th><th>Số lượng</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody><tr><td><img class="item-thumb" src="images/5.jpg" alt="Bộ ấm chén men hoả biến"></td><td><strong>Bộ ấm chén men hoả biến</strong></td><td>1</td><td>950.000đ</td><td>950.000đ</td></tr><tr><td><img class="item-thumb" src="images/7.jpg" alt="Bộ bát đĩa hoa mặt trời"></td><td><strong>Bộ bát đĩa hoa mặt trời</strong></td><td>1</td><td>1.500.000đ</td><td>1.500.000đ</td></tr></tbody></table></div></div>
         </section>
         <aside>
-          <div class="panel"><h2>Tình trạng đơn hàng</h2><div class="status-control"><select class="status-select" id="detail-order-status" aria-label="Tình trạng đơn hàng"><option value="new">Chưa xác nhận</option><option value="confirmed">Đã xác nhận</option><option value="delivered">Đã giao thành công</option><option value="cancelled">Đã huỷ đơn</option></select><button class="btn btn-primary" id="update-order-status" type="button">Cập nhật</button></div><span class="status status-new" id="current-order-status">Chưa xác nhận</span><p class="status-feedback" id="status-feedback" role="status" aria-live="polite"></p></div>
+          <div class="panel"><h2>Tình trạng đơn hàng</h2><div class="status-control"><select class="status-select" id="detail-order-status" aria-label="Tình trạng đơn hàng"><option value="new">Chưa xác nhận</option><option value="confirmed">Đã xác nhận</option><option value="delivered">Đã giao thành công</option><option value="cancelled">Đã huỷ đơn</option></select><button class="btn btn-primary" id="update-order-status" type="button">Cập nhật</button></div><span class="status status-new" id="current-order-status">Chưa xác nhận</span></div>
           <div class="panel"><h2>Tổng thanh toán</h2><div class="summary"><div class="summary-row"><span>Tạm tính</span><strong>2.450.000đ</strong></div><div class="summary-row"><span>Phí giao hàng</span><strong>0đ</strong></div><div class="summary-row total"><span>Tổng cộng</span><strong>2.450.000đ</strong></div></div></div>
           <div class="panel"><h2>Lịch sử xử lý</h2><div class="timeline"><div class="timeline-item"><strong>Đơn hàng được tạo</strong><span>05/11/2026 09:30 · Hệ thống</span></div><div class="timeline-item"><strong>Chờ quản trị viên xác nhận</strong><span>Đang chờ xử lý</span></div></div></div>
         </aside>
       </div>
     </main>
   </div>
+  <div class="toast" id="status-toast" role="status" aria-live="polite"></div>
+  <script>
+    const statusToast = document.getElementById('status-toast');
+    document.getElementById('update-order-status').addEventListener('click', function () {
+      statusToast.textContent = 'Đã ghi nhận cập nhật.';
+      statusToast.classList.add('is-visible');
+      window.clearTimeout(statusToast.hideTimer);
+      statusToast.hideTimer = window.setTimeout(function () {
+        statusToast.classList.remove('is-visible');
+      }, 4000);
+    });
+  </script>
 </body>
 </html>

@@ -17,12 +17,12 @@
         <form id="product-form" action="product.html" method="get">
           <div class="modal-grid">
             <div class="product-details">
-              <div class="form-group form-span"><label for="product-name">Tên sản phẩm</label><input class="form-control" id="product-name" required></div>
+              <div class="form-group form-span"><label for="product-name">Tên sản phẩm</label><input class="form-control" id="product-name"></div>
               <div class="form-grid">
                 <div class="form-group"><label for="product-code">Mã sản phẩm</label><input class="form-control" id="product-code" readonly></div>
-                <div class="form-group"><label for="product-category">Phân loại</label><select class="form-control" id="product-category" required><option>Ấm chén</option><option>Bát đĩa</option><option>Đồ thờ, bát hương</option><option>Lộc bình, phong thuỷ</option><option>Lọ hoa</option><option>Tượng gốm sứ</option><option>Gốm sứ gia dụng</option></select></div>
-                <div class="form-group"><label for="product-price">Giá bán (VNĐ)</label><input class="form-control" id="product-price" type="number" min="0" required></div>
-                <div class="form-group"><label for="product-stock">Số lượng kho</label><input class="form-control" id="product-stock" type="number" min="0" required></div>
+                <div class="form-group"><label for="product-brand">Thương hiệu</label><input class="form-control" id="product-brand"></div>
+                <div class="form-group"><label for="product-category">Phân loại</label><select class="form-control" id="product-category"><option>Ấm chén</option><option>Bát đĩa</option><option>Đồ thờ, bát hương</option><option>Lộc bình, phong thuỷ</option><option>Lọ hoa</option><option>Tượng gốm sứ</option><option>Gốm sứ gia dụng</option></select></div>
+                <div class="form-group"><label for="product-price">Giá bán (VNĐ)</label><input class="form-control" id="product-price" inputmode="numeric" autocomplete="off"></div>
               </div>
               <div class="form-group form-span"><label for="product-description">Mô tả chi tiết</label><textarea class="form-control" id="product-description" rows="5"></textarea></div>
             </div>
@@ -34,10 +34,22 @@
   </div>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const fields = { name: 'product-name', code: 'product-code', category: 'product-category', price: 'product-price', stock: 'product-stock', description: 'product-description' };
+    const fields = { name: 'product-name', code: 'product-code', brand: 'product-brand', category: 'product-category', price: 'product-price', description: 'product-description' };
     Object.keys(fields).forEach(function (key) {
       const value = params.get(key);
       if (value !== null) document.getElementById(fields[key]).value = value;
+    });
+    const priceInput = document.getElementById('product-price');
+    function formatPrice(value) {
+      const digits = value.replace(/\D/g, '');
+      return digits.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    priceInput.value = formatPrice(priceInput.value);
+    priceInput.addEventListener('input', function () {
+      priceInput.value = formatPrice(priceInput.value);
+    });
+    document.getElementById('product-form').addEventListener('submit', function () {
+      priceInput.value = priceInput.value.replace(/\./g, '');
     });
     const image = params.get('image');
     if (image) document.getElementById('image-preview').src = image;

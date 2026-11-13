@@ -58,7 +58,7 @@ function renderLayout(active) {
     '<div><div class="footer-brand"><img class="footer-logo" src="' + LOGO + '" alt="" onerror="this.remove()"><b>' + SHOP_NAME + '</b></div>' +
     '<p>Gốm sứ Bát Tràng và gốm gia dụng chọn lọc, mang nét tinh tế của gốm Việt vào mỗi bàn trà, mâm cơm và gian thờ.</p></div>' +
     '<div><h4>Thông tin liên hệ</h4><ul class="contact">' +
-    '<li><span>Địa chỉ</span>273 An Dương Vương, Phường Chợ Quán (Quận 5), Thành phố Hồ Chí Minh</li>' +
+    '<li><span>Địa chỉ</span>273 An Dương Vương, Phường Chợ Quán, Thành phố Hồ Chí Minh</li>' +
     '<li><span>Điện thoại</span><a href="tel:0863962925">0863962925</a></li>' +
     '<li><span>Đại diện</span>Trần Nguyễn Hoàng Nam - Giám đốc</li>' +
     '<li><span>Email</span><a href="mailto:tnntceramics@gmail.com">tnntceramics@gmail.com</a></li></ul></div>' +
