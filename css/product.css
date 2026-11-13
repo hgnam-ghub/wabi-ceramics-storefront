@@ -7,7 +7,9 @@
 .filter fieldset{border:0;padding:0;margin:0 0 20px}
 .filter label{display:block;padding:5px 0;cursor:pointer}
 .filter input[type=text],.filter select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:6px;font:inherit;background:var(--white)}
-.filter .btn{width:100%}
+.filter .btn{width:100%;text-align:center}
+.price-field{margin-bottom:8px}
+.price-hint{display:block;min-height:1.3em;margin-top:3px;font-size:.85rem;color:var(--indigo)}
 .result-bar{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
 .result-bar h1{font-size:1.6rem}
 .result-bar span{color:var(--muted)}
