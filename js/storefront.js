@@ -14,13 +14,18 @@ document.addEventListener('error', function (event) {
   }
 }, true);
 
-function toast(msg) {
+function toast(msg, style) {
   var t = document.getElementById('toast');
   if (!t) return;
+  clearTimeout(toast.displayTimer);
+  clearTimeout(toast.cleanupTimer);
   t.textContent = msg;
+  t.classList.toggle('is-save-toast', style === 'save');
   t.classList.add('show');
-  clearTimeout(toast.timer);
-  toast.timer = setTimeout(function () { t.classList.remove('show'); }, 2000);
+  toast.displayTimer = setTimeout(function () {
+    t.classList.remove('show');
+    toast.cleanupTimer = setTimeout(function () { t.classList.remove('is-save-toast'); }, 200);
+  }, 2000);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -28,6 +33,31 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.policy-link').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); toast('Nội dung chính sách đang được cập nhật'); });
   });
+
+  var profileSave = document.getElementById('btn-save-profile');
+  if (profileSave) profileSave.addEventListener('click', function () { toast('Đã lưu thông tin hồ sơ', 'save'); });
+
+  var profileSaveExit = document.getElementById('btn-save-profile-exit');
+  if (profileSaveExit) profileSaveExit.addEventListener('click', function () {
+    sessionStorage.setItem('profileEditSaved', 'true');
+  });
+
+  var profileOverview = document.querySelector('.profile-overview-content');
+  if (profileOverview && sessionStorage.getItem('profileEditSaved') === 'true') {
+    sessionStorage.removeItem('profileEditSaved');
+    toast('Đã lưu thông tin hồ sơ', 'save');
+  }
+
+  var checkoutSubmit = document.querySelector('.checkout-submit');
+  if (checkoutSubmit) checkoutSubmit.addEventListener('click', function () {
+    sessionStorage.setItem('checkoutOrderFeedback', 'true');
+  });
+
+  var orderPage = document.querySelector('.profile-orders-page');
+  if (orderPage && sessionStorage.getItem('checkoutOrderFeedback') === 'true') {
+    sessionStorage.removeItem('checkoutOrderFeedback');
+    toast('Đặt hàng thành công');
+  }
 
   // Phân trang
   var pager = document.getElementById('pager');
