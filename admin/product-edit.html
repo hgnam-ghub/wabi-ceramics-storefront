@@ -33,12 +33,14 @@
     </main>
   </div>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const fields = { name: 'product-name', code: 'product-code', brand: 'product-brand', category: 'product-category', price: 'product-price', description: 'product-description' };
-    Object.keys(fields).forEach(function (key) {
-      const value = params.get(key);
-      if (value !== null) document.getElementById(fields[key]).value = value;
-    });
+    document.getElementById('product-name').value = 'Ấm trà tử sa nguyên khoáng dáng Lê Hồ';
+    document.getElementById('product-code').value = 'SP-001';
+    document.getElementById('product-brand').value = 'Hương Vân Cát';
+    document.getElementById('product-category').value = 'Ấm chén';
+    document.getElementById('product-price').value = '120000000';
+    document.getElementById('product-description').value = 'Ấm trà đất nung tử sa Hương Vân Cát.';
+    document.getElementById('image-preview').src = 'images/1.webp';
+
     const priceInput = document.getElementById('product-price');
     function formatPrice(value) {
       const digits = value.replace(/\D/g, '');
@@ -51,8 +53,16 @@
     document.getElementById('product-form').addEventListener('submit', function () {
       priceInput.value = priceInput.value.replace(/\./g, '');
     });
-    const image = params.get('image');
-    if (image) document.getElementById('image-preview').src = image;
+
+    document.getElementById('product-image').addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.addEventListener('load', function () {
+        document.getElementById('image-preview').src = reader.result;
+      });
+      reader.readAsDataURL(file);
+    });
   </script>
 </body>
 </html>
