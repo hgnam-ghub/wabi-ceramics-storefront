@@ -41,7 +41,7 @@
 					<form class="profile-form" novalidate>
 						<div class="profile-form-grid">
 							<label class="profile-form-field"><span>Họ và tên</span><input type="text" name="full-name" placeholder="Nhập họ và tên" value="Nguyễn Văn An"></label>
-							<label class="profile-form-field"><span>Số điện thoại</span><input type="tel" name="phone" placeholder="Nhập số điện thoại" value="0987654321"></label>
+							<label class="profile-form-field"><span>Số điện thoại</span><input id="profile-phone" type="tel" name="phone" class="profile-phone-input" placeholder="0987 654 321" autocomplete="tel" inputmode="tel" maxlength="12" aria-describedby="profile-phone-error" aria-invalid="false" value="0987 654 321"><small class="profile-field-error" id="profile-phone-error" aria-live="polite"></small></label>
 							<fieldset class="profile-form-field profile-gender-field"><legend>Giới tính</legend><label class="profile-radio"><input type="radio" name="gender" value="nam" checked><span>Nam</span></label><label class="profile-radio"><input type="radio" name="gender" value="nu"><span>Nữ</span></label><label class="profile-radio"><input type="radio" name="gender" value="khac"><span>Khác</span></label></fieldset>
 							<label class="profile-form-field"><span>Ngày sinh</span><input type="date" name="birth-date" aria-label="Chọn ngày sinh" value="1995-08-15"></label>
 							<label class="profile-form-field profile-form-wide"><span>Email</span><input type="email" name="email" placeholder="Nhập email" value="nguyenvanan@ceramics.vn"></label>

@@ -34,11 +34,67 @@ document.addEventListener('DOMContentLoaded', function () {
     a.addEventListener('click', function (e) { e.preventDefault(); toast('Nội dung chính sách đang được cập nhật'); });
   });
 
+  var profilePhone = document.getElementById('profile-phone');
+  var profilePhoneError = document.getElementById('profile-phone-error');
+
+  function formatProfilePhone(value) {
+    var digits = value.replace(/\D/g, '').slice(0, 10);
+    if (digits.length <= 4) return digits;
+    if (digits.length <= 7) return digits.slice(0, 4) + ' ' + digits.slice(4);
+    return digits.slice(0, 4) + ' ' + digits.slice(4, 7) + ' ' + digits.slice(7);
+  }
+
+  function setProfilePhoneError(message) {
+    if (!profilePhone) return;
+    profilePhone.setAttribute('aria-invalid', message ? 'true' : 'false');
+    if (profilePhoneError) profilePhoneError.textContent = message;
+  }
+
+  function validateProfilePhone() {
+    if (!profilePhone) return true;
+    var digits = profilePhone.value.replace(/\D/g, '');
+    var message = '';
+    if (!digits) message = 'Vui lòng nhập số điện thoại';
+    else if (!/^0/.test(digits)) message = 'Số điện thoại phải bắt đầu bằng 0';
+    else if (digits.length !== 10) message = 'Số điện thoại phải có đủ 10 chữ số';
+    setProfilePhoneError(message);
+    if (message) {
+      profilePhone.focus();
+      return false;
+    }
+    return true;
+  }
+
+  if (profilePhone) {
+    profilePhone.value = formatProfilePhone(profilePhone.value);
+    profilePhone.addEventListener('input', function () {
+      var before = profilePhone.value.slice(0, profilePhone.selectionStart).replace(/\D/g, '').length;
+      profilePhone.value = formatProfilePhone(profilePhone.value);
+      setProfilePhoneError('');
+      var cursor = 0;
+      var digitCount = 0;
+      while (cursor < profilePhone.value.length && digitCount < before) {
+        if (/\d/.test(profilePhone.value.charAt(cursor))) digitCount++;
+        cursor++;
+      }
+      profilePhone.setSelectionRange(cursor, cursor);
+    });
+    profilePhone.addEventListener('blur', function () {
+      if (profilePhone.value.replace(/\D/g, '')) validateProfilePhone();
+    });
+  }
+
   var profileSave = document.getElementById('btn-save-profile');
-  if (profileSave) profileSave.addEventListener('click', function () { toast('Đã lưu thông tin hồ sơ', 'save'); });
+  if (profileSave) profileSave.addEventListener('click', function () {
+    if (validateProfilePhone()) toast('Đã lưu thông tin hồ sơ', 'save');
+  });
 
   var profileSaveExit = document.getElementById('btn-save-profile-exit');
-  if (profileSaveExit) profileSaveExit.addEventListener('click', function () {
+  if (profileSaveExit) profileSaveExit.addEventListener('click', function (event) {
+    if (!validateProfilePhone()) {
+      event.preventDefault();
+      return;
+    }
     sessionStorage.setItem('profileEditSaved', 'true');
   });
 

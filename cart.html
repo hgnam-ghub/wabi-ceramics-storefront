@@ -47,7 +47,7 @@
 						<span class="cart-field-label">Số lượng</span>
 						<div class="cart-quantity" aria-label="Số lượng 1">
 							<button type="button" aria-label="Giảm số lượng">−</button>
-							<input type="text" value="1" readonly aria-label="Số lượng sản phẩm">
+							<input type="number" min="1" max="99" step="1" value="1" aria-label="Số lượng sản phẩm">
 							<button type="button" aria-label="Tăng số lượng">+</button>
 						</div>
 					</div>
@@ -89,7 +89,7 @@
 						<span class="cart-field-label">Số lượng</span>
 						<div class="cart-quantity" aria-label="Số lượng 1">
 							<button type="button" aria-label="Giảm số lượng">−</button>
-							<input type="text" value="1" readonly aria-label="Số lượng sản phẩm">
+							<input type="number" min="1" max="99" step="1" value="1" aria-label="Số lượng sản phẩm">
 							<button type="button" aria-label="Tăng số lượng">+</button>
 						</div>
 					</div>
@@ -110,7 +110,7 @@
 						<span class="cart-field-label">Số lượng</span>
 						<div class="cart-quantity" aria-label="Số lượng 1">
 							<button type="button" aria-label="Giảm số lượng">−</button>
-							<input type="text" value="1" readonly aria-label="Số lượng sản phẩm">
+							<input type="number" min="1" max="99" step="1" value="1" aria-label="Số lượng sản phẩm">
 							<button type="button" aria-label="Tăng số lượng">+</button>
 						</div>
 					</div>
@@ -140,6 +140,8 @@
 		</aside>
 	</div>
 </main>
+
+<div id="toast" role="status" aria-live="polite"></div>
 
 <footer class="site-footer"><div class="wrap footer-grid">
 	<div><div class="footer-brand"><img class="footer-logo" src="images/logo.png" alt="" data-image-fallback="remove"><b>TNNT Ceramics</b></div>
