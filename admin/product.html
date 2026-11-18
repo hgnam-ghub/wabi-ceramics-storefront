@@ -332,24 +332,6 @@
     </div>
   </div>
 
-  <div class="modal-backdrop" id="status-modal" aria-hidden="true">
-    <div class="modal-box status-modal-box" role="dialog" aria-modal="true" aria-labelledby="status-modal-title">
-      <div class="modal-header">
-        <div>
-          <h2 id="status-modal-title">Xác nhận ẩn sản phẩm</h2>
-        </div>
-        <button type="button" class="modal-close" data-close-status-modal aria-label="Đóng">×</button>
-      </div>
-      <div class="modal-body status-modal-body">
-        <p id="status-modal-message"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline" data-close-status-modal>Hủy bỏ</button>
-        <button type="button" class="btn btn-warning" id="status-modal-confirm">Ẩn sản phẩm</button>
-      </div>
-    </div>
-  </div>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="js/data.js"></script>
   <script>
@@ -359,11 +341,6 @@
     const deleteModalMessage = document.getElementById('delete-modal-message');
     const deleteModalConfirm = document.getElementById('delete-modal-confirm');
     const deleteModalCancel = document.getElementById('delete-modal-cancel');
-    const statusModal = document.getElementById('status-modal');
-    const statusModalTitle = document.getElementById('status-modal-title');
-    const statusModalMessage = document.getElementById('status-modal-message');
-    const statusModalConfirm = document.getElementById('status-modal-confirm');
-    let selectedStatusButton = null;
     let selectedDeleteButton = null;
     const eyeIcon = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
     const eyeSlashIcon = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7C3.45 8.19 7.34 5 12 5c4.66 0 8.55 3.19 9.94 6.65a1 1 0 0 1 0 .7C20.55 15.81 16.66 19 12 19c-4.66 0-8.55-3.19-9.94-6.65z"></path><circle cx="12" cy="12" r="3"></circle><line x1="4" y1="4" x2="20" y2="20"></line></svg>';
@@ -378,35 +355,6 @@
       deleteModal.classList.remove('is-open');
       deleteModal.setAttribute('aria-hidden', 'true');
       selectedDeleteButton = null;
-    }
-
-    function closeStatusModal() {
-      statusModal.classList.remove('is-open');
-      statusModal.setAttribute('aria-hidden', 'true');
-      selectedStatusButton = null;
-    }
-
-    function openStatusModal(button) {
-      const row = button.closest('tr');
-      const productName = row.querySelector('.product-name').textContent.trim();
-      const isHidden = row.querySelector('.status-badge').classList.contains('status-hidden');
-      selectedStatusButton = button;
-      button.innerHTML = isHidden ? eyeIcon : eyeSlashIcon;
-
-      if (isHidden) {
-        statusModalTitle.textContent = 'Xác nhận hiển thị lại sản phẩm';
-        statusModalMessage.textContent = 'Bạn muốn hiển thị lại sản phẩm "' + productName + '"? Khách hàng sẽ có thể tiếp tục xem và đặt mua sản phẩm này trên trang bán hàng.';
-        statusModalConfirm.textContent = 'Hiển thị sản phẩm';
-        statusModalConfirm.className = 'btn btn-primary';
-      } else {
-        statusModalTitle.textContent = 'Xác nhận ẩn sản phẩm';
-        statusModalMessage.textContent = 'Bạn có chắc chắn muốn ẩn sản phẩm "' + productName + '" khỏi trang bán hàng không? Khách hàng sẽ tạm thời không thể nhìn thấy và tìm kiếm sản phẩm này.';
-        statusModalConfirm.textContent = 'Ẩn sản phẩm';
-        statusModalConfirm.className = 'btn btn-warning';
-      }
-
-      statusModal.classList.add('is-open');
-      statusModal.setAttribute('aria-hidden', 'false');
     }
 
     function openDeleteModal(button) {
@@ -450,26 +398,9 @@
 
     document.querySelectorAll('.btn-lock').forEach(function (button) {
       button.addEventListener('click', function () {
-        openStatusModal(button);
+        const isHidden = button.closest('tr').querySelector('.status-badge').classList.contains('status-hidden');
+        showToast(isHidden ? 'Đã hiển thị lại sản phẩm.' : 'Đã ẩn sản phẩm khỏi trang bán hàng.');
       });
-    });
-
-    document.querySelectorAll('[data-close-status-modal]').forEach(function (button) {
-      button.addEventListener('click', closeStatusModal);
-    });
-
-    statusModalConfirm.addEventListener('click', function () {
-      if (!selectedStatusButton) return;
-      const row = selectedStatusButton.closest('tr');
-      const statusBadge = row.querySelector('.status-badge');
-      const isHidden = statusBadge.classList.contains('status-hidden');
-      statusBadge.classList.toggle('status-hidden', !isHidden);
-      statusBadge.textContent = isHidden ? 'Đang bán' : 'Ẩn';
-      selectedStatusButton.title = isHidden ? 'Ẩn sản phẩm' : 'Hiện sản phẩm';
-      selectedStatusButton.setAttribute('aria-label', selectedStatusButton.title);
-      selectedStatusButton.innerHTML = isHidden ? eyeSlashIcon : eyeIcon;
-      showToast(isHidden ? 'Đã hiển thị lại sản phẩm.' : 'Đã ẩn sản phẩm khỏi trang bán hàng.');
-      closeStatusModal();
     });
 
     document.querySelectorAll('.btn-lock').forEach(function (button) {
